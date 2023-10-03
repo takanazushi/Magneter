@@ -7,7 +7,8 @@ using UnityEngine.Rendering;
 
 public class Player_Walk : MonoBehaviour
 {
-    public float speed;
+    [SerializeField]
+    private float speed;
 
     private Rigidbody2D rb;
 
