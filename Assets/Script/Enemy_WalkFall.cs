@@ -20,19 +20,30 @@ public class Enemy_WalkFall : MonoBehaviour
     // •¨—‰‰Z‚ğ‚µ‚½‚¢ê‡‚ÌFixedUpdate
     void FixedUpdate()
     {
+        
         //‰EˆÚ“®
         if (!Left)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
         }
         //¶ˆÚ“®
+        
         else 
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
+        
         //—‰ºŒã‚™‚ª-10“_‚Åíœ
         if (transform.position.y<-10) { 
         Destroy(this.gameObject);
         }
     }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Left = (Left == true) ? false : true;
+        }
+    }
+
 }
