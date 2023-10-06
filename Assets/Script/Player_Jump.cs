@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerJumpController : MonoBehaviour
+public class Player_Jump : MonoBehaviour
 {
     private Rigidbody2D rbody2D;
 
