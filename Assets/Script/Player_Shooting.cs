@@ -13,15 +13,20 @@ public class Player_Shooting : MonoBehaviour
     [SerializeField]
     private Transform gunPoint;
 
+    private bool bulletflag = false;
+
+
     // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
         {
+            bulletflag = true;
             ShootBullet(blueBulletPrefab);
         }
         else if (Input.GetMouseButtonDown(1))
         {
+            bulletflag = false;
             ShootBullet(redBulletPrefab);
         }
     }
@@ -37,5 +42,16 @@ public class Player_Shooting : MonoBehaviour
 
         //íeî≠éÀ
         //Ç‹ÇæèàóùçÏê¨ÇµÇƒÇ»Ç¢
+        if (bulletflag == true)
+        {
+            Maglaser_BlueBullet blueBullet = bullet.GetComponent<Maglaser_BlueBullet>();
+            blueBullet.Fire();
+        }
+        else if (bulletflag == false)
+        {
+            Maglaser_RedBullet redBullet = bullet.GetComponent<Maglaser_RedBullet>();
+            redBullet.Fire();
+        }
+        
     }
 }
