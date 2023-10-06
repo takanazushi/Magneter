@@ -5,9 +5,20 @@ using Unity.Jobs;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+
 //マグネット試作
 public class Magnet : MonoBehaviour
 {
+
+    SpriteRenderer MainSpriteRenderer;
+    // publicで宣言し、inspectorで設定可能にする
+    //切り替え画像　S,N,未属性
+    public Sprite MagnetS;
+    public Sprite MagnetN;
+    public Sprite MagnetNone;
+
+
+
     //マグネットマネージャー
     [SerializeField]
     private MagnetManager magnetManager;
@@ -47,6 +58,7 @@ public class Magnet : MonoBehaviour
     //type：指定した極
     public void SetType_Magnat(Type_Magnet type)
     {
+        // SpriteRenderのspriteを設定済みの他のspriteに変更
         SpriteRenderer Renderer = GetComponent<SpriteRenderer>();
 
         Type = type;
@@ -54,16 +66,35 @@ public class Magnet : MonoBehaviour
         {
             //S極は青
             case Type_Magnet.S:
-                Renderer.color = Color.blue;
+                MainSpriteRenderer.sprite = MagnetS;
+                //Renderer.color = Color.blue;
                 break;
             //N極は赤
             case Type_Magnet.N:
-                Renderer.color = Color.red;
+                MainSpriteRenderer.sprite = MagnetN;
+                //Renderer.color = Color.red;
                 break;
             //なしは白
             case Type_Magnet.None:
-                Renderer.color = Color.white;
+                MainSpriteRenderer.sprite = MagnetNone;
+                //Renderer.color = Color.white;
                 break;
+        }
+    }
+
+    //箱と弾の判定
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+
+       
+        if (collision.gameObject.tag == "RedBullet")
+        {
+            SetType_Magnat(Type_Magnet.N);
+            Debug.Log("当たった");
+        }
+        else if (collision.gameObject.tag == "BlueBullet")
+        {
+            SetType_Magnat(Type_Magnet.S);
         }
     }
 
@@ -75,9 +106,12 @@ public class Magnet : MonoBehaviour
 
     private void Start()
     {
+        // このobjectのSpriteRendererを取得
+        MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
         //極に合わせて色を変える
-        //SetType_Magnat(Type);
-    
+        SetType_Magnat(Type);
+
     }
 
     private void FixedUpdate()
@@ -151,5 +185,7 @@ public class Magnet : MonoBehaviour
         }
 
     }
+
+
 
 }
