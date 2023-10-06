@@ -40,6 +40,7 @@ public class Enemy_WalkFall : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        //•Ç‚Æ‚Ô‚Â‚©‚Á‚½‚Æ‚«‚É‹t‚ÉˆÚ“®
         if (collision.gameObject.CompareTag("Wall"))
         {
             Left = (Left == true) ? false : true;
