@@ -9,7 +9,7 @@ public class Player_Jump : MonoBehaviour
     [SerializeField]
     private float jumpForce = 450f; //ジャンプ力
 
-    private int jumpCount = 0;　//現在ジャンプ数
+    private int jumpCount = 0;
     
 
     void Start()
