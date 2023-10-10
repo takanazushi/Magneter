@@ -8,7 +8,7 @@ public class PlayerJumpController : MonoBehaviour
     //ジャンプ力
     [SerializeField]
     private float jumpForce = 450f;
-
+    //ジャンプ回数
     private int jumpCount = 0;
     
     public float speed;
@@ -29,8 +29,7 @@ public class PlayerJumpController : MonoBehaviour
     }
     //Colliderオブジェクト同士が当たった時、
     private void OnCollisionEnter2D(Collision2D other)
-    {
-        //そのオブジェクトの名前がFloorの場合
+    { //そのオブジェクトの名前がFloorの場合
         if (other.gameObject.name=="Floor")
         {
             jumpCount = 0;
