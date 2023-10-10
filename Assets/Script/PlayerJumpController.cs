@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class PlayerJumpController : MonoBehaviour
 {
-    private Rigidbody2D rbody2D;
-
+    private Rigidbody2D rb;
+    //ジャンプ力
     [SerializeField]
-    private float jumpForce = 450f; //ジャンプ力
+    private float jumpForce = 450f;
 
     private int jumpCount = 0;
     
+    public float speed;
 
     void Start()
     {
-        rbody2D = GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
         
-        if (Input.GetKey(KeyCode.Space)&& this.jumpCount < 1)
-        {
-            //transform.upで上方向に対して、jumpForceの力を加えます。
-            this.rbody2D.AddForce(transform.up * jumpForce);
+        if (Input.GetKey(KeyCode.Space)&& jumpCount < 1)
+        {//transform.upで上方向に対して、jumpForceの力を加えます。
+            rb.AddForce(transform.up * jumpForce);
             jumpCount++;
         }
     }
@@ -36,4 +36,5 @@ public class PlayerJumpController : MonoBehaviour
             jumpCount = 0;
         }
     }
+   
 }
