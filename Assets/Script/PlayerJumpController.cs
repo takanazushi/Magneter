@@ -1,14 +1,14 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerJumpController : MonoBehaviour
 {
     private Rigidbody2D rb;
-    //ƒWƒƒƒ“ƒv—Í
+    //ã‚¸ãƒ£ãƒ³ãƒ—åŠ›
     [SerializeField]
     private float jumpForce = 450f;
-    //ƒWƒƒƒ“ƒv‰ñ”
+    //ã‚¸ãƒ£ãƒ³ãƒ—å›æ•°
     private int jumpCount = 0;
     
     public float speed;
@@ -22,14 +22,14 @@ public class PlayerJumpController : MonoBehaviour
     {
         
         if (Input.GetKey(KeyCode.Space)&& jumpCount < 1)
-        {//transform.up‚Åã•ûŒü‚É‘Î‚µ‚ÄAjumpForce‚Ì—Í‚ğ‰Á‚¦‚Ü‚·B
+        {//transform.upã§ä¸Šæ–¹å‘ã«å¯¾ã—ã¦ã€jumpForceã®åŠ›ã‚’åŠ ãˆã¾ã™ã€‚
             rb.AddForce(transform.up * jumpForce);
             jumpCount++;
         }
     }
-    //ColliderƒIƒuƒWƒFƒNƒg“¯m‚ª“–‚½‚Á‚½A
+    //Colliderã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆåŒå£«ãŒå½“ãŸã£ãŸæ™‚ã€
     private void OnCollisionEnter2D(Collision2D other)
-    { //‚»‚ÌƒIƒuƒWƒFƒNƒg‚Ì–¼‘O‚ªFloor‚Ìê‡
+    { //ãã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®åå‰ãŒFloorã®å ´åˆ
         if (other.gameObject.name=="Floor")
         {
             jumpCount = 0;
