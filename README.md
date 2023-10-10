@@ -11,6 +11,8 @@
 
 **Commitするときに、SummaryとDescriptionを入力してください！**
 
+**コメントを振る際は全角の空白をいれないでください！**
+
 例①＞Summary：プレイヤー移動作成
 
 　　　Description：移動処理を作成しました
