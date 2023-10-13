@@ -18,6 +18,7 @@ public class Player_Move : MonoBehaviour
     private int jumpCount = 0;
 
     bool jumpflag = false;
+    bool kabeflag = false;
 
     private Rigidbody2D rb;
 
@@ -32,7 +33,11 @@ public class Player_Move : MonoBehaviour
     {
 
         PlayerJump();
-        PlayerWalk();
+        if (!kabeflag)
+        {
+            PlayerWalk();
+        }
+        
 
         Debug.Log("現在のジャンプ：" + speed);
         
@@ -40,13 +45,20 @@ public class Player_Move : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.gameObject.CompareTag("Floor"))
+        if (other.gameObject.name == "kabe")
         {
-            jumpCount = 0;
+            speed = 0;
             jumpflag = false;
-
-            Debug.Log("ジャンプフラグは：" + jumpflag);
+            kabeflag = true;
+            return;
         }
+
+        jumpCount = 0;
+        jumpflag = false;
+
+        Debug.Log("ジャンプフラグは：" + jumpflag);
+
+       
     }
 
     private void PlayerWalk()
