@@ -159,7 +159,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &308240292
 Transform:
   m_ObjectHideFlags: 0
@@ -439,6 +439,10 @@ PrefabInstance:
     - target: {fileID: 1724570090723200139, guid: 74aa1f10009e5a6448cc70b9c7e7c2a4, type: 3}
       propertyPath: m_Name
       value: MagnetBox_0 (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724570090723200139, guid: 74aa1f10009e5a6448cc70b9c7e7c2a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2989001854777620785, guid: 74aa1f10009e5a6448cc70b9c7e7c2a4, type: 3}
       propertyPath: m_LocalScale.x
@@ -2092,6 +2096,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MagnetBox_0 (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1724570090723200139, guid: 74aa1f10009e5a6448cc70b9c7e7c2a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2989001854777620785, guid: 74aa1f10009e5a6448cc70b9c7e7c2a4, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.24040006
@@ -2201,6 +2209,10 @@ PrefabInstance:
     - target: {fileID: 1724570090723200139, guid: 74aa1f10009e5a6448cc70b9c7e7c2a4, type: 3}
       propertyPath: m_Name
       value: MagnetBox_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1724570090723200139, guid: 74aa1f10009e5a6448cc70b9c7e7c2a4, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1959104001496947091, guid: 74aa1f10009e5a6448cc70b9c7e7c2a4, type: 3}
       propertyPath: m_Constraints

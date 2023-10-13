@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Magnet;
 
 public class Maglaser_RedBullet : Maglaser_Bullet
 {
@@ -24,7 +25,13 @@ public class Maglaser_RedBullet : Maglaser_Bullet
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        Magnet magnet = collision.gameObject.GetComponent<Magnet>();
+        if (magnet != null)
+        {
+            magnet.SetType_Magnat(Type_Magnet.N);
+        }
+      
         Destroy(gameObject);
-        Debug.Log("TilemapÇ…ìñÇΩÇËÇ‹ÇµÇΩÅI");
+        Debug.Log("ê‘íeÇ™ìñÇΩÇËÇ‹ÇµÇΩÅI");
     }
 }
