@@ -17,23 +17,42 @@ public class Player_Walk : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    // 物理演算をしたい場合はFixedUpdateを使うのが一般的
-    void FixedUpdate()
+    private void Update()
     {
         //右入力で左向きに動く
         if (Input.GetKey(KeyCode.D))
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
+            speed = 3;
         }
         //左入力で左向きに動く
         else if (Input.GetKey(KeyCode.A))
         {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
+            speed = -3;
         }
         //ボタンを話すと止まる
         else
         {
-            rb.velocity = new Vector2(0,0);
+            speed = 0;
         }
+
+        rb.velocity = new Vector2(speed, rb.velocity.y);
+    }
+
+    //オブジェクト同士が接触している時
+    private void OnCollisionStay2D(Collision2D other)
+    {
+        //そのオブジェクトの名前がMoveFloorの場合
+        if (other.gameObject.name == "MoveFloor")
+        {
+            //動く床を親にすることでプレイヤーを追従させる
+            transform.parent = other.gameObject.transform;
+        }
+    }
+
+    //オブジェクト同市が離れた時
+    private void OnCollisionExit2D(Collision2D other)
+    {
+        //親子関係を解除
+        transform.parent = null;
     }
 }
