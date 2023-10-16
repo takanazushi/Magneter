@@ -39,7 +39,7 @@ public class Player_Move : MonoBehaviour
         }
         
 
-        Debug.Log("現在のジャンプ：" + speed);
+       // Debug.Log("現在のジャンプ：" + speed);
         
     }
 
