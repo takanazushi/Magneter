@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Player_Jump : MonoBehaviour
 {
@@ -32,6 +33,11 @@ public class Player_Jump : MonoBehaviour
     {
         //そのオブジェクトの名前がFloorの場合
         if (other.gameObject.name=="Floor")
+        {
+            jumpCount = 0;
+        }
+        //そのオブジェクトの名前がFloorの場合
+        else if (other.gameObject.name == "MoveFloor")
         {
             jumpCount = 0;
         }
