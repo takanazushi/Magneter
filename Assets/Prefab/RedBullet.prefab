@@ -101,6 +101,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
+  rb: {fileID: 375463402569686488}
+  gunTransform: {fileID: 859715347336290927, guid: d5b446cd0ae7d5449a5086d25c99e185, type: 3}
 --- !u!114 &6262380343136781731
 MonoBehaviour:
   m_ObjectHideFlags: 0

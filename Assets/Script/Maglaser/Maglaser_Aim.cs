@@ -10,6 +10,8 @@ public class Maglaser_Aim : MonoBehaviour
     //銃のトランスフォーム
     public Transform gunTransform;
 
+    public Player_Direction p_direction;
+
     // Update is called once per frame
     void Update()
     {

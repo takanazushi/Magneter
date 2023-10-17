@@ -100,7 +100,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc502cb566bf8a84c86492fc1bd4cdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: -10
+  rb: {fileID: -1806575149046128925}
+  gunTransform: {fileID: 859715347336290927, guid: d5b446cd0ae7d5449a5086d25c99e185, type: 3}
 --- !u!114 &-7061447451352387817
 MonoBehaviour:
   m_ObjectHideFlags: 0

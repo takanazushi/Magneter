@@ -15,6 +15,12 @@ public class Player_Shooting : MonoBehaviour
 
     private bool bulletflag = false;
 
+    private Player_Direction direction;
+
+    private void Start()
+    {
+        direction = GetComponent<Player_Direction>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -35,7 +41,12 @@ public class Player_Shooting : MonoBehaviour
     {
         //eŒû‚ÌˆÊ’u‚ÆŒü‚«‚ğæ“¾
         Vector2 gunPosition=gunPoint.position;
-        Quaternion gunRotation = gunPoint.rotation;
+        Quaternion gunRotation = Quaternion.identity;
+
+        if (!direction.Rightflag)
+        {
+            gunRotation = Quaternion.Euler(0, 0, 180);
+        }
 
         //’eì¬
         GameObject bullet=Instantiate(BulletPrefab, gunPosition, gunRotation);
