@@ -14,32 +14,52 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("ジャンプの高さ")]
     private float jumpForce = 350f;
 
+    [SerializeField, Header("どのレイヤーのオブジェクトと当たり判定をするか")]
+    LayerMask groundLayers = 0;
+
+    [SerializeField, Header("レイの長さ")]
+    float rayLength = 1.0f;
+
     private float speed;
 
     private int jumpCount = 0;
 
     bool jumpflag = false;
     bool kabeflag = false;
-    bool yukaflag = false;
-
-    [SerializeField]
-    LayerMask groundLayers = 0;
-    [SerializeField]
-    float rayLength = 1.0f;
 
     private Rigidbody2D rb;
 
     private RaycastHit2D raycastHit2D;
 
+    private SpriteRenderer spriteRenderer;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         jumpflag = false;
     }
 
     // 物理演算をしたい場合はFixedUpdateを使うのが一般的
     void FixedUpdate()
     {
+        //マウスの位置を取得
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        //プレイヤーの位置よりも右にマウスがある場合
+        //右移動keyを押した場合
+        //右向き
+        if (mousePosition.x > transform.position.x)
+        {
+            spriteRenderer.flipX = false;
+            SetChildObjectRotation(false);
+        }
+        else if (mousePosition.x < transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+            SetChildObjectRotation(true);
+        }
+
         raycastHit2D = CheckGroundStatus();
 
         PlayerJump();
@@ -48,19 +68,19 @@ public class Player_Move : MonoBehaviour
         {
             PlayerWalk();
         }
-        else if (kabeflag && raycastHit2D.collider == null) 
+        else if (kabeflag && raycastHit2D.collider == null)
         {
             Debug.Log("ずりおち");
         }
 
-        Debug.Log(raycastHit2D.collider);
-        
+        //Debug.Log(raycastHit2D.collider);
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        
-        if (other.gameObject.name == "kabe")
+
+        if (other.gameObject.tag == "kabe")
         {
             kabeflag = true;
         }
@@ -74,7 +94,7 @@ public class Player_Move : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if(collision.gameObject.name == "kabe")
+        if (collision.gameObject.tag == "kabe")
         {
             kabeflag = false;
         }
@@ -82,8 +102,8 @@ public class Player_Move : MonoBehaviour
 
     private void PlayerWalk()
     {
-        
-        var hori = Input.GetAxis("Horizontal");
+
+        float horizontalInput = Input.GetAxis("Horizontal");
 
         if (jumpflag)
         {
@@ -94,7 +114,7 @@ public class Player_Move : MonoBehaviour
             speed = walkMoveX;
         }
 
-        speed = hori * speed;
+        speed = horizontalInput * speed;
 
 
         rb.velocity = new Vector3(speed, rb.velocity.y, 0);
@@ -119,9 +139,35 @@ public class Player_Move : MonoBehaviour
         // Rayを発射してヒット情報を取得
         RaycastHit2D hit = Physics2D.Raycast(startPos, direction, rayLength, groundLayers);
 
-        Debug.DrawRay(startPos, direction * rayLength, Color.red); // Rayをシーンビューに表示
+        //Debug.DrawRay(startPos, direction * rayLength, Color.red); // Rayをシーンビューに表示
 
         return hit;
+    }
+
+    void SetChildObjectRotation(bool isLeft)
+    {
+        // プレイヤーの子オブジェクトを取得
+        SpriteRenderer[] childSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
+
+        // 各子オブジェクトの向きを設定
+        foreach (SpriteRenderer childRenderer in childSpriteRenderers)
+        {
+            childRenderer.flipX = isLeft;
+        }
+
+        // プレイヤーの子オブジェクトを取得
+        Transform[] childTransforms = GetComponentsInChildren<Transform>();
+
+        // 各子オブジェクトの位置を設定
+        foreach (Transform childTransform in childTransforms)
+        {
+            if (childTransform != transform) // プレイヤー自身のTransform以外を操作
+            {
+                Vector3 newPosition = childTransform.localPosition;
+                newPosition.x = isLeft ? -Mathf.Abs(newPosition.x) : Mathf.Abs(newPosition.x);
+                childTransform.localPosition = newPosition;
+            }
+        }
     }
 
     private void OnDrawGizmos()

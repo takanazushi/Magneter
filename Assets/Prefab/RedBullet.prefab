@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 6262380343136781731}
   - component: {fileID: -9011476010403492342}
   - component: {fileID: 375463402569686488}
+  - component: {fileID: 6075491800428917666}
   m_Layer: 0
   m_Name: RedBullet
   m_TagString: RedBullet
@@ -100,9 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3547df241bc877e40a79e8429f9ba22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  rb: {fileID: 375463402569686488}
-  gunTransform: {fileID: 859715347336290927, guid: d5b446cd0ae7d5449a5086d25c99e185, type: 3}
+  bulletRigidBody: {fileID: 375463402569686488}
+  bulletSpeed: 10
 --- !u!114 &6262380343136781731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,3 +187,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6075491800428917666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6478156046757197442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d3bcd0937786a4b92532bb21df0e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableTime: 0.1

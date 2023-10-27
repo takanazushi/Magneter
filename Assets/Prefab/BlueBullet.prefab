@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: -7061447451352387817}
   - component: {fileID: -873547719102541558}
   - component: {fileID: -1806575149046128925}
+  - component: {fileID: -4391287979912310087}
   m_Layer: 0
   m_Name: BlueBullet
   m_TagString: BlueBullet
@@ -100,9 +101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc502cb566bf8a84c86492fc1bd4cdf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: -10
-  rb: {fileID: -1806575149046128925}
-  gunTransform: {fileID: 859715347336290927, guid: d5b446cd0ae7d5449a5086d25c99e185, type: 3}
+  bulletRigidBody: {fileID: -1806575149046128925}
+  bulletSpeed: 10
 --- !u!114 &-7061447451352387817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -187,3 +187,16 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-4391287979912310087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857075925318399940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d3bcd0937786a4b92532bb21df0e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  disableTime: 0.1

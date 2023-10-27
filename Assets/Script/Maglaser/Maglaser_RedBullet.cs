@@ -5,21 +5,19 @@ using static Magnet;
 
 public class Maglaser_RedBullet : Maglaser_Bullet
 {
-    // Start is called before the first frame update
-    void Start()
+
+    private void Awake()
     {
-        
+        BulletStart();
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        BulletUpdate();
-    }
 
-    public override void Fire()
-    {
-        base.Fire();
+        BulletUpdate();
+
 
     }
 
@@ -30,8 +28,9 @@ public class Maglaser_RedBullet : Maglaser_Bullet
         {
             magnet.SetType_Magnat(Type_Magnet.N);
         }
-      
+
         Destroy(gameObject);
         Debug.Log("ê‘íeÇ™ìñÇΩÇËÇ‹ÇµÇΩÅI");
     }
+
 }
