@@ -7,9 +7,11 @@ public class Player_Jump : MonoBehaviour
     private Rigidbody2D rbody2D;
 
     [SerializeField]
-    private float jumpForce = 450f; //ジャンプ力
-
+    private float jumpForce = 450f;//ジャンプ力
+    ////現在ジャンプ数
     private int jumpCount = 0;
+    
+    
     
 
     void Start()
