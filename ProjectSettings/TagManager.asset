@@ -3,23 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags:
-  - Floor
-<<<<<<< HEAD
-  - Wall
-=======
-  - RedBullet
-  - BlueBullet
->>>>>>> Floor_Gear
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-<<<<<<< HEAD
-  - Stage
-=======
-  - Object
->>>>>>> Floor_Gear
+  - 
   - Water
   - UI
   - 
