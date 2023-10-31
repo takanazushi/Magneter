@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret : MonoBehaviour
+public class Turret_Aim : MonoBehaviour
 {
-    public Transform arrowTrans; // 動かすオブジェクトのトランスフォーム
-    public Transform ballTrans; // ターゲットのオブジェクトのトランスフォーム
+    [SerializeField, Header("タレットに付随している銃口のトランスフォーム")]
+    private Transform arrowTrans; // 動かすオブジェクトのトランスフォーム
+
+    [SerializeField, Header("目標になるオブジェクトのトランスフォーム")]
+    private Transform ballTrans; // ターゲットのオブジェクトのトランスフォーム
 
     private void Update()
     {

@@ -9,30 +9,33 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEngine.GraphicsBuffer;
 
-public class fixed2 : MonoBehaviour
+public class Firing_NoAim: MonoBehaviour
 {
     private Rigidbody2D rb;
 
     //画面内
     private bool InField = false;
 
-    //Xスピード
+    [SerializeField, Header("砲弾の横移動スピード")]
     private float SpeedX;
 
-    //Yスピード
+    [SerializeField, Header("砲弾の縦移動スピード")]
     private float SpeedY;
 
-    //向き
-    public bool Direction = false;
+    [SerializeField, Header("チェックで左向きに弾が発射される")]
+    private bool Direction = false;
 
     //左斜め
-    public bool LeftDiazional = false;
+    //使ってない
+    //public bool LeftDiazional = false;
 
     //右斜め
-    public bool RightDiazional = false;
+    //使ってない
+    //public bool RightDiazional = false;
 
     //Prefabsで複製する物を入れる(今回の場合Circle)
-    public GameObject BulletObj;
+    [SerializeField, Header("弾Prefabを入れてください")]
+    private GameObject BulletObj;
 
     // Start is called before the first frame update
     void Start()
@@ -54,20 +57,12 @@ public class fixed2 : MonoBehaviour
         InField = true;
     }
 
-    ////当たり判定
-    //private void OnTriggerEnter2D(Collider2D collision)
-    //{
-    //    
-    //}
-
     void Shot()
     {
         if(InField)
         {
             //複製処理
             GameObject obj = Instantiate(BulletObj, transform.position, Quaternion.identity);
-            //名前をCircleにする
-            obj.name = BulletObj.name;
             
             //左向き
             if (Direction)
@@ -82,6 +77,7 @@ public class fixed2 : MonoBehaviour
 
             // 弾速は自由に設定
             rb.velocity = new Vector2(rb.velocity.x + SpeedX, rb.velocity.y + SpeedY);
+
             //8秒後に砲弾を破壊する
             Destroy(obj, 8.0f);
         }   

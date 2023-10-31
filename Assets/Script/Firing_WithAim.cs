@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LookAt : MonoBehaviour
+public class Firing_WithAim : MonoBehaviour
 {
     private Rigidbody2D rb;
 
@@ -10,12 +10,15 @@ public class LookAt : MonoBehaviour
     private bool InField = false;
 
     //Prefabsで複製する物を入れる
+    [SerializeField, Header("弾Prefabを入れてください")]
     public GameObject BulletObj;
 
     //プレイヤーの座標格納
+    [SerializeField, Header("プレイヤーを入れてください")]
     public Transform target;
 
     //移動速度
+    [SerializeField, Header("弾の発射スピード")]
     public float moveSpeed;
 
     void Start()
@@ -49,9 +52,8 @@ public class LookAt : MonoBehaviour
             bulletDirection.Normalize();
 
             //複製処理
-            GameObject obj = Instantiate(BulletObj) as GameObject;
-            //名前をCircleにする
-            obj.name = BulletObj.name;
+            GameObject obj = Instantiate(BulletObj);
+
             //その向きにスピードを掛ける
             rb.velocity = bulletDirection * moveSpeed;
             //10秒後に砲弾を破壊する

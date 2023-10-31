@@ -140,9 +140,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 678e8df6a6fbdb44db79234cb38e7686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SpeedX: 0
+  SpeedY: 0
   Direction: 1
-  LeftDiazional: 0
-  RightDiazional: 0
   BulletObj: {fileID: 2876090}
 --- !u!61 &2876094
 BoxCollider2D:
@@ -221,21 +221,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5655268590565049571, guid: 2f9dab39f28120a4ab168dedf045585e, type: 3}
   m_PrefabInstance: {fileID: 1495743926}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &405437912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 405437911}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 48b02892a11f2a74fac688012bc8c537, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BulletObj: {fileID: 405437911}
-  target: {fileID: 992138216}
-  moveSpeed: 10
 --- !u!50 &405437915
 Rigidbody2D:
   serializedVersion: 4
@@ -648,7 +633,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86acf1243c8f1cc439884d8e528f06a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rbody2D: {fileID: 0}
   jumpForce: 450
+  jumpCount: 0
 --- !u!114 &992138218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,6 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  rb: {fileID: 0}
 --- !u!1001 &1414182036
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -920,9 +908,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5655268590565049571, guid: 2f9dab39f28120a4ab168dedf045585e, type: 3}
       insertIndex: -1
       addedObject: {fileID: 405437915}
-    - targetCorrespondingSourceObject: {fileID: 5655268590565049571, guid: 2f9dab39f28120a4ab168dedf045585e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 405437912}
   m_SourcePrefab: {fileID: 100100000, guid: 2f9dab39f28120a4ab168dedf045585e, type: 3}
 --- !u!1 &1642836551
 GameObject:
@@ -1066,7 +1051,7 @@ GameObject:
   - component: {fileID: 1837221417}
   - component: {fileID: 1837221416}
   m_Layer: 0
-  m_Name: Turrret
+  m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1341,5 +1326,5 @@ SceneRoots:
   - {fileID: 646890470}
   - {fileID: 2037370947}
   - {fileID: 423990356}
-  - {fileID: 1495743926}
   - {fileID: 1414182036}
+  - {fileID: 1495743926}
