@@ -75,6 +75,11 @@ public class Player_Move : MonoBehaviour
 
         //Debug.Log(raycastHit2D.collider);
 
+<<<<<<< HEAD
+=======
+       // Debug.Log("Œ»Ý‚ÌƒWƒƒƒ“ƒvF" + speed);
+        
+>>>>>>> Player_Damage
     }
 
     private void OnCollisionEnter2D(Collision2D other)
