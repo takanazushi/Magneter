@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Script/Damage.cs.meta
-guid: 34ad9a1beb1fa5249beefddcd81ba0b2
-========
-guid: 678e8df6a6fbdb44db79234cb38e7686
->>>>>>>> Fixed-Turret:Assets/Script/Firing_NoAim.cs.meta
+guid: 9966ce845345ece4283d0ce5665ce840
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
