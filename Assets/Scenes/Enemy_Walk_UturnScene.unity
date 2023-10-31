@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 215204721}
   - component: {fileID: 215204724}
   - component: {fileID: 215204723}
-  - component: {fileID: 215204725}
+  - component: {fileID: 215204726}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -272,7 +272,7 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 1, y: 2}
   m_Direction: 0
---- !u!114 &215204725
+--- !u!114 &215204726
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -281,10 +281,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 215204719}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0680ad1b1f7f6749877d9d339712f92, type: 3}
+  m_Script: {fileID: 11500000, guid: ddac8d8de9adf054f9107c48c1771289, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
+  speed: 3
   isMovingRight: 0
   stageLayer:
     serializedVersion: 2
