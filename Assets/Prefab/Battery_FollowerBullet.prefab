@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: -7513381106489503838}
   - component: {fileID: 3207577550018996290}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: Battery_FollowerBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

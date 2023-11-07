@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret_Bullet : MonoBehaviour
+public class Turret_FollowerBullet : MonoBehaviour
 {
     //プレイヤーの座標格納
     private Transform target;

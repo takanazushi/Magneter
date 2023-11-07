@@ -3,18 +3,18 @@ using System.Collections.Generic;
 using System.Threading;
 using UnityEngine;
 
-public class Firing_WithAim : MonoBehaviour
+public class Firing_Bullet : MonoBehaviour
 {
     //Prefabs‚Å•¡»‚·‚é•¨‚ğ“ü‚ê‚é
     [SerializeField, Header("’ePrefab‚ğ“ü‚ê‚Ä‚­‚¾‚³‚¢")]
-    public GameObject BulletObj;
+    protected  GameObject BulletObj;
 
     void Start()
     {   
         StartCoroutine(ShotCoroutine());
     }
 
-    IEnumerator ShotCoroutine()
+    public virtual IEnumerator ShotCoroutine()
     {
         while (true)
         {
