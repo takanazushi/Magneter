@@ -9,7 +9,10 @@ public class Enemy_WalkFall : MonoBehaviour
 
     [SerializeField]
     private bool Left=false;//左向き
-    
+
+    [Header("接触判定")] 
+    public Enemy_hanten checkhanten;
+
     private Rigidbody2D rb;
 
     void Start()
@@ -20,17 +23,22 @@ public class Enemy_WalkFall : MonoBehaviour
     // 物理演算をしたい場合のFixedUpdate
     void FixedUpdate()
     {
-        
+        if (checkhanten.isOn)
+        {
+            Left = !Left;
+        }
+
         //右移動
         if (!Left)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
+            transform.localScale = new Vector3(-1, 1, 1);
         }
         //左移動
-        
         else 
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
+            transform.localScale = new Vector3(1, 1, 1);
         }
         
         //落下後ｙが-10時点で削除
@@ -38,13 +46,23 @@ public class Enemy_WalkFall : MonoBehaviour
         Destroy(this.gameObject);
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //壁とぶつかったときに逆に移動
-        if (collision.gameObject.CompareTag("Wall"))
+        //if (collision.gameObject.CompareTag("Floor"))
+        //{
+        //    Left = (Left == true) ? false : true;
+        //}
+
+        if (collision.gameObject.tag == "Enemy")
         {
-            Left = (Left == true) ? false : true;
+            Debug.Log("敵と当たり散らかしてる");
+
+            // Enemyタグを持つオブジェクトとの当たり判定を無視
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
+
     }
 
 }

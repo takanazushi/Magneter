@@ -95,4 +95,10 @@ public class Enemy_Walk_turn : MonoBehaviour
         }
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        Debug.Log("当");
+        FlipDirection();
+    }
+
 }
