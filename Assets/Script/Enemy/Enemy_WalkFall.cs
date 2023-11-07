@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class Enemy_WalkFall : MonoBehaviour
 {
-    [SerializeField]
-    private float speed=1;
+    [SerializeField, Header("敵の速度")]
+    private float speed = 1;
 
-    [SerializeField]
-    private bool Left=false;//左向き
+    [SerializeField, Header("動く方向（チェックで左に動く）")]
+    private bool Left = true;
     
     private Rigidbody2D rb;
 
@@ -20,24 +20,24 @@ public class Enemy_WalkFall : MonoBehaviour
     // 物理演算をしたい場合のFixedUpdate
     void FixedUpdate()
     {
-        
         //右移動
         if (!Left)
         {
             rb.velocity = new Vector2(speed, rb.velocity.y);
         }
         //左移動
-        
         else 
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
         }
-        
+
         //落下後ｙが-10時点で削除
-        if (transform.position.y<-10) { 
-        Destroy(this.gameObject);
+        if (transform.position.y < -10)  
+        { 
+            Destroy(this.gameObject);
         }
     }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //壁とぶつかったときに逆に移動
