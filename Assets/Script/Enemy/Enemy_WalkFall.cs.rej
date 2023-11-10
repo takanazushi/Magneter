@@ -1,9 +1,0 @@
-diff a/Assets/Script/Enemy/Enemy_WalkFall.cs b/Assets/Script/Enemy/Enemy_WalkFall.cs	(rejected hunks)
-@@ -69,7 +69,6 @@
- 
-         if (collision.gameObject.tag == "Enemy")
-         {
--            Left = (Left == true) ? false : true;
-             Debug.Log("�G�Ɠ�����U�炩���Ă�");
- 
-             // Enemy�^�O����I�u�W�F�N�g�Ƃ̓����蔻��𖳎�
