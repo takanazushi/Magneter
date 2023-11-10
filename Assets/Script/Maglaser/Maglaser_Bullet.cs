@@ -15,13 +15,15 @@ public class Maglaser_Bullet : MonoBehaviour
     protected float bulletSpeed = 10.0f;
 
     private Vector3 targetPosition; // マウスの位置を保存するための変数
-
+    float angle;
     public virtual void BulletStart()
     {
         GameObject player = GameObject.Find("Player");
         if (player != null)
         {
             gunTransform = player.transform.Find("Maglaser");
+            
+
         }
         else
         {
@@ -32,12 +34,12 @@ public class Maglaser_Bullet : MonoBehaviour
     public virtual void SetTargetPosition(Vector3 position)
     {
         targetPosition = position;
+        Vector3 direction = (targetPosition - gunTransform.position).normalized;
+        angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
     }
 
     public virtual void BulletUpdate()
     {
-        Vector3 direction = (targetPosition - gunTransform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
         bulletRigidBody.velocity = Quaternion.Euler(0, 0, angle) * Vector2.right * bulletSpeed;
     }
 
