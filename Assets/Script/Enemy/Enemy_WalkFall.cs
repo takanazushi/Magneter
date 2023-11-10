@@ -7,18 +7,12 @@ public class Enemy_WalkFall : MonoBehaviour
     [SerializeField, Header("敵の速度")]
     private float speed = 1;
 
-<<<<<<< HEAD
-    [SerializeField, Header("動く方向（チェックで左に動く）")]
-    private bool Left = true;
-    
-=======
     [SerializeField]
     private bool Left=false;//左向き
 
     [Header("接触判定")] 
     public Enemy_hanten checkhanten;
 
->>>>>>> TestStage1-1
     private Rigidbody2D rb;
 
     void Start()
@@ -29,14 +23,12 @@ public class Enemy_WalkFall : MonoBehaviour
     // 物理演算をしたい場合のFixedUpdate
     void FixedUpdate()
     {
-<<<<<<< HEAD
-=======
+
         if (checkhanten.isOn)
         {
             Left = !Left;
         }
 
->>>>>>> TestStage1-1
         //右移動
         if (!Left)
         {
