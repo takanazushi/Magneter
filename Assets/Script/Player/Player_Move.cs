@@ -20,6 +20,13 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("ƒŒƒC‚Ì’·‚³")]
     float rayLength = 1.0f;
 
+    [SerializeField, Header("•—‚ÌŒ¸‘¬’l")]
+    private float windMoveSpeed = 1.0f;
+
+
+
+    private bool windMoveflg = false;
+
     private float speed;
 
     private int jumpCount = 0;
@@ -102,7 +109,6 @@ public class Player_Move : MonoBehaviour
 
     private void PlayerWalk()
     {
-
         float horizontalInput = Input.GetAxis("Horizontal");
 
         if (jumpflag)
@@ -116,8 +122,12 @@ public class Player_Move : MonoBehaviour
 
         speed = horizontalInput * speed;
 
+        //•—‚É“–‚½‚Á‚Ä‚¢‚éó‘Ô‚Ì‘¬“xæ“¾
+        windMoveSpeed = Wind.instance.movespeed;
+        
 
-        rb.velocity = new Vector3(speed, rb.velocity.y, 0);
+        rb.velocity = new Vector3(speed / windMoveSpeed, rb.velocity.y, 0);
+
     }
 
     private void PlayerJump()
