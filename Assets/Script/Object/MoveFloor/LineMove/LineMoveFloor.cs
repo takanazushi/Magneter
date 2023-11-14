@@ -16,7 +16,6 @@ public class LineMoveFloor : MonoBehaviour
     //動く床のスピード
     [SerializeField]
     private float speed;
-
     //頂点の数
     private int currentIndex;
     private Rigidbody2D rb;
@@ -56,6 +55,7 @@ public class LineMoveFloor : MonoBehaviour
             rb.velocity = smoothVelocity;
             //進んだ距離
             newpos = smoothVelocity;
+
             //前の位置
             oldpos = rb.position;
             //目標位置に近づいたら次の頂点を得る

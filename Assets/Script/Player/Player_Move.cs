@@ -23,6 +23,8 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("壁当たったか判定")]
     public Player_kabehan player_Kabehan;
 
+    private LineMoveFloor moveFloor=null;
+
     private float speed;
 
     private int jumpCount = 0;
@@ -75,14 +77,9 @@ public class Player_Move : MonoBehaviour
             }
             else if (kabeflag && raycastHit2D[i].collider == null)
             {
-                Debug.Log("ずりおち");
+                //Debug.Log("ずりおち");
             }
         }
-
-        
-
-        
-
         //Debug.Log(raycastHit2D.collider);
 
     }
@@ -95,10 +92,16 @@ public class Player_Move : MonoBehaviour
             kabeflag = true;
         }
 
+        if (other.gameObject.tag == "MoveFloor")
+        {
+            moveFloor = other.gameObject.GetComponent<LineMoveFloor>();
+            Debug.Log("動く床と当たってる");
+        }
+
         jumpCount = 0;
         jumpflag = false;
 
-        Debug.Log("ジャンプフラグは：" + jumpflag);
+        //Debug.Log("ジャンプフラグは：" + jumpflag);
 
     }
 
@@ -107,6 +110,12 @@ public class Player_Move : MonoBehaviour
         if (collision.gameObject.tag == "kabe")
         {
             kabeflag = false;
+        }
+
+        if (collision.gameObject.tag == "MoveFloor")
+        {
+            moveFloor = null;
+            Debug.Log("動く床と当たってない");
         }
     }
 
@@ -140,10 +149,16 @@ public class Player_Move : MonoBehaviour
             xSpeed = 0;
         }
 
+        Vector2 addVelocity = Vector2.zero;
+        if (moveFloor != null)
+        {
+            addVelocity = moveFloor.GetVelocity();
+        }
+
         //speed = horizontalInput * speed;
 
 
-        rb.velocity = new Vector3(xSpeed, rb.velocity.y, 0);
+        rb.velocity = new Vector2(xSpeed, rb.velocity.y) + addVelocity;
     }
 
     private void PlayerJump()
