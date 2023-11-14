@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<<< HEAD:Assets/Script/Maglaser/Maglaser_Bullet.cs.meta
-guid: 6da4772348d58214d883e7ad76d9863b
-========
-guid: 47193309f23482f43b007b9e84ba7c5d
->>>>>>>> MoveFloor:Assets/Script/LineRender.cs.meta
+guid: 373e96faa0807184d812e73faf9bdc4b
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
