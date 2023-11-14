@@ -11,11 +11,11 @@ public class Enemy_hanten : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("“–‚½‚Á‚½");
+        //Debug.Log("“–‚½‚Á‚½");
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("“G‚Æ“–‚½‚Á‚½");
+           // Debug.Log("“G‚Æ“–‚½‚Á‚½");
         }
         else
         {

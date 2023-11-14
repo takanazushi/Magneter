@@ -28,4 +28,5 @@ public class Maglaser_DestroyOutCamera : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

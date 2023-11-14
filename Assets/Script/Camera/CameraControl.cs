@@ -48,8 +48,6 @@ public class CameraControl : MonoBehaviour
 
         //ƒJƒƒ‰‚ğ—LŒø‰»
         m_Camera.Priority = 1;
-
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)

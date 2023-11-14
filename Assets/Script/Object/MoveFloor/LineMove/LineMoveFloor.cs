@@ -16,6 +16,7 @@ public class LineMoveFloor : MonoBehaviour
     //動く床のスピード
     [SerializeField]
     private float speed;
+
     //頂点の数
     private int currentIndex;
     private Rigidbody2D rb;
@@ -38,7 +39,6 @@ public class LineMoveFloor : MonoBehaviour
     {
         return newpos;
     }
-
     void Update()
     {
         if (lineRenderer.positionCount > 0)

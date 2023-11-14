@@ -199,4 +199,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bulletRigidBody: {fileID: -1806575149046128925}
-  bulletSpeed: 10
+  bulletSpeed: 15
