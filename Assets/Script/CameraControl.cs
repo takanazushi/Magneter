@@ -57,6 +57,8 @@ public class CameraControl : MonoBehaviour
         //注目オブジェクトの場合
         if (collision.name != m_Camera.Follow.name) { return; }
 
+        //カメラを有効化
+        m_Camera.Priority = 0;
     }
 
     private void OnDrawGizmos()
