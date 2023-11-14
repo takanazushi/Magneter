@@ -158,7 +158,7 @@ public class Player_Move : MonoBehaviour
         //speed = horizontalInput * speed;
 
 
-        rb.velocity = new Vector2(xSpeed, rb.velocity.y) + addVelocity;
+        rb.velocity = new Vector2(xSpeed + addVelocity.x, rb.velocity.y);
     }
 
     private void PlayerJump()
