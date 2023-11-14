@@ -44,6 +44,8 @@ public class Maglaser_Bullet : MonoBehaviour
         {
             //プレイヤーの銃のトランスフォームを取得
             gunTransform = player.transform.Find("Maglaser");
+            
+
         }
         else
         {
