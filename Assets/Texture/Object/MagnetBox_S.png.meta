@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cdf755fc46f997545a8d101b4ede6406
+guid: 07279350161eec1429e9f746012b4753
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -81,7 +81,46 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,13 +149,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MagunetBoxNull_0
+      name: MagnetBoxS_Rectangle
       rect:
         serializedVersion: 2
-        x: 46
-        y: 463
-        width: 406
-        height: 758
+        x: 127
+        y: 125
+        width: 179
+        height: 335
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +163,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: da38186da4944c14b8b4781a8f99bdb2
-      internalID: 711230660
+      spriteID: 532213d38453e6945b804f572ca8026a
+      internalID: 1037806098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: MagunetBoxNull_1
+      name: MagnetBoxS_Square
       rect:
         serializedVersion: 2
-        x: 516
-        y: 826
-        width: 387
-        height: 395
+        x: 432
+        y: 218
+        width: 181
+        height: 178
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,8 +184,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d2de96f8afc8144ca49e7e4c735e24b
-      internalID: 1091126749
+      spriteID: 1d01f445cbb229749860d8b59d3e61f6
+      internalID: -1793508851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MagnetBoxS_Slender
+      rect:
+        serializedVersion: 2
+        x: 756
+        y: 37
+        width: 126
+        height: 514
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a64cd7b341c8a4a46a0ba8690f14d477
+      internalID: 274811784
       vertices: []
       indices: 
       edges: []
@@ -162,8 +222,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      MagunetBoxNull_0: 711230660
-      MagunetBoxNull_1: 1091126749
+      MagnetBoxS_Rectangle: 1037806098
+      MagnetBoxS_Slender: 274811784
+      MagnetBoxS_Square: -1793508851
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
