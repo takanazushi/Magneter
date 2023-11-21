@@ -1437,7 +1437,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7cad5ff90f58345b7ad48c6e5b593a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Hit_Damage: 0
+  Hit_Damage: 1
 --- !u!50 &749318768
 Rigidbody2D:
   serializedVersion: 4
@@ -1464,7 +1464,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 5
 --- !u!61 &749318769
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1571,7 +1571,7 @@ Transform:
   m_GameObject: {fileID: 749318766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 69.41, y: 36.51, z: 0}
+  m_LocalPosition: {x: 68.73, y: 36.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1907,7 +1907,6 @@ GameObject:
   - component: {fileID: 1069631768}
   - component: {fileID: 1069631767}
   - component: {fileID: 1069631772}
-  - component: {fileID: 1069631773}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2068,7 +2067,7 @@ Transform:
   m_GameObject: {fileID: 1069631766}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 67.3, y: 37.56, z: 0.1}
+  m_LocalPosition: {x: 75.49, y: 37.56, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2090,19 +2089,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invi_Time: 1
---- !u!114 &1069631773
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1069631766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6e36761403f4974419fdc225b20c8650, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  respawnTime: 0
 --- !u!1 &1173331309
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,7 +2401,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e36761403f4974419fdc225b20c8650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnTime: 0
+  respawnTime: 10
 --- !u!212 &1628116336
 SpriteRenderer:
   m_ObjectHideFlags: 0
