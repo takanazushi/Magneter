@@ -66,7 +66,6 @@ public class Player_HP : MonoBehaviour
             //仮置き：自身を消す
             //Destroy(this.gameObject);
 
-            //仮置き：チェックポイントで復活
 
             //プレイヤーのHPをリセットする
             GameManager.instance.HP = GameManager.instance.RestHP;
