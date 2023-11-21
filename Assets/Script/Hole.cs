@@ -4,12 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class Respawn : MonoBehaviour
+public class Hole : MonoBehaviour
 {
     [SerializeField, Header("リスポーンするまでの時間")]
     private float respawnTime;
 
-    private void OnTriggerExit2D(Collider2D collision)
+    //プレイヤーとぶつかった場合ゲームシーン再読み込みでリスポーンする
+    private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
         {
@@ -17,7 +18,7 @@ public class Respawn : MonoBehaviour
         }
     }
 
-    private void GameRestart()
+    public void GameRestart()
     {
         //現在のシーンを再度読み込む
         Debug.Log("現在のシーンを再度読み込む");
