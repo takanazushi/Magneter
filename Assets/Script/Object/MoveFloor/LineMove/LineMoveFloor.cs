@@ -38,7 +38,8 @@ public class LineMoveFloor : MonoBehaviour
     {
         return newpos;
     }
-    void Update()
+
+    void FixedUpdate()
     {
         if (lineRenderer.positionCount > 0)
         {

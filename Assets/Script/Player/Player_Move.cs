@@ -17,23 +17,29 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("どのレイヤーのオブジェクトと当たり判定をするか")]
     LayerMask groundLayers = 0;
 
-    [SerializeField, Header("レイの長さ")]
+    [SerializeField, Header("レイの長さ"),
+        Tooltip("")]
     float rayLength = 1.0f;
 
-    [SerializeField, Header("壁当たったか判定")]
-    public Player_kabehan player_Kabehan;
-
+    /// <summary>
+    /// 足場に触れている場合のみ有効
+    /// </summary>
     private LineMoveFloor moveFloor=null;
 
-    private float speed;
-
+    /// <summary>
+    /// ジャンプカウント
+    /// </summary>
     private int jumpCount = 0;
 
+    /// <summary>
+    /// ジャンプフラグ
+    /// true:ジャンプ中
+    /// </summary>
     bool jumpflag = false;
-    bool kabeflag = false;
 
     private Rigidbody2D rb;
 
+    //レイの衝突情報
     private RaycastHit2D[] raycastHit2D = new RaycastHit2D[2];
 
     private SpriteRenderer spriteRenderer;
@@ -41,6 +47,7 @@ public class Player_Move : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
         jumpflag = false;
     }
@@ -48,6 +55,10 @@ public class Player_Move : MonoBehaviour
     // 物理演算をしたい場合はFixedUpdateを使うのが一般的
     void FixedUpdate()
     {
+        //重力を追加で掛ける
+        //Rigidbody2D->GravityScaleからいじるか迷い中・・・
+        //rb.velocity = new(rb.velocity.x, rb.velocity.y - 0.5f);
+
         //マウスの位置を取得
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -65,41 +76,46 @@ public class Player_Move : MonoBehaviour
             SetChildObjectRotation(true);
         }
 
+        //レイの処理結果を受け取る
         raycastHit2D = CheckGroundStatus();
 
-        PlayerJump();
-
-        for(int i = 0; i < 2; i++)
+        for (int i = 0; i < 2; i++)
         {
-            if (kabeflag && raycastHit2D[i].collider || kabeflag == false && raycastHit2D[i].collider|| player_Kabehan.isOn == false)
+            //レイ接触時のみジャンプ可能
+            if (raycastHit2D[i].collider || moveFloor != null)
             {
-                PlayerWalk();
-            }
-            else if (kabeflag && raycastHit2D[i].collider == null)
-            {
-                //Debug.Log("ずりおち");
+                //ジャンプ初期化
+                jumpCount = 0;
+                jumpflag = false;
+
             }
         }
-        //Debug.Log(raycastHit2D.collider);
+
+        for (int i = 0; i < 2; i++)
+        {
+            //レイ接触時のみジャンプ可能
+            if (raycastHit2D[i].collider|| moveFloor != null)
+            {
+                //ジャンプ判定
+                PlayerJump();
+            }
+        }
+
+        //移動処理
+        PlayerWalk();
 
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.tag == "kabe")
-        {
-            kabeflag = true;
-        }
 
         if (other.gameObject.tag == "MoveFloor")
         {
             moveFloor = other.gameObject.GetComponent<LineMoveFloor>();
-            Debug.Log("動く床と当たってる");
+            //Debug.Log("動く床と当たってる");
         }
 
-        jumpCount = 0;
-        jumpflag = false;
 
         //Debug.Log("ジャンプフラグは：" + jumpflag);
 
@@ -107,24 +123,24 @@ public class Player_Move : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "kabe")
-        {
-            kabeflag = false;
-        }
 
         if (collision.gameObject.tag == "MoveFloor")
         {
             moveFloor = null;
-            Debug.Log("動く床と当たってない");
+            // Debug.Log("動く床と当たってない");
         }
     }
 
     private void PlayerWalk()
     {
 
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float xSpeed = 0;
+        //横移動を取得
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
 
+        //横移動スピード
+        float speed;
+
+        //ジャンプ中は横移動速度を切り替える
         if (jumpflag)
         {
             speed = jumpMoveX;
@@ -134,40 +150,60 @@ public class Player_Move : MonoBehaviour
             speed = walkMoveX;
         }
 
+        //左右反転
         if (horizontalInput > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
-            xSpeed = speed;
         }
         else if (horizontalInput < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
-            xSpeed = -speed;
+        }
+        
+
+        //足場に乗っている場合
+        Vector2 floorVelocity = Vector2.zero;
+        if (moveFloor != null)
+        {
+            floorVelocity = moveFloor.GetVelocity();
+        }
+
+        //速度生成
+        Vector2 velocity = new (horizontalInput, rb.velocity.y);
+
+        //スピード乗算
+        velocity.x = velocity.x * speed;
+
+        //足場の移動速度を追加
+        velocity.x += floorVelocity.x;
+        velocity.y = rb.velocity.y;
+        //velocity.y += floorVelocity.y;
+
+        if (floorVelocity.y >= 0)
+        {
+            //velocity.y -= floorVelocity.y;
         }
         else
         {
-            xSpeed = 0;
+            //velocity.y += floorVelocity.y;
         }
 
-        Vector2 addVelocity = Vector2.zero;
-        if (moveFloor != null)
-        {
-            addVelocity = moveFloor.GetVelocity();
-        }
+        rb.velocity = velocity;
 
-        //speed = horizontalInput * speed;
-
-
-        rb.velocity = new Vector2(xSpeed + addVelocity.x, rb.velocity.y);
+        Debug.Log(floorVelocity);
     }
 
     private void PlayerJump()
     {
         if (Input.GetKey(KeyCode.Space) && this.jumpCount < 1)
         {
+            float pwa = jumpForce;
+
             jumpflag = true;
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(transform.up * jumpForce);
+
+            //瞬間的な力を加える
+            rb.AddForce(transform.up * pwa, ForceMode2D.Impulse);
             jumpCount++;
         }
     }
@@ -206,12 +242,16 @@ public class Player_Move : MonoBehaviour
         // 各子オブジェクトの位置を設定
         foreach (Transform childTransform in childTransforms)
         {
-            if (childTransform != transform) // プレイヤー自身のTransform以外を操作
+            // プレイヤー自身のTransform以外を操作
+            if (childTransform != transform) 
             {
                 Vector3 newPosition = childTransform.localPosition;
+
                 newPosition.x = isLeft ? -Mathf.Abs(newPosition.x) : Mathf.Abs(newPosition.x);
+
                 childTransform.localPosition = newPosition;
             }
+
         }
     }
 

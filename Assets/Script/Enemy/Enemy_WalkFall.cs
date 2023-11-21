@@ -59,8 +59,6 @@ public class Enemy_WalkFall : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            Debug.Log("敵と当たり散らかしてる");
-
             // Enemyタグを持つオブジェクトとの当たり判定を無視
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
         }
