@@ -450,6 +450,7 @@ GameObject:
   - component: {fileID: 212603646}
   - component: {fileID: 212603645}
   - component: {fileID: 212603647}
+  - component: {fileID: 212603648}
   m_Layer: 0
   m_Name: tubusareBox
   m_TagString: Untagged
@@ -518,7 +519,7 @@ Transform:
   m_GameObject: {fileID: 212603644}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.01, y: -0.09, z: 0}
+  m_LocalPosition: {x: 1.57, y: -1.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -569,6 +570,33 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &212603648
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 212603644}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1 &1137457179
 GameObject:
   m_ObjectHideFlags: 0
@@ -721,7 +749,7 @@ Transform:
   m_GameObject: {fileID: 1137457179}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.3, y: -2.17, z: 0}
+  m_LocalPosition: {x: 5.96, y: -2.29, z: 0}
   m_LocalScale: {x: 0.9511, y: 3.0521, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -757,11 +785,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8509729821145616118, guid: 3147fb37f1c1a8b4bb1e240279237a14, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4
+      value: 7.31
       objectReference: {fileID: 0}
     - target: {fileID: 8509729821145616118, guid: 3147fb37f1c1a8b4bb1e240279237a14, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.5
+      value: -2.77
       objectReference: {fileID: 0}
     - target: {fileID: 8509729821145616118, guid: 3147fb37f1c1a8b4bb1e240279237a14, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1367,7 +1395,7 @@ Transform:
   m_GameObject: {fileID: 1751269121}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.357, y: -2.509, z: 0}
+  m_LocalPosition: {x: 7.08, y: -0.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
