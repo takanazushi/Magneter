@@ -75,7 +75,7 @@ public class LineMoveFloor : MonoBehaviour
 
     private void Reset()
     {
-        this.tag= "MoveFloor";
+        this.tag = "MoveFloor";
         speed = 3;
     }
 
@@ -94,7 +94,7 @@ public class LineMoveFloor : MonoBehaviour
         currentIndex = 0;
         EndMoveflg = false;
         targetPosition = Transform_Targets[currentIndex].position;
-        
+
     }
 
     private void FixedUpdate()
@@ -112,8 +112,8 @@ public class LineMoveFloor : MonoBehaviour
 
 
             //目標位置に近づいたら次の頂点を得る
-            Vector3 len= transform.position - targetPosition;
-            if (len.sqrMagnitude < 0.1*0.1)
+            Vector3 len = transform.position - targetPosition;
+            if (len.sqrMagnitude < 0.1 * 0.1)
             {
                 NextTargetPosition();
             }
@@ -127,7 +127,7 @@ public class LineMoveFloor : MonoBehaviour
     private void NextTargetPosition()
     {
 
-        switch (Movetype) 
+        switch (Movetype)
         {
             case MoveType.Patrol:
                 currentIndex = (currentIndex + 1) % Transform_Targets.Length;
@@ -136,7 +136,7 @@ public class LineMoveFloor : MonoBehaviour
             case MoveType.Round_Trip:
 
                 currentIndex += PointMove;
-                if (currentIndex == Transform_Targets.Length-1||
+                if (currentIndex == Transform_Targets.Length - 1 ||
                     currentIndex <= 0)
                 {
                     PointMove = -PointMove;
@@ -165,16 +165,4 @@ public class LineMoveFloor : MonoBehaviour
     {
         return oldpos;
     }
-
-void FixedUpdate()
-{
-        if (lineRenderer.positionCount > 0)
-        {
-            //ポジション(頂点の座標)設定
-            Vector3 targetPosition = lineRenderer.GetPosition(currentIndex);
-
-            //現在の位置から目標の位置までの次のフレームの位置を計算
-            Vector2 moveTowards = Vector2.MoveTowards(rb.position, targetPosition, speed * Time.deltaTime);
-
-        }
 }
