@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 3940044168718388651}
   - component: {fileID: 8986765749372306896}
-  - component: {fileID: 1155069907001665125}
   - component: {fileID: -7061447451352387817}
   - component: {fileID: -873547719102541558}
   - component: {fileID: -1806575149046128925}
   - component: {fileID: -4391287979912310087}
+  - component: {fileID: 6387312046508536825}
   m_Layer: 0
   m_Name: BlueBullet
   m_TagString: BlueBullet
@@ -89,20 +89,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &1155069907001665125
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8857075925318399940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc502cb566bf8a84c86492fc1bd4cdf2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletRigidBody: {fileID: -1806575149046128925}
-  bulletSpeed: 10
 --- !u!114 &-7061447451352387817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -200,3 +186,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   disableTime: 0.1
+--- !u!114 &6387312046508536825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8857075925318399940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a580ed1246ce268408aad5c19ce8504f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletRigidBody: {fileID: -1806575149046128925}
+  bulletSpeed: 10

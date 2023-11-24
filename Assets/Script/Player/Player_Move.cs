@@ -20,6 +20,9 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("レイの長さ")]
     float rayLength = 1.0f;
 
+    [SerializeField, Header("壁当たったか判定")]
+    public Player_kabehan player_Kabehan;
+
     private float speed;
 
     private int jumpCount = 0;
@@ -29,12 +32,28 @@ public class Player_Move : MonoBehaviour
 
     private Rigidbody2D rb;
 
-    private RaycastHit2D raycastHit2D;
+    private RaycastHit2D[] raycastHit2D = new RaycastHit2D[2];
 
     private SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        if (GameManager.instance.checkpointNo > -1)
+        {
+            // ワープ先のチェックポイントオブジェクトを見つける("checkpoint (1)" のような名前になっているもの）
+            GameObject checkpointObject = GameObject.Find("checkpoint (" + GameManager.instance.checkpointNo + ")");
+
+            // チェックポイントオブジェクトが見つかった場合は、プレイヤーをワープさせる
+            if (checkpointObject != null)
+            {
+                transform.position = checkpointObject.transform.position;
+            }
+            else
+            {
+                Debug.Log(GameManager.instance.checkpointNo + "チェックポイントを通過していない");
+            }
+        }
+
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         jumpflag = false;
@@ -64,14 +83,21 @@ public class Player_Move : MonoBehaviour
 
         PlayerJump();
 
-        if (kabeflag && raycastHit2D.collider || kabeflag == false && raycastHit2D.collider)
+        for(int i = 0; i < 2; i++)
         {
-            PlayerWalk();
+            if (kabeflag && raycastHit2D[i].collider || kabeflag == false && raycastHit2D[i].collider|| player_Kabehan.isOn == false)
+            {
+                PlayerWalk();
+            }
+            else if (kabeflag && raycastHit2D[i].collider == null)
+            {
+                Debug.Log("ずりおち");
+            }
         }
-        else if (kabeflag && raycastHit2D.collider == null)
-        {
-            Debug.Log("ずりおち");
-        }
+
+        
+
+        
 
         //Debug.Log(raycastHit2D.collider);
 
@@ -104,6 +130,7 @@ public class Player_Move : MonoBehaviour
     {
 
         float horizontalInput = Input.GetAxis("Horizontal");
+        float xSpeed = 0;
 
         if (jumpflag)
         {
@@ -114,10 +141,25 @@ public class Player_Move : MonoBehaviour
             speed = walkMoveX;
         }
 
-        speed = horizontalInput * speed;
+        if (horizontalInput > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+            xSpeed = speed;
+        }
+        else if (horizontalInput < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+            xSpeed = -speed;
+        }
+        else
+        {
+            xSpeed = 0;
+        }
+
+        //speed = horizontalInput * speed;
 
 
-        rb.velocity = new Vector3(speed, rb.velocity.y, 0);
+        rb.velocity = new Vector3(xSpeed, rb.velocity.y, 0);
     }
 
     private void PlayerJump()
@@ -131,17 +173,21 @@ public class Player_Move : MonoBehaviour
         }
     }
 
-    RaycastHit2D CheckGroundStatus()
+    RaycastHit2D[] CheckGroundStatus()
     {
-        Vector2 startPos = transform.position;
+        //Vector2 startPos = transform.position;
+        Vector2 pos = transform.position;
+        Vector2 startPosLeft = pos - new Vector2(transform.localScale.x / 4, 0); // プレイヤーテクスチャの左端
+        Vector2 startPosRight = pos + new Vector2(transform.localScale.x / 4, 0); // プレイヤーテクスチャの右端
         Vector2 direction = Vector2.down; // 下方向にRayを発射
 
         // Rayを発射してヒット情報を取得
-        RaycastHit2D hit = Physics2D.Raycast(startPos, direction, rayLength, groundLayers);
+        RaycastHit2D hitLeft = Physics2D.Raycast(startPosLeft, direction, rayLength, groundLayers);
+        RaycastHit2D hitRight = Physics2D.Raycast(startPosRight, direction, rayLength, groundLayers);
 
         //Debug.DrawRay(startPos, direction * rayLength, Color.red); // Rayをシーンビューに表示
 
-        return hit;
+        return new RaycastHit2D[] { hitLeft, hitRight };
     }
 
     void SetChildObjectRotation(bool isLeft)
@@ -174,9 +220,16 @@ public class Player_Move : MonoBehaviour
     {
         Gizmos.color = Color.red; // グリズモの色を設定
 
-        Vector2 startPos = transform.position;
+        //Vector2 startPos = transform.position;
+        Vector2 pos = transform.position;
+        Vector2 startPosLeft = pos - new Vector2(transform.localScale.x/4, 0); // プレイヤーテクスチャの左端
+        Vector2 startPosRight = pos + new Vector2(transform.localScale.x/4, 0); // プレイヤーテクスチャの右端
+        //Vector2 direction = Vector2.down; // 下方向にRayを発射
+
+        //Vector2 startPos = transform.position;
         Vector2 direction = Vector2.down * rayLength; // 下方向にRayを表示するためにrayLengthを掛けます
 
-        Gizmos.DrawRay(startPos, direction);
+        Gizmos.DrawRay(startPosLeft, direction);
+        Gizmos.DrawRay (startPosRight, direction);
     }
 }

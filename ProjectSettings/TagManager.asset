@@ -4,12 +4,17 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - kabe
+  - RedBullet
+  - BlueBullet
+  - Enemy
+  - Checkpoint
   - Floor
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
   - 

@@ -1,21 +1,69 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using static Magnet;
 
 //マグネットマネージャー試作
 public class MagnetManager : MonoBehaviour
 {
-
-
     //管理するマグネット
     [SerializeField]
     List<MagnetUpdateData> gbMagnet;
 
     //生成するオブジェクト
     [SerializeField]
-    private GameObject Cyob;
+    private GameObject MagnetS;
+
+    [SerializeField]
+    private GameObject MagnetN;
+
+    [SerializeField]
+    private GameObject MagnetNon;
+
+
+    private void Awake()
+    {
+        foreach (Transform child in MagnetS.GetComponentsInChildren<Transform>())
+        {
+            GameObject childObject = child.gameObject;
+            MagnetUpdateData magnetUpData = new MagnetUpdateData();
+            magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
+            magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
+
+            if (childObject.name != MagnetS.name)
+            {
+                gbMagnet.Add(magnetUpData);
+            }
+        }
+
+        foreach (Transform child in MagnetN.GetComponentsInChildren<Transform>())
+        {
+            GameObject childObject = child.gameObject;
+            MagnetUpdateData magnetUpData = new MagnetUpdateData();
+            magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
+            magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
+
+            if (childObject.name != MagnetN.name)
+            {
+                gbMagnet.Add(magnetUpData);
+            }
+        }
+
+        foreach (Transform child in MagnetNon.GetComponentsInChildren<Transform>())
+        {
+            GameObject childObject = child.gameObject;
+            MagnetUpdateData magnetUpData = new MagnetUpdateData();
+            magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
+            magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
+
+            if (childObject.name != MagnetNon.name)
+            {
+                gbMagnet.Add(magnetUpData);
+            }
+        }
+    }
 
     //対象のオブジェクトを取得
     //pos：範囲の中心位置
@@ -39,6 +87,9 @@ public class MagnetManager : MonoBehaviour
 
         return Rgb;
     }
+
+    
+
 
     private void Update()
     {
