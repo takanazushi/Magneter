@@ -4,15 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - BlueBullet
   - Floor
+  - RedBullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - object
   - Water
   - UI
-  - 
+  - Floor
   - 
   - 
   - 
