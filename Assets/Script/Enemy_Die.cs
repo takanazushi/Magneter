@@ -18,7 +18,8 @@ public class Enemy_Die : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.name != parent.name)
+        if (collision.gameObject.name != parent.name && collision.gameObject.name != "Player" &&
+            collision.gameObject.tag != "BlueBllet" && collision.gameObject.tag != "RedBullet")  
         {
             Debug.Log("EnemyÇﬂÇËçûÇÒÇæ" + collision.gameObject.name);
 
