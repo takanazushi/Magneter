@@ -23,7 +23,6 @@ public class Enemy_WalkFall : MonoBehaviour
     // •¨—‰‰Z‚ğ‚µ‚½‚¢ê‡‚ÌFixedUpdate
     void FixedUpdate()
     {
-
         if (checkhanten.isOn)
         {
             Left = !Left;
@@ -36,15 +35,15 @@ public class Enemy_WalkFall : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
         //¶ˆÚ“®
-        else 
+        else
         {
             rb.velocity = new Vector2(-speed, rb.velocity.y);
             transform.localScale = new Vector3(1, 1, 1);
         }
 
         //—‰ºŒã‚™‚ª-10“_‚Åíœ
-        if (transform.position.y < -10)  
-        { 
+        if (transform.position.y < -10)
+        {
             Destroy(this.gameObject);
         }
     }
