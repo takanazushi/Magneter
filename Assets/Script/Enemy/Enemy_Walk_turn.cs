@@ -29,6 +29,7 @@ public class Enemy_Walk_turn : MonoBehaviour
         {
             FlipDirection();
         }
+
     }
 
     private void FixedUpdate()
