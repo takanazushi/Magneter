@@ -5,29 +5,27 @@ using UnityEngine;
 public class Maglaser_DestroyOutCamera : MonoBehaviour
 {
     private Camera mainCamera;
-    private float boundsX;
 
     // Start is called before the first frame update
     void Start()
     {
-        mainCamera=Camera.main;
-        boundsX = CalculateCameraBoundsX();
+        mainCamera = Camera.main;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //カメラ外に弾が出たかチェック
-        if (transform.position.x > boundsX)
+        CheckOutOfView();
+    }
+
+    private void CheckOutOfView()
+    {
+        Vector3 viewPos = mainCamera.WorldToViewportPoint(transform.position);
+
+        // オブジェクトがビューの外に出たら破棄
+        if (viewPos.x < 0 || viewPos.x > 1 || viewPos.y < 0 || viewPos.y > 1)
         {
             Destroy(gameObject);
         }
-    }
-
-    private float CalculateCameraBoundsX()
-    {
-        float screenAspect = (float)Screen.width / Screen.height;
-        float cameraSize = mainCamera.orthographicSize;
-        return screenAspect * cameraSize;
     }
 }
