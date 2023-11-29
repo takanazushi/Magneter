@@ -1,7 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using static MoveFloorMNG;
 
@@ -14,6 +10,7 @@ public class LineMoveFloor : MonoBehaviour
     //PlatformEffector2Dで当たり判定を上だけに限定してます
 
     //動く床のスピード
+    [SerializeField]
     private float speed;
     public float Setspeed
     {
@@ -33,11 +30,12 @@ public class LineMoveFloor : MonoBehaviour
     /// <summary>
     /// 進んだ距離を入れる変数
     /// </summary>
-    private Vector2 oldpos = Vector2.zero;
+    private Vector3 oldpos = Vector2.zero;
 
     /// <summary>
     /// ポイントのTransform
     /// </summary>
+    [SerializeField]
     Transform[] Transform_Targets;
     public Transform[] SetTransform_Targets
     {
@@ -64,6 +62,8 @@ public class LineMoveFloor : MonoBehaviour
     /// </summary>
     int PointMove = 1;
 
+    Vector3 vevold;
+
     /// <summary>
     /// 一方通行用
     /// 移動終了フラグ
@@ -72,6 +72,9 @@ public class LineMoveFloor : MonoBehaviour
     private bool EndMoveflg = false;
 
     public bool EndMoveFLG { get { return EndMoveflg; } }
+
+    //プレイヤーを追跡させるため
+    private Player_Move player;
 
     private void Reset()
     {
@@ -94,21 +97,42 @@ public class LineMoveFloor : MonoBehaviour
         currentIndex = 0;
         EndMoveflg = false;
         targetPosition = Transform_Targets[currentIndex].position;
-
+        vevold = Vector3.zero;
     }
 
-    private void FixedUpdate()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
+        
+        player = collision.gameObject.GetComponent<Player_Move>();
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.transform.name == "Player")
+            player = null;
+    }
+
+    private void Update()
+    {
+
         if (Transform_Targets.Length > 0)
         {
-            //移動量計測
-            Vector2 newPosition = Vector2.MoveTowards(rb.position, targetPosition, speed * Time.fixedDeltaTime);
-
-            //前の位置
-            oldpos = transform.position - new Vector3(newPosition.x, newPosition.y, 0);
+            //移動位置計測
+            Vector3 newPosition = Vector2.MoveTowards(rb.position, targetPosition, speed * Time.deltaTime);
 
             //移動
-            rb.MovePosition(newPosition);
+            transform.position = newPosition;
+
+            //移動位置を算出
+            vevold = newPosition - oldpos;
+
+            //前の位置
+            oldpos = newPosition;
+
+            Debug.Log("D : " + rb.transform.position.x);
+
+            //プレイヤーの移動を実行
+            player?.MoveFloorExec(this);
 
 
             //目標位置に近づいたら次の頂点を得る
@@ -161,8 +185,8 @@ public class LineMoveFloor : MonoBehaviour
     }
 
     //Player側で進んだ距離を得るための関数
-    public Vector2 GetVelocity()
+    public Vector3 GetoldPos()
     {
-        return oldpos;
+        return vevold;
     }
 }

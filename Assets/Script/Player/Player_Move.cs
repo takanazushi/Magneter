@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
@@ -22,11 +23,6 @@ public class Player_Move : MonoBehaviour
     float rayLength = 1.0f;
 
     /// <summary>
-    /// 足場に触れている場合のみ有効
-    /// </summary>
-    private LineMoveFloor moveFloor=null;
-
-    /// <summary>
     /// ジャンプカウント
     /// </summary>
     private int jumpCount = 0;
@@ -46,21 +42,21 @@ public class Player_Move : MonoBehaviour
 
     void Start()
     {
-        if (GameManager.instance.checkpointNo > -1)
-        {
-            // ワープ先のチェックポイントオブジェクトを見つける("checkpoint (1)" のような名前になっているもの）
-            GameObject checkpointObject = GameObject.Find("checkpoint (" + GameManager.instance.checkpointNo + ")");
+        //if (GameManager.instance.checkpointNo > -1)
+        //{
+        //    // ワープ先のチェックポイントオブジェクトを見つける("checkpoint (1)" のような名前になっているもの）
+        //    GameObject checkpointObject = GameObject.Find("checkpoint (" + GameManager.instance.checkpointNo + ")");
 
-            // チェックポイントオブジェクトが見つかった場合は、プレイヤーをワープさせる
-            if (checkpointObject != null)
-            {
-                transform.position = checkpointObject.transform.position;
-            }
-            else
-            {
-                Debug.Log(GameManager.instance.checkpointNo + "チェックポイントを通過していない");
-            }
-        }
+        //    // チェックポイントオブジェクトが見つかった場合は、プレイヤーをワープさせる
+        //    if (checkpointObject != null)
+        //    {
+        //        transform.position = checkpointObject.transform.position;
+        //    }
+        //    else
+        //    {
+        //        Debug.Log(GameManager.instance.checkpointNo + "チェックポイントを通過していない");
+        //    }
+        //}
 
         rb = GetComponent<Rigidbody2D>();
 
@@ -71,6 +67,7 @@ public class Player_Move : MonoBehaviour
     // 物理演算をしたい場合はFixedUpdateを使うのが一般的
     void FixedUpdate()
     {
+        //落下速度を調整するため
         //重力を追加で掛ける
         //Rigidbody2D->GravityScaleからいじるか迷い中・・・
         //rb.velocity = new(rb.velocity.x, rb.velocity.y - 0.5f);
@@ -98,7 +95,7 @@ public class Player_Move : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             //レイ接触時のみジャンプ可能
-            if (raycastHit2D[i].collider || moveFloor != null)
+            if (raycastHit2D[i].collider)
             {
                 //ジャンプ初期化
                 jumpCount = 0;
@@ -110,7 +107,7 @@ public class Player_Move : MonoBehaviour
         for (int i = 0; i < 2; i++)
         {
             //レイ接触時のみジャンプ可能
-            if (raycastHit2D[i].collider|| moveFloor != null)
+            if (raycastHit2D[i].collider)
             {
                 //ジャンプ判定
                 PlayerJump();
@@ -122,29 +119,17 @@ public class Player_Move : MonoBehaviour
 
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    /// <summary>
+    /// 動く足場に追従
+    /// </summary>
+    /// <param name="moveFloor"></param>
+    public void MoveFloorExec(LineMoveFloor moveFloor)
     {
+        //位置情報取得
+        Vector3 floorVelocity2 = moveFloor.GetoldPos();
 
-
-        if (other.gameObject.tag == "MoveFloor")
-        {
-            moveFloor = other.gameObject.GetComponent<LineMoveFloor>();
-            //Debug.Log("動く床と当たってる");
-        }
-
-
-        //Debug.Log("ジャンプフラグは：" + jumpflag);
-
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-
-        if (collision.gameObject.tag == "MoveFloor")
-        {
-            moveFloor = null;
-            // Debug.Log("動く床と当たってない");
-        }
+        //反映
+        transform.position += floorVelocity2;
     }
 
     private void PlayerWalk()
@@ -176,37 +161,17 @@ public class Player_Move : MonoBehaviour
             transform.localScale = new Vector3(-1, 1, 1);
         }
         
-
-        //足場に乗っている場合
-        Vector2 floorVelocity = Vector2.zero;
-        if (moveFloor != null)
-        {
-            floorVelocity = moveFloor.GetVelocity();
-        }
-
         //速度生成
         Vector2 velocity = new (horizontalInput, rb.velocity.y);
 
         //スピード乗算
         velocity.x = velocity.x * speed;
 
-        //足場の移動速度を追加
-        velocity.x += floorVelocity.x;
         velocity.y = rb.velocity.y;
-        //velocity.y += floorVelocity.y;
-
-        if (floorVelocity.y >= 0)
-        {
-            //velocity.y -= floorVelocity.y;
-        }
-        else
-        {
-            //velocity.y += floorVelocity.y;
-        }
 
         rb.velocity = velocity;
 
-        Debug.Log(floorVelocity);
+
     }
 
     private void PlayerJump()
@@ -273,7 +238,6 @@ public class Player_Move : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red; // グリズモの色を設定
 
         //Vector2 startPos = transform.position;
         Vector2 pos = transform.position;
@@ -284,7 +248,33 @@ public class Player_Move : MonoBehaviour
         //Vector2 startPos = transform.position;
         Vector2 direction = Vector2.down * rayLength; // 下方向にRayを表示するためにrayLengthを掛けます
 
+        // グリズモの色を設定
+
+        //レイ接触時のみジャンプ可能
+        if (raycastHit2D[0].collider)
+        {
+            Gizmos.color = Color.green;
+
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+
+        }
+
         Gizmos.DrawRay(startPosLeft, direction);
+
+        if (raycastHit2D[1].collider)
+        {
+            Gizmos.color = Color.green;
+
+        }
+        else
+        {
+            Gizmos.color = Color.red;
+
+        }
+
         Gizmos.DrawRay (startPosRight, direction);
     }
 }
