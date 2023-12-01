@@ -99,10 +99,8 @@ public class Magnet : MonoBehaviour
     }
 
     //磁気の強さ
-    [SerializeField]
+    [SerializeField,Header("変更により機能していません")]
     private float Power;
-
-
 
     private void Start()
     {
@@ -140,27 +138,6 @@ public class Magnet : MonoBehaviour
             Vector2 vector_tocl = new Vector2();
             vector_tocl = pair.gbRid.position;
 
-            //タイルマップ用：タイルマップに対応可能かわかんない
-            if (pair.Til != null) 
-            {
-
-                //int torTilx = (int)pair.gbRid.position.x;
-                //int torTily = (int)pair.gbRid.position.y;
-
-                ////タイルのワールド位置を取得
-                //Vector3 vector3fol = pair.Til.GetCellCenterWorld(new Vector3Int(torTilx, torTily, 0));
-                //Vector3Int vector3Intp = new Vector3Int((int)vector3fol.y, (int)vector3fol.x, 0);
-
-                //Debug.Log(torTilx);
-                //Debug.Log(torTily);
-
-                ////ゲームオブジェクト取得
-                //GameObject asda = pair.Til.GetInstantiatedObject(vector3Intp);
-
-                ////
-                //vector_tocl = asda.transform.position;
-            }
-
             //磁力の方向を計算
             Vector2 lkasd = transform.position;
             Vector2 direction = lkasd - vector_tocl;
@@ -180,8 +157,35 @@ public class Magnet : MonoBehaviour
                 force *= -1;
             }
 
+            Debug.Log(force);
+
+
+            if (force.x>=1)
+            {
+                force.x = 1;
+            }
+            if (force.y>=1)
+            {
+                force.y = 1;
+
+            }
+
+            if (force.x<=-1)
+            {
+                force.x = -1;
+            }
+            if (force.y<=-1)
+            {
+                force.y = -1;
+            }
+            
+
             //力を加える
-            pair.gbRid.AddForce(force);
+            //pair.gbRid.AddForce(force);
+            pair.gbRid.velocity += force;
+            //pair.gbRid.velocity += new Vector2(0, -9.81f);
+            //pair.gbRid.AddForce(new Vector2(0, -9.81f));
+
         }
 
     }
