@@ -22,6 +22,15 @@ public class MagnetManager : MonoBehaviour
     [SerializeField]
     private GameObject MagnetNon;
 
+    ////生成する敵オブジェクト
+    //[SerializeField]
+    //private GameObject EnemyMagnetS;
+
+    //[SerializeField]
+    //private GameObject EnemyMagnetN;
+
+    //[SerializeField]
+    //private GameObject EnemyMagnetNon;
 
     private void Awake()
     {
@@ -63,6 +72,47 @@ public class MagnetManager : MonoBehaviour
                 gbMagnet.Add(magnetUpData);
             }
         }
+
+
+        ////敵
+        //foreach (Transform child in EnemyMagnetS.GetComponentsInChildren<Transform>())
+        //{
+        //    GameObject childObject = child.gameObject;
+        //    MagnetUpdateData magnetUpData = new MagnetUpdateData();
+        //    magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
+        //    magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
+
+        //    if (childObject.name != EnemyMagnetS.name)
+        //    {
+        //        gbMagnet.Add(magnetUpData);
+        //    }
+        //}
+
+        //foreach (Transform child in EnemyMagnetN.GetComponentsInChildren<Transform>())
+        //{
+        //    GameObject childObject = child.gameObject;
+        //    MagnetUpdateData magnetUpData = new MagnetUpdateData();
+        //    magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
+        //    magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
+
+        //    if (childObject.name != EnemyMagnetN.name)
+        //    {
+        //        gbMagnet.Add(magnetUpData);
+        //    }
+        //}
+
+        //foreach (Transform child in EnemyMagnetNon.GetComponentsInChildren<Transform>())
+        //{
+        //    GameObject childObject = child.gameObject;
+        //    MagnetUpdateData magnetUpData = new MagnetUpdateData();
+        //    magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
+        //    magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
+
+        //    if (childObject.name != EnemyMagnetNon.name)
+        //    {
+        //        gbMagnet.Add(magnetUpData);
+        //    }
+        //}
     }
 
     //対象のオブジェクトを取得

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Jobs;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -52,6 +53,11 @@ public class Magnet : MonoBehaviour
     {
         get => Type;
         set => Type = value;
+    }
+
+    public string Gat_Magnet()
+    {
+        return Type.ToString();
     }
 
     //極によって自分の色を変更する（仮）
