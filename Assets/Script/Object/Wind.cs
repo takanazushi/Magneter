@@ -4,26 +4,32 @@ using UnityEngine;
 
 public class Wind : MonoBehaviour
 {
+    [HideInInspector]
     public static Wind instance;
 
 
     [SerializeField, Header("左に進むスピード")]
-    public float windMoveLeftSpeed = 0.5f;
+    private float windMoveLeftSpeed = 0.5f;
 
     [SerializeField, Header("右に進むスピード")]
-    public float windMoveRightSpeed = 1.5f;
+    private float windMoveRightSpeed = 1.5f;
 
     [SerializeField, Header("風の出現時間")]
-    public float onTime = 10f;
+    private float onTime = 10f;
 
     [SerializeField, Header("風のクールタイム")]
-    public float outTime = 10f;
+    private float outTime = 10f;
 
     [SerializeField, Header("風の状態")]
-    public bool windTimeflg = true;
+    private bool windTimeflg = true;
 
     //風に当たっている状態の移動速度
-    public float movespeed = 0;
+    private float movespeed = 0;
+
+    public float getMoveSpeed
+    {
+        get { return movespeed; }
+    }
 
     public void Awake()
     {

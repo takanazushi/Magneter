@@ -23,10 +23,6 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("•—‚ÌŒ¸‘¬’l")]
     private float windMoveSpeed = 1.0f;
 
-
-
-    private bool windMoveflg = false;
-
     private float speed;
 
     private int jumpCount = 0;
@@ -123,7 +119,7 @@ public class Player_Move : MonoBehaviour
         speed = horizontalInput * speed;
 
         //•—‚É“–‚½‚Á‚Ä‚¢‚éó‘Ô‚Ì‘¬“xæ“¾
-        windMoveSpeed = Wind.instance.movespeed;
+        windMoveSpeed = Wind.instance.getMoveSpeed;
         
 
         rb.velocity = new Vector3(speed / windMoveSpeed, rb.velocity.y, 0);

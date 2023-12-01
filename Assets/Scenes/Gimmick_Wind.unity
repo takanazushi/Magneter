@@ -419,12 +419,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d409a25feb99254994eb4b2fa3385fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windMoveLeftSpeed: 0.5
-  windMoveRightSpeed: 10
+  windMoveLeftSpeed: 10
+  windMoveRightSpeed: 0.5
   onTime: 10
-  outTime: 10
+  outTime: 1
   windTimeflg: 1
-  movespeed: 0
 --- !u!61 &1051158917
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -539,7 +538,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.4117647}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
