@@ -24,10 +24,17 @@ public class Player_Move : MonoBehaviour
         Tooltip("")]
     float rayLength = 1.0f;
 
+<<<<<<< HEAD
     /// <summary>
     /// 足場に触れている場合のみ有効
     /// </summary>
     private LineMoveFloor moveFloor=null;
+=======
+    [SerializeField, Header("風の減速値")]
+    private float windMoveSpeed = 1.0f;
+
+    private float speed;
+>>>>>>> Gimmick_Wind
 
     private float speed;
     //todo 追加1 ベルトコンベアに乗った時の変数
@@ -209,7 +216,10 @@ public class Player_Move : MonoBehaviour
 
     private void PlayerWalk()
     {
+<<<<<<< HEAD
         //横移動を取得
+=======
+>>>>>>> Gimmick_Wind
         float horizontalInput = Input.GetAxis("Horizontal");
 
         //横移動スピード
@@ -242,6 +252,7 @@ public class Player_Move : MonoBehaviour
             floorVelocity = moveFloor.GetVelocity();
         }
 
+<<<<<<< HEAD
         //速度生成
         Vector2 velocity = new (horizontalInput, rb.velocity.y);
 
@@ -258,6 +269,14 @@ public class Player_Move : MonoBehaviour
 
         //todo 追加7 コンベアとブロックのスピード加算
         rb.velocity += new Vector2(converspeed + blockspeed, 0);
+=======
+        //風に当たっている状態の速度取得
+        windMoveSpeed = Wind.instance.getMoveSpeed;
+        
+
+        rb.velocity = new Vector3(speed / windMoveSpeed, rb.velocity.y, 0);
+
+>>>>>>> Gimmick_Wind
     }
 
     private void PlayerJump()

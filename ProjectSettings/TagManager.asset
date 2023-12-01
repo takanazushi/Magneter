@@ -5,11 +5,17 @@ TagManager:
   serializedVersion: 2
   tags:
   - Floor
+<<<<<<< HEAD
   - RedBullet
   - BlueBullet
   - kabe
   - Enemy
   - MoveFloor
+=======
+  - BlueBullet
+  - RedBullet
+  - Wind
+>>>>>>> Gimmick_Wind
   layers:
   - Default
   - TransparentFX
