@@ -147,31 +147,17 @@ public class Player_Move : MonoBehaviour
                 jumpMoveX = 7.0f;
             }
         }
-
-        PlayerJump();
-
-        if (kabeflag && raycastHit2D.collider || !kabeflag && raycastHit2D.collider)
-        {
-            PlayerWalk();
-        }
-        else if (kabeflag && raycastHit2D.collider == null)
-        {
-            Debug.Log("ずりおち");
-        }
-        Debug.Log(rb.velocity.x);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-
-
         //if (other.gameObject.tag == "MoveFloor")
 
-        if (other.gameObject.tag == "kabe")
-        {
-            moveFloor = other.gameObject.GetComponent<LineMoveFloor>();
-            //Debug.Log("動く床と当たってる");
-        }
+        //if (other.gameObject.tag == "kabe")
+        //{
+        //    moveFloor = other.gameObject.GetComponent<LineMoveFloor>();
+        //    //Debug.Log("動く床と当たってる");
+        //}
 
         //Debug.Log("ジャンプフラグは：" + jumpflag);
 
@@ -206,16 +192,14 @@ public class Player_Move : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
 
-        //if (collision.gameObject.tag == "MoveFloor")
-        
-        converspeed = 0;
-        
-        if (collision.gameObject.tag == "kabe")
+        if (collision.gameObject.tag == "MoveFloor")
         {
             moveFloor = null;
             // Debug.Log("動く床と当たってない");
         }
 
+        converspeed = 0;
+      
         //todo ブロックから離れた時
         if (collision.gameObject.name == "ConverBlock")
         {
@@ -226,9 +210,7 @@ public class Player_Move : MonoBehaviour
     private void PlayerWalk()
     {
         //横移動を取得
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-
-        horizontalInput = Input.GetAxis("Horizontal");
+        float horizontalInput = Input.GetAxis("Horizontal");
 
         //横移動スピード
         float speed;
@@ -266,26 +248,16 @@ public class Player_Move : MonoBehaviour
         //スピード乗算
         velocity.x = velocity.x * speed;
 
-        //足場の移動速度を追加
+        ////足場の移動速度を追加
         velocity.x += floorVelocity.x;
         velocity.y = rb.velocity.y;
-        ////velocity.y += floorVelocity.y;
-
-        //if (floorVelocity.y >= 0)
-        //{
-        //    //velocity.y -= floorVelocity.y;
-        //}
-        //else
-        //{
-        //    //velocity.y += floorVelocity.y;
-        //}
 
         rb.velocity = velocity;
 
         Debug.Log(floorVelocity);
 
         //todo 追加7 コンベアとブロックのスピード加算
-        rb.velocity = new Vector3(speed + converspeed + blockspeed, rb.velocity.y, 0);
+        rb.velocity += new Vector2(converspeed + blockspeed, 0);
     }
 
     private void PlayerJump()
@@ -314,8 +286,6 @@ public class Player_Move : MonoBehaviour
         // Rayを発射してヒット情報を取得
         RaycastHit2D hitLeft = Physics2D.Raycast(startPosLeft, direction, rayLength, groundLayers);
         RaycastHit2D hitRight = Physics2D.Raycast(startPosRight, direction, rayLength, groundLayers);
-
-        Debug.DrawRay(startPos, direction * rayLength, Color.red); // Rayをシーンビューに表示
 
         return new RaycastHit2D[] { hitLeft, hitRight };
     }
