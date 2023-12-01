@@ -24,25 +24,19 @@ public class Player_Move : MonoBehaviour
         Tooltip("")]
     float rayLength = 1.0f;
 
-<<<<<<< HEAD
+
     /// <summary>
     /// 足場に触れている場合のみ有効
     /// </summary>
     private LineMoveFloor moveFloor=null;
-=======
+
     [SerializeField, Header("風の減速値")]
     private float windMoveSpeed = 1.0f;
 
-    private float speed;
->>>>>>> Gimmick_Wind
-
-    private float speed;
     //todo 追加1 ベルトコンベアに乗った時の変数
     private float converspeed;
     //todo 追加2 ベルトコンベアに流れてるブロックに乗った時の変数
     private float blockspeed;
-
-    private float horizontalInput;
 
     /// <summary>
     /// ジャンプカウント
@@ -216,23 +210,24 @@ public class Player_Move : MonoBehaviour
 
     private void PlayerWalk()
     {
-<<<<<<< HEAD
+
         //横移動を取得
-=======
->>>>>>> Gimmick_Wind
         float horizontalInput = Input.GetAxis("Horizontal");
 
+        //風に当たっている状態の速度取得
+        windMoveSpeed = Wind.instance.getMoveSpeed;
+
         //横移動スピード
-        float speed;
+        float Lateralspeed;
 
         //ジャンプ中は横移動速度を切り替える
         if (jumpflag)
         {
-            speed = jumpMoveX;
+            Lateralspeed = jumpMoveX;
         }
         else
         {
-            speed = walkMoveX;
+            Lateralspeed = walkMoveX;
         }
 
         //左右反転
@@ -244,6 +239,7 @@ public class Player_Move : MonoBehaviour
         {
             transform.localScale = new Vector3(-1, 1, 1);
         }
+       
         
         //足場に乗っている場合
         Vector2 floorVelocity = Vector2.zero;
@@ -252,31 +248,30 @@ public class Player_Move : MonoBehaviour
             floorVelocity = moveFloor.GetVelocity();
         }
 
-<<<<<<< HEAD
         //速度生成
-        Vector2 velocity = new (horizontalInput, rb.velocity.y);
+        Vector2 speed = new (horizontalInput, rb.velocity.y);
 
         //スピード乗算
-        velocity.x = velocity.x * speed;
+        speed.x = speed.x * Lateralspeed;
+
+        if (windMoveSpeed != 0)
+        {
+            speed.x += Lateralspeed / windMoveSpeed;
+        }
+
 
         ////足場の移動速度を追加
-        velocity.x += floorVelocity.x;
-        velocity.y = rb.velocity.y;
+        speed.x += floorVelocity.x;
+        speed.y = rb.velocity.y;
 
-        rb.velocity = velocity;
+        rb.velocity = speed;
 
-        Debug.Log(floorVelocity);
+        //Debug.Log(floorVelocity);
 
         //todo 追加7 コンベアとブロックのスピード加算
         rb.velocity += new Vector2(converspeed + blockspeed, 0);
-=======
-        //風に当たっている状態の速度取得
-        windMoveSpeed = Wind.instance.getMoveSpeed;
-        
 
-        rb.velocity = new Vector3(speed / windMoveSpeed, rb.velocity.y, 0);
 
->>>>>>> Gimmick_Wind
     }
 
     private void PlayerJump()

@@ -52,6 +52,8 @@ public class Wind : MonoBehaviour
 
     private IEnumerator Loop(float second)
     {
+        Debug.Log(windTimeflg);
+
         if (windTimeflg)
         {
             yield return new WaitForSeconds(second);
@@ -75,6 +77,8 @@ public class Wind : MonoBehaviour
         }
     }
 
+    
+
     public void OnTriggerStay2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player")
@@ -83,6 +87,7 @@ public class Wind : MonoBehaviour
             {
                 //右に進むか、左に進んでいるかのキー入力の取得
                 float horizontalInput = Input.GetAxis("Horizontal");
+
                 //右
                 if (horizontalInput > 0f)
                 {
@@ -93,11 +98,16 @@ public class Wind : MonoBehaviour
                 {
                     movespeed = windMoveLeftSpeed;
                 }
+                else
+                {
+                    movespeed = windMoveLeftSpeed;
+                }
             }
             else
             {
-                movespeed = 1;
+                movespeed = 0;
             }
+
         }
     }
 
@@ -105,7 +115,7 @@ public class Wind : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            movespeed = 1;
+            movespeed = 0;
 
             //デバッグ
             Debug.Log("離" + movespeed);
