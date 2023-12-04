@@ -4,29 +4,24 @@ using UnityEngine;
 
 public class RandomAnimation : MonoBehaviour
 {
-    public Animator animator; // アニメーターへの参照を保持します。
-    public float minDelay = 1f; // 最小遅延時間
-    public float maxDelay = 5f; // 最大遅延時間
+    private Animator animator;
 
-    // スタート時にコルーチンを開始します。
     void Start()
     {
+        animator = GetComponent<Animator>();
         StartCoroutine(PlayAnimation());
     }
 
-    // ランダムな間隔でアニメーションを再生するコルーチン
     IEnumerator PlayAnimation()
     {
+        // 無限ループ
         while (true)
         {
-            // ランダムな遅延時間を生成します。
-            float delay = Random.Range(minDelay, maxDelay);
+            // ランダムな間隔を待つ
+            yield return new WaitForSeconds(Random.Range(1.0f, 5.0f));
 
-            // 遅延時間だけ待機します。
-            yield return new WaitForSeconds(delay);
-
-            // アニメーションを再生します。
-            animator.Play("TitleAnimation", -1, 0f);
+            // アニメーションを再生する
+            animator.SetTrigger("PlayAnimation");
         }
     }
 }
