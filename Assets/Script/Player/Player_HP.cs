@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player_HP : MonoBehaviour
-{ 
+{
     //無敵フラグ
     //true:ダメージ無効
     private bool inviflg = false;
@@ -12,6 +13,7 @@ public class Player_HP : MonoBehaviour
     //無敵時間
     [SerializeField, Header("無敵時間"), Tooltip("単位：秒")]
     public float invi_Time;
+
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -65,7 +67,6 @@ public class Player_HP : MonoBehaviour
         {
             //仮置き：自身を消す
             //Destroy(this.gameObject);
-
 
             //プレイヤーのHPをリセットする
             GameManager.instance.HP = GameManager.instance.RestHP;

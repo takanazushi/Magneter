@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: a103700bea9c2ff43a2ff7006ee02c36
+=======
+guid: 044061a53396ae14197b80f6e4bda81b
+>>>>>>> GameSceneUI
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
