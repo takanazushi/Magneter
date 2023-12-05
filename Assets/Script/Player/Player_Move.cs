@@ -17,32 +17,70 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("どのレイヤーのオブジェクトと当たり判定をするか")]
     LayerMask groundLayers = 0;
 
-    [SerializeField, Header("レイの長さ")]
+    [SerializeField, Header("レイの長さ"),
+        Tooltip("")]
     float rayLength = 1.0f;
 
-    private float speed;
+    /// <summary>
+    /// 足場に触れている場合のみ有効
+    /// </summary>
+    private LineMoveFloor moveFloor=null;
 
+    /// <summary>
+    /// ジャンプカウント
+    /// </summary>
     private int jumpCount = 0;
 
+    /// <summary>
+    /// ジャンプフラグ
+    /// true:ジャンプ中
+    /// </summary>
     bool jumpflag = false;
-    bool kabeflag = false;
 
     private Rigidbody2D rb;
 
-    private RaycastHit2D raycastHit2D;
+    //レイの衝突情報
+    private RaycastHit2D[] raycastHit2D = new RaycastHit2D[2];
 
     private SpriteRenderer spriteRenderer;
 
     void Start()
     {
+        //if (GameManager.instance.checkpointNo > -1)
+        //{
+        //    // ワープ先のチェックポイントオブジェクトを見つける("checkpoint (1)" のような名前になっているもの）
+        //    GameObject checkpointObject = GameObject.Find("checkpoint (" + GameManager.instance.checkpointNo + ")");
+
+        //    // チェックポイントオブジェクトが見つかった場合は、プレイヤーをワープさせる
+        //    if (checkpointObject != null)
+        //    {
+        //        transform.position = checkpointObject.transform.position;
+        //    }
+        //    else
+        //    {
+        //        Debug.Log(GameManager.instance.checkpointNo + "チェックポイントを通過していない");
+        //    }
+        //}
+
         rb = GetComponent<Rigidbody2D>();
+
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer == null)
+        {
+            Debug.LogError("spriteレンダラーない");
+        }
+
         jumpflag = false;
     }
 
     // 物理演算をしたい場合はFixedUpdateを使うのが一般的
     void FixedUpdate()
     {
+        //重力を追加で掛ける
+        //Rigidbody2D->GravityScaleからいじるか迷い中・・・
+        //rb.velocity = new(rb.velocity.x, rb.velocity.y - 0.5f);
+
         //マウスの位置を取得
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -60,51 +98,71 @@ public class Player_Move : MonoBehaviour
             SetChildObjectRotation(true);
         }
 
+        //レイの処理結果を受け取る
         raycastHit2D = CheckGroundStatus();
 
-        PlayerJump();
-
-        if (kabeflag && raycastHit2D.collider || kabeflag == false && raycastHit2D.collider)
+        for (int i = 0; i < 2; i++)
         {
-            PlayerWalk();
-        }
-        else if (kabeflag && raycastHit2D.collider == null)
-        {
-            Debug.Log("ずりおち");
+            //レイ接触時のみジャンプ可能
+            if (raycastHit2D[i].collider || moveFloor != null)
+            {
+                //ジャンプ初期化
+                jumpCount = 0;
+                jumpflag = false;
+
+            }
         }
 
-        //Debug.Log(raycastHit2D.collider);
+        for (int i = 0; i < 2; i++)
+        {
+            //レイ接触時のみジャンプ可能
+            if (raycastHit2D[i].collider|| moveFloor != null)
+            {
+                //ジャンプ判定
+                PlayerJump();
+            }
+        }
+
+        //移動処理
+        PlayerWalk();
 
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
 
-        if (other.gameObject.tag == "kabe")
+
+        if (other.gameObject.tag == "MoveFloor")
         {
-            kabeflag = true;
+            moveFloor = other.gameObject.GetComponent<LineMoveFloor>();
+            //Debug.Log("動く床と当たってる");
         }
 
-        jumpCount = 0;
-        jumpflag = false;
 
-        Debug.Log("ジャンプフラグは：" + jumpflag);
+        //Debug.Log("ジャンプフラグは：" + jumpflag);
 
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "kabe")
+
+        if (collision.gameObject.tag == "MoveFloor")
         {
-            kabeflag = false;
+            moveFloor = null;
+            // Debug.Log("動く床と当たってない");
         }
     }
 
     private void PlayerWalk()
     {
 
-        float horizontalInput = Input.GetAxis("Horizontal");
+        //横移動を取得
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
 
+        //横移動スピード
+        float speed;
+
+        //ジャンプ中は横移動速度を切り替える
         if (jumpflag)
         {
             speed = jumpMoveX;
@@ -114,34 +172,79 @@ public class Player_Move : MonoBehaviour
             speed = walkMoveX;
         }
 
-        speed = horizontalInput * speed;
+        //左右反転
+        if (horizontalInput > 0)
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+        }
+        else if (horizontalInput < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+        }
+        
 
+        //足場に乗っている場合
+        Vector2 floorVelocity = Vector2.zero;
+        if (moveFloor != null)
+        {
+            floorVelocity = moveFloor.GetVelocity();
+        }
 
-        rb.velocity = new Vector3(speed, rb.velocity.y, 0);
+        //速度生成
+        Vector2 velocity = new (horizontalInput, rb.velocity.y);
+
+        //スピード乗算
+        velocity.x = velocity.x * speed;
+
+        //足場の移動速度を追加
+        velocity.x += floorVelocity.x;
+        velocity.y = rb.velocity.y;
+        //velocity.y += floorVelocity.y;
+
+        if (floorVelocity.y >= 0)
+        {
+            //velocity.y -= floorVelocity.y;
+        }
+        else
+        {
+            //velocity.y += floorVelocity.y;
+        }
+
+        rb.velocity = velocity;
+
+        Debug.Log(floorVelocity);
     }
 
     private void PlayerJump()
     {
         if (Input.GetKey(KeyCode.Space) && this.jumpCount < 1)
         {
+            float pwa = jumpForce;
+
             jumpflag = true;
             rb.velocity = new Vector2(rb.velocity.x, 0);
-            rb.AddForce(transform.up * jumpForce);
+
+            //瞬間的な力を加える
+            rb.AddForce(transform.up * pwa, ForceMode2D.Impulse);
             jumpCount++;
         }
     }
 
-    RaycastHit2D CheckGroundStatus()
+    RaycastHit2D[] CheckGroundStatus()
     {
-        Vector2 startPos = transform.position;
+        //Vector2 startPos = transform.position;
+        Vector2 pos = transform.position;
+        Vector2 startPosLeft = pos - new Vector2(transform.localScale.x / 4, 0); // プレイヤーテクスチャの左端
+        Vector2 startPosRight = pos + new Vector2(transform.localScale.x / 4, 0); // プレイヤーテクスチャの右端
         Vector2 direction = Vector2.down; // 下方向にRayを発射
 
         // Rayを発射してヒット情報を取得
-        RaycastHit2D hit = Physics2D.Raycast(startPos, direction, rayLength, groundLayers);
+        RaycastHit2D hitLeft = Physics2D.Raycast(startPosLeft, direction, rayLength, groundLayers);
+        RaycastHit2D hitRight = Physics2D.Raycast(startPosRight, direction, rayLength, groundLayers);
 
         //Debug.DrawRay(startPos, direction * rayLength, Color.red); // Rayをシーンビューに表示
 
-        return hit;
+        return new RaycastHit2D[] { hitLeft, hitRight };
     }
 
     void SetChildObjectRotation(bool isLeft)
@@ -161,12 +264,16 @@ public class Player_Move : MonoBehaviour
         // 各子オブジェクトの位置を設定
         foreach (Transform childTransform in childTransforms)
         {
-            if (childTransform != transform) // プレイヤー自身のTransform以外を操作
+            // プレイヤー自身のTransform以外を操作
+            if (childTransform != transform) 
             {
                 Vector3 newPosition = childTransform.localPosition;
+
                 newPosition.x = isLeft ? -Mathf.Abs(newPosition.x) : Mathf.Abs(newPosition.x);
+
                 childTransform.localPosition = newPosition;
             }
+
         }
     }
 
@@ -174,9 +281,16 @@ public class Player_Move : MonoBehaviour
     {
         Gizmos.color = Color.red; // グリズモの色を設定
 
-        Vector2 startPos = transform.position;
+        //Vector2 startPos = transform.position;
+        Vector2 pos = transform.position;
+        Vector2 startPosLeft = pos - new Vector2(transform.localScale.x/4, 0); // プレイヤーテクスチャの左端
+        Vector2 startPosRight = pos + new Vector2(transform.localScale.x/4, 0); // プレイヤーテクスチャの右端
+        //Vector2 direction = Vector2.down; // 下方向にRayを発射
+
+        //Vector2 startPos = transform.position;
         Vector2 direction = Vector2.down * rayLength; // 下方向にRayを表示するためにrayLengthを掛けます
 
-        Gizmos.DrawRay(startPos, direction);
+        Gizmos.DrawRay(startPosLeft, direction);
+        Gizmos.DrawRay (startPosRight, direction);
     }
 }
