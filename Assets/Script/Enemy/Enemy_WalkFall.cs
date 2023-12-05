@@ -49,18 +49,19 @@ public class Enemy_WalkFall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "kabe")
-        {
-            Left = !Left;
-        }
-        if (collision.gameObject.tag == "Enemy")
-        {
-            // Enemyタグを持つオブジェクトとの当たり判定を無視
-            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
-        }
-        else if(collision.gameObject.name == "Player")
-        {
-            Left = !Left;
-        }
+        Left = !Left;
+        //if(collision.gameObject.tag == "kabe")
+        //{
+        //    Left = !Left;
+        //}
+        //if (collision.gameObject.tag == "Enemy")
+        //{
+        //    // Enemyタグを持つオブジェクトとの当たり判定を無視
+        //    Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        //}
+        //else if(collision.gameObject.name == "Player")
+        //{
+        //    Left = !Left;
+        //}
     }
 }

@@ -26,7 +26,7 @@ public class Enemy_hanten : MonoBehaviour
         {
             isOn = true;
         }
-        else if(parent.gameObject.GetComponent<Magnet>().Gat_Magnet() != magnet.Gat_Magnet())
+        else //if(parent.gameObject.GetComponent<Magnet>().Gat_Magnet() != magnet.Gat_Magnet())
         {
             isOn = false;
         }
