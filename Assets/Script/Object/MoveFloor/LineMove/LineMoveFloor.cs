@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using static MoveFloorMNG;
 
@@ -10,7 +11,6 @@ public class LineMoveFloor : MonoBehaviour
     //PlatformEffector2Dで当たり判定を上だけに限定してます
 
     //動く床のスピード
-    [SerializeField]
     private float speed;
     public float Setspeed
     {
@@ -28,14 +28,13 @@ public class LineMoveFloor : MonoBehaviour
     private Rigidbody2D rb;
 
     /// <summary>
-    /// 進んだ距離を入れる変数
+    /// 前フレームの位置を入れる変数
     /// </summary>
     private Vector3 oldpos = Vector2.zero;
 
     /// <summary>
     /// ポイントのTransform
     /// </summary>
-    [SerializeField]
     Transform[] Transform_Targets;
     public Transform[] SetTransform_Targets
     {
@@ -62,7 +61,10 @@ public class LineMoveFloor : MonoBehaviour
     /// </summary>
     int PointMove = 1;
 
+    //移動速度
     Vector3 vevold;
+    //移動位置
+    Vector3 movePos;
 
     /// <summary>
     /// 一方通行用
@@ -75,6 +77,10 @@ public class LineMoveFloor : MonoBehaviour
 
     //プレイヤーを追跡させるため
     private Player_Move player;
+
+    //レイの衝突情報
+    private RaycastHit2D[] raycastHit2D = new RaycastHit2D[2];
+
 
     private void Reset()
     {
@@ -91,31 +97,41 @@ public class LineMoveFloor : MonoBehaviour
     private void OnEnable()
     {
         //開始地点に移動
-        transform.position = Transform_Targets[0].position;
+        rb.position=Transform_Targets[0].position;
         //初期設定
         oldpos = rb.position;
         currentIndex = 0;
         EndMoveflg = false;
-        targetPosition = Transform_Targets[currentIndex].position;
         vevold = Vector3.zero;
+
+        NextTargetPosition();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-        player = collision.gameObject.GetComponent<Player_Move>();
+        if (collision.transform.name == "Player")
+        {
+            //プレイヤーのレイを取得
+            player = collision.gameObject.GetComponent<Player_Move>();
+            raycastHit2D = player?.CheckGroundStatus();
+        }
+
+
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.transform.name == "Player")
+        {
             player = null;
+            raycastHit2D = null;
+        }
+
     }
 
     private void Update()
     {
-
-        if (Transform_Targets.Length > 0)
+        if (Transform_Targets.Length > 1)
         {
             //移動位置計測
             Vector3 newPosition = Vector2.MoveTowards(rb.position, targetPosition, speed * Time.deltaTime);
@@ -123,17 +139,30 @@ public class LineMoveFloor : MonoBehaviour
             //移動
             transform.position = newPosition;
 
-            //移動位置を算出
-            vevold = newPosition - oldpos;
+            //速度
+            vevold = (newPosition - oldpos) / Time.deltaTime;
 
-            //前の位置
-            oldpos = newPosition;
+            //位置
+            movePos = (newPosition - oldpos);
 
-            Debug.Log("D : " + rb.transform.position.x);
+            //次のフレームで使う用現在地の位置
+            oldpos = transform.position;
 
             //プレイヤーの移動を実行
-            player?.MoveFloorExec(this);
+            for (int i = 0; i < 2; i++)
+            {
+                if (raycastHit2D != null)
+                {
+                    //レイ接触時のみ
+                    if (raycastHit2D[i].collider)
+                    {
+                        //プレイヤー移動
+                        player?.MoveFloorExec(this);
+                        break;
+                    }
 
+                }
+            }
 
             //目標位置に近づいたら次の頂点を得る
             Vector3 len = transform.position - targetPosition;
@@ -141,8 +170,8 @@ public class LineMoveFloor : MonoBehaviour
             {
                 NextTargetPosition();
             }
-        }
 
+        }
     }
 
     /// <summary>
@@ -184,9 +213,13 @@ public class LineMoveFloor : MonoBehaviour
 
     }
 
-    //Player側で進んだ距離を得るための関数
-    public Vector3 GetoldPos()
+    //Player側で進んだ速度を得るための関数
+    public Vector3 GetVec()
     {
         return vevold;
+    }
+    public Vector2 GetPos()
+    {
+        return movePos;
     }
 }

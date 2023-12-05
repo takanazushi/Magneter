@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Unity.Burst.CompilerServices;
+using UnityEditor.Rendering;
 using UnityEngine;
 
 public class Player_Move : MonoBehaviour
@@ -21,6 +22,12 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("レイの長さ"),
         Tooltip("")]
     float rayLength = 1.0f;
+
+    /// <summary>
+    /// 足場に触れている場合のみ有効
+    /// </summary>
+    private LineMoveFloor moveFloor = null;
+
 
     /// <summary>
     /// ジャンプカウント
@@ -65,7 +72,7 @@ public class Player_Move : MonoBehaviour
     }
 
     // 物理演算をしたい場合はFixedUpdateを使うのが一般的
-    void FixedUpdate()
+    void Update()
     {
         //落下速度を調整するため
         //重力を追加で掛ける
@@ -126,11 +133,32 @@ public class Player_Move : MonoBehaviour
     public void MoveFloorExec(LineMoveFloor moveFloor)
     {
         //位置情報取得
-        Vector3 floorVelocity2 = moveFloor.GetoldPos();
+        Vector3 floorVelocity2 = moveFloor.GetPos();
 
         //反映
         transform.position += floorVelocity2;
     }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "MoveFloor")
+        {
+            moveFloor = other.gameObject.GetComponent<LineMoveFloor>();
+
+            //Debug.Log("動く床と当たってる");
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+
+        if (collision.gameObject.tag == "MoveFloor")
+        {
+            moveFloor = null;
+            // Debug.Log("動く床と当たってない");
+        }
+    }
+
 
     private void PlayerWalk()
     {
@@ -165,13 +193,11 @@ public class Player_Move : MonoBehaviour
         Vector2 velocity = new (horizontalInput, rb.velocity.y);
 
         //スピード乗算
-        velocity.x = velocity.x * speed;
+        velocity.x *= speed;
 
         velocity.y = rb.velocity.y;
 
         rb.velocity = velocity;
-
-
     }
 
     private void PlayerJump()
@@ -179,6 +205,22 @@ public class Player_Move : MonoBehaviour
         if (Input.GetKey(KeyCode.Space) && this.jumpCount < 1)
         {
             float pwa = jumpForce;
+
+            //動く足場の上の場合
+            if (moveFloor)
+            {
+                for (int i = 0; i < 2; i++)
+                {
+                    //レイ接触時のみ
+                    if (raycastHit2D[i].collider)
+                    {
+                        //ジャンプ力追加
+                        pwa += moveFloor.GetVec().y;
+                        Debug.Log(pwa);
+                        break;
+                    }
+                }
+            }
 
             jumpflag = true;
             rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -189,7 +231,7 @@ public class Player_Move : MonoBehaviour
         }
     }
 
-    RaycastHit2D[] CheckGroundStatus()
+    public RaycastHit2D[] CheckGroundStatus()
     {
         //Vector2 startPos = transform.position;
         Vector2 pos = transform.position;

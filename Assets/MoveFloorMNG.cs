@@ -29,7 +29,7 @@ public class MoveFloorMNG : MonoBehaviour
 
     //動く床のスピード
     [SerializeField]
-    private float speed;
+    private float speed = 3;
 
     public enum MoveType
     {
@@ -54,16 +54,22 @@ public class MoveFloorMNG : MonoBehaviour
         [InspectorName("一方通行")]
         One_Way
     };
+    /// <summary>
+    /// 移動タイプ
+    /// </summary>
     [SerializeField]
     MoveType moveType = MoveType.Patrol;
 
+    /// <summary>
+    /// 足場を生成する頻度
+    /// </summary>
     [SerializeField]
-    private float wait;
+    private float wait = 3;
 
-    //コルーチン待機時間
+    //待機コルーチン
     WaitForSeconds WaitSeconds;
 
-    #region エディタ用
+    #region エディタ用変数
 
     //折り畳みメニュー1
     [SerializeField]
@@ -73,25 +79,33 @@ public class MoveFloorMNG : MonoBehaviour
     private bool accmenu1;
     //デバック表示フラグ
     [SerializeField]
-    private bool OpenDebug = false;
+    private bool OpenDebug = true;
     //線表示色
     [SerializeField]
-    private Color32 ColorArrowDebug;
+    private Color32 ColorArrowDebug=Color.green;
     //ポイント表示色
     [SerializeField]
-    private Color32 ColorPointDebug;
+    private Color32 ColorPointDebug=Color.yellow;
 
     #endregion
+
+    private void Reset()
+    {
+        //動く床のスピード
+        //speed = 3;
+
+
+    }
 
     private void Awake()
     {
         WaitSeconds = new WaitForSeconds(wait);
 
         //指示する足場の親オブジェクトを設定
-        Parent_MoveFloors = SearchChild("movefloors").gameObject;
+        Parent_MoveFloors = SearchChild("MoveFloors").gameObject;
 
         //ポイントの親オブジェクトを設定
-        Parent_Position = SearchChild("LineMovePoint").gameObject;
+        Parent_Position = SearchChild("MovePoint").gameObject;
 
         SetTargets();
 
@@ -198,7 +212,7 @@ public class MoveFloorMNG : MonoBehaviour
 
 
         //ポイントの親オブジェクトを設定
-        Parent_Position = SearchChild("LineMovePoint").gameObject;
+        Parent_Position = SearchChild("MovePoint").gameObject;
 
         //ポイント取得
         SetTargets();
@@ -301,6 +315,8 @@ public class MoveFloorMNG : MonoBehaviour
     public class MoveFloorMNG_Editor : Editor
     {
         private MoveFloorMNG _target;
+
+        //待機時間最小値
         private readonly float _wait_Min = 0.01f;
         private void Awake()
         {
@@ -365,10 +381,6 @@ public class MoveFloorMNG : MonoBehaviour
                         EditorGUILayout.ColorField("ポイント表示色", _target.ColorPointDebug);
 
                 }
-
-                //_target.OpenDebug = EditorGUILayout.ToggleLeft("表示", _target.OpenDebug);
-                //_target.ColorArrowDebug = EditorGUILayout.ColorField("矢印表示色", _target.ColorArrowDebug);
-                //_target.ColorPointDebug = EditorGUILayout.ColorField("ポイント表示色", _target.ColorPointDebug);
             }
 
 
