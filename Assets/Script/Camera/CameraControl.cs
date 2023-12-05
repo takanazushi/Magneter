@@ -43,7 +43,11 @@ public class CameraControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         //注目オブジェクトの場合
-        if (collision.name != m_Camera.Follow.name) { return; }
+        if (m_Camera.Follow != null && collision.name != m_Camera.Follow.name)
+        {
+            return;
+        }
+            //if (collision.name != m_Camera.Follow.name) { return; }
 
         //カメラを有効化
         m_Camera.Priority = 1;
@@ -52,7 +56,11 @@ public class CameraControl : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         //注目オブジェクトの場合
-        if (collision.name != m_Camera.Follow.name) { return; }
+        if(m_Camera.Follow != null && collision.name != m_Camera.Follow.name)
+        {
+            return;
+        }
+        //if (collision.name != m_Camera.Follow.name) { return; }
 
         //カメラを有効化
         m_Camera.Priority = 0;

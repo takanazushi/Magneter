@@ -8,14 +8,27 @@ public class Checkpoint : MonoBehaviour
     bool collisionflg = true;
     int no;
 
+    //デバック用
+    private Renderer renderer;
+
     [SerializeField, Header("チェックポイントNo")]
     private int checkNo = 0;
+
+    //デバック用
+    private void Start()
+    {
+        renderer = GetComponent<Renderer>();
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.name == "Player" && GameManager.instance.checkpointNo <= checkNo)
         {
             GameManager.instance.checkpointNo = checkNo;
+
+            //デバック用
+            //通ったら赤
+            renderer.material.color = Color.red;
 
             Debug.Log(GameManager.instance.checkpointNo);
         }
