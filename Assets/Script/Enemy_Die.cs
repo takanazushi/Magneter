@@ -24,7 +24,7 @@ public class Enemy_Die : MonoBehaviour
             Debug.Log("Enemyめり込んだ" + collision.gameObject.name);
 
             //一定時間後に親オブジェクトを消す
-            DestroyObject(parent, despawnTime);
+            //DestroyObject(parent, despawnTime);
         }
     }
 
