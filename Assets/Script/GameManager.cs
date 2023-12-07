@@ -17,6 +17,12 @@ public class GameManager : MonoBehaviour
     [SerializeField, Header("プレイヤーHPを保持")]
     public int HP = 3;
 
+    /// <summary>
+    /// カメラ開始番号
+    /// </summary>
+    [SerializeField, Header("カメラ開始番号")]
+    public int StartCamera;
+
     void Awake()
     {
         if (instance == null)
