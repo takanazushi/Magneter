@@ -301,7 +301,7 @@ Transform:
   m_GameObject: {fileID: 56366593}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0.43, z: -10}
+  m_LocalPosition: {x: 62.66, y: -2.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -399,8 +399,28 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: Type
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: Power
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: MagnetN
+      value: 
+      objectReference: {fileID: 1678396032, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: MagnetS
+      value: 
+      objectReference: {fileID: -1793508851, guid: 07279350161eec1429e9f746012b4753, type: 3}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: LenMagnrt
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: MagnetNone
+      value: 
+      objectReference: {fileID: 1399172594, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: magnetManager
       value: 
@@ -493,6 +513,10 @@ PrefabInstance:
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: Type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: Power
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: magnetManager
@@ -8437,7 +8461,7 @@ Transform:
   m_GameObject: {fileID: 452045220}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0.43, z: -10}
+  m_LocalPosition: {x: 62.66, y: -2.01, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8541,6 +8565,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: Power
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: magnetManager
       value: 
       objectReference: {fileID: 2044999052}
@@ -8627,6 +8655,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: Power
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: magnetManager
       value: 
       objectReference: {fileID: 2044999052}
@@ -8706,6 +8738,10 @@ PrefabInstance:
     - target: {fileID: 388086391088916737, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: Power
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: magnetManager
@@ -43144,6 +43180,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: Power
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: magnetManager
       value: 
       objectReference: {fileID: 2044999052}
@@ -43379,7 +43419,7 @@ Transform:
   m_GameObject: {fileID: 1492051887}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.2, y: 0.43, z: 0}
+  m_LocalPosition: {x: 62.66, y: -2.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -43533,6 +43573,26 @@ PrefabInstance:
       propertyPath: Type
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: Power
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: MagnetN
+      value: 
+      objectReference: {fileID: 1678396032, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: MagnetS
+      value: 
+      objectReference: {fileID: 1037806098, guid: 07279350161eec1429e9f746012b4753, type: 3}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: LenMagnrt
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: MagnetNone
+      value: 
+      objectReference: {fileID: 1399172594, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: magnetManager
       value: 

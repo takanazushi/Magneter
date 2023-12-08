@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.Jobs;
+using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
@@ -16,8 +18,6 @@ public class Magnet : MonoBehaviour
     public Sprite MagnetS;
     public Sprite MagnetN;
     public Sprite MagnetNone;
-
-
 
     //マグネットマネージャー
     [SerializeField]
@@ -54,6 +54,10 @@ public class Magnet : MonoBehaviour
         set => Type = value;
     }
 
+    //磁気の強さ
+    [SerializeField,Header("自分が受ける影響値")]
+    private float Power;
+
     //極によって自分の色を変更する（仮）
     //type：指定した極
     public void SetType_Magnat(Type_Magnet type)
@@ -67,40 +71,25 @@ public class Magnet : MonoBehaviour
             //S極は青
             case Type_Magnet.S:
                 MainSpriteRenderer.sprite = MagnetS;
-                //Renderer.color = Color.blue;
                 break;
             //N極は赤
             case Type_Magnet.N:
                 MainSpriteRenderer.sprite = MagnetN;
-                //Renderer.color = Color.red;
                 break;
             //なしは白
             case Type_Magnet.None:
                 MainSpriteRenderer.sprite = MagnetNone;
-                //Renderer.color = Color.white;
                 break;
         }
     }
 
-    //箱と弾の判定
-    void OnCollisionEnter2D(Collision2D collision)
+    private void Reset()
     {
-
-       
-        if (collision.gameObject.tag == "RedBullet")
-        {
-            SetType_Magnat(Type_Magnet.N);
-            Debug.Log("当たった");
-        }
-        else if (collision.gameObject.tag == "BlueBullet")
-        {
-            SetType_Magnat(Type_Magnet.S);
-        }
+        LenMagnrt = 10;
+        magnetManager = GameObject.Find("MagnetManager").GetComponent<MagnetManager>();
+        Power = 0.1f;
+        Type = Type_Magnet.None;
     }
-
-    //磁気の強さ
-    [SerializeField,Header("変更により機能していません")]
-    private float Power;
 
     private void Start()
     {
@@ -135,21 +124,17 @@ public class Magnet : MonoBehaviour
                 continue;
             }
 
-            Vector2 vector_tocl = new Vector2();
-            vector_tocl = pair.gbRid.position;
+            //マグネット位置
+            Vector2 vector_tocl = pair.gbRid.position;
 
             //磁力の方向を計算
-            Vector2 lkasd = transform.position;
-            Vector2 direction = lkasd - vector_tocl;
-
-            //ベクトルの長さを計算
-            float distance = direction.magnitude;
+            Vector2 direction = (Vector2)transform.position - vector_tocl;
 
             // 磁場の影響度を計算(距離の二乗に反比例)
-            float magneticForce = Power / (distance * distance);
+            float magneticForce = Power / direction.sqrMagnitude;
 
-            Vector2 force = new Vector2();
-            force = direction.normalized * magneticForce;
+            //与える力
+            Vector2 force = direction * magneticForce;
 
             //相手と同じ極だった場合反転
             if (Type == pair.gbMagnet.Type)
@@ -157,35 +142,11 @@ public class Magnet : MonoBehaviour
                 force *= -1;
             }
 
-            Debug.Log(force);
-
-
-            if (force.x>=1)
-            {
-                force.x = 1;
-            }
-            if (force.y>=1)
-            {
-                force.y = 1;
-
-            }
-
-            if (force.x<=-1)
-            {
-                force.x = -1;
-            }
-            if (force.y<=-1)
-            {
-                force.y = -1;
-            }
-            
+            //くりっぴんぐ
+            force = Vector2.ClampMagnitude(force, 1.0f);
 
             //力を加える
-            //pair.gbRid.AddForce(force);
             pair.gbRid.velocity += force;
-            //pair.gbRid.velocity += new Vector2(0, -9.81f);
-            //pair.gbRid.AddForce(new Vector2(0, -9.81f));
-
         }
 
     }
