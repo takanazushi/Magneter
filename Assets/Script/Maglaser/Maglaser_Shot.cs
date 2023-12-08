@@ -22,6 +22,11 @@ public class Maglaser_Shot : MonoBehaviour
 
     void Update()
     {
+        if (GameTimeControl.instance.IsPaused)
+        {
+            return;
+        }
+
         mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))
