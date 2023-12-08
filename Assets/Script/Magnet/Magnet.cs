@@ -58,30 +58,12 @@ public class Magnet : MonoBehaviour
     [SerializeField,Header("自分が受ける影響値")]
     private float Power;
 
-    //極によって自分の色を変更する（仮）
-    //type：指定した極
-    public void SetType_Magnat(Type_Magnet type)
-    {
-        // SpriteRenderのspriteを設定済みの他のspriteに変更
-        SpriteRenderer Renderer = GetComponent<SpriteRenderer>();
-
-        Type = type;
-        switch (Type)
-        {
-            //S極は青
-            case Type_Magnet.S:
-                MainSpriteRenderer.sprite = MagnetS;
-                break;
-            //N極は赤
-            case Type_Magnet.N:
-                MainSpriteRenderer.sprite = MagnetN;
-                break;
-            //なしは白
-            case Type_Magnet.None:
-                MainSpriteRenderer.sprite = MagnetNone;
-                break;
-        }
-    }
+    /// <summary>
+    /// 磁気の固定化
+    /// true:固定
+    /// </summary>
+    [SerializeField, Header("磁気の固定")]
+    private bool Type_Fixed;
 
     private void Reset()
     {
@@ -89,6 +71,7 @@ public class Magnet : MonoBehaviour
         magnetManager = GameObject.Find("MagnetManager").GetComponent<MagnetManager>();
         Power = 0.1f;
         Type = Type_Magnet.None;
+        Type_Fixed = false;
     }
 
     private void Start()
@@ -97,8 +80,7 @@ public class Magnet : MonoBehaviour
         MainSpriteRenderer = gameObject.GetComponent<SpriteRenderer>();
 
         //極に合わせて色を変える
-        SetType_Magnat(Type);
-
+        SetSprite();
     }
 
     private void FixedUpdate()
@@ -151,6 +133,54 @@ public class Magnet : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// 初期化用自分のテクスチャを変更する
+    /// </summary>
+    private void SetSprite()
+    {
+        switch (Type)
+        {
+            //S極は青
+            case Type_Magnet.S:
+                MainSpriteRenderer.sprite = MagnetS;
+                break;
+            //N極は赤
+            case Type_Magnet.N:
+                MainSpriteRenderer.sprite = MagnetN;
+                break;
+            //なしは白
+            case Type_Magnet.None:
+                MainSpriteRenderer.sprite = MagnetNone;
+                break;
+        }
+    }
+
+    /// <summary>
+    /// 極によって自分の色を変更する
+    /// </summary>
+    /// <param name="type">指定した極</param>
+    public void SetType_Magnat(Type_Magnet type)
+    {
+        //磁気固定フラグ確認
+        if (Type_Fixed) { return; }
+
+        Type = type;
+        switch (Type)
+        {
+            //S極は青
+            case Type_Magnet.S:
+                MainSpriteRenderer.sprite = MagnetS;
+                break;
+            //N極は赤
+            case Type_Magnet.N:
+                MainSpriteRenderer.sprite = MagnetN;
+                break;
+            //なしは白
+            case Type_Magnet.None:
+                MainSpriteRenderer.sprite = MagnetNone;
+                break;
+        }
+    }
 
 
 }
