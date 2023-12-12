@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Script/Maglaser/Maglaser_BlueBullet.cs.meta
+guid: 7b4b97cc07e541347908d6a7f6160162
+========
+guid: 48b02892a11f2a74fac688012bc8c537
+>>>>>>>> Fixed-Turret:Assets/Script/Firing_WithAim.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
