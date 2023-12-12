@@ -10,6 +10,8 @@ public class Turret_Aim : MonoBehaviour
     [SerializeField, Header("目標になるオブジェクトのトランスフォーム")]
     private Transform ballTrans; // ターゲットのオブジェクトのトランスフォーム
 
+
+
     private void Update()
     {
         // 向きたい方向を計算
