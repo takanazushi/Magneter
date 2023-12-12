@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class Enemy_Walk_turn : MonoBehaviour
 {
-    [SerializeField,Header("敵の移動速度")]
-    private float speed = 3f;
+    [SerializeField]
+    private float speed;
 
     //最初に左右どちらを進むか選べる変数　　✔で右　✔無し左
     [SerializeField,Header("チェックで右に移動開始")]
@@ -25,11 +25,11 @@ public class Enemy_Walk_turn : MonoBehaviour
 
     private void Update()
     {
+        //todo
         if (IsGroundEnding())
         {
             FlipDirection();
         }
-
     }
 
     private void FixedUpdate()
@@ -50,7 +50,7 @@ public class Enemy_Walk_turn : MonoBehaviour
         {
             direction = Vector3.right;
         }
-        else
+        else 
         {
             direction = Vector3.left;
         }
@@ -101,5 +101,4 @@ public class Enemy_Walk_turn : MonoBehaviour
         Debug.Log("当");
         FlipDirection();
     }
-
 }

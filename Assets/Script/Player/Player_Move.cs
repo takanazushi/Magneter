@@ -31,7 +31,7 @@ public class Player_Move : MonoBehaviour
     private LineMoveFloor moveFloor=null;
 
     [SerializeField, Header("風の減速値")]
-    private float windMoveSpeed = 1.0f;
+    private float windMoveSpeed = 0.0f;
 
     //todo 追加1 ベルトコンベアに乗った時の変数
     private float converspeed;
@@ -215,7 +215,7 @@ public class Player_Move : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
 
         //風に当たっている状態の速度取得
-        windMoveSpeed = Wind.instance.getMoveSpeed;
+        //windMoveSpeed = Wind.instance.getMoveSpeed;
 
         //横移動スピード
         float Lateralspeed;
@@ -270,8 +270,6 @@ public class Player_Move : MonoBehaviour
 
         //todo 追加7 コンベアとブロックのスピード加算
         rb.velocity += new Vector2(converspeed + blockspeed, 0);
-
-
     }
 
     private void PlayerJump()

@@ -31,6 +31,11 @@ public class CameraControl : MonoBehaviour
         Tooltip("自動設定")]
     private CompositeCollider2D compositeCollider;
 
+    [SerializeField,
+        Header("敵のCompositeCollider2D"),
+        Tooltip("自動設定")]
+    private CompositeCollider2D EnemycompositeCollider;
+
     /// <summary>
     /// デバック表示フラグ
     /// </summary>
