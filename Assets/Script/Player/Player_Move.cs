@@ -193,7 +193,7 @@ public class Player_Move : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "MoveFloor")
+        if (collision.gameObject.CompareTag("MoveFloor"))
         {
             moveFloor = null;
             // Debug.Log("ìÆÇ≠è∞Ç∆ìñÇΩÇ¡ÇƒÇ»Ç¢");
@@ -205,6 +205,11 @@ public class Player_Move : MonoBehaviour
         if (collision.gameObject.name == "ConverBlock")
         {
             blockspeed = 0;
+        }
+
+        if (collision.gameObject.CompareTag("Goal"))
+        {
+            Goal_mng.instance.Is_Goal = true;
         }
     }
 
