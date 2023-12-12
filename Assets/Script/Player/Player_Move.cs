@@ -215,25 +215,15 @@ public class Player_Move : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
 
         //風に当たっている状態の速度取得
-<<<<<<< HEAD
+
         if (Wind.instance != null)
         {
             windMoveSpeed = Wind.instance.getMoveSpeed;
-=======
-        if (Wind.instance)
-        {
-            windMoveSpeed = Wind.instance.getMoveSpeed;
-
->>>>>>> LaserBeamGun
         }
         else
         {
             windMoveSpeed = 0;
         }
-<<<<<<< HEAD
-       
-=======
->>>>>>> LaserBeamGun
 
         //横移動スピード
         float Lateralspeed;
