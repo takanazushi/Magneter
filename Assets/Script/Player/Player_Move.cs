@@ -268,6 +268,7 @@ public class Player_Move : MonoBehaviour
         }
 
 
+<<<<<<< HEAD
         ////‘«ê‚ÌˆÚ“®‘¬“x‚ð’Ç‰Á
         speed.x += floorVelocity.x;
         speed.y = rb.velocity.y;
@@ -280,6 +281,9 @@ public class Player_Move : MonoBehaviour
         rb.velocity += new Vector2(converspeed + blockspeed, 0);
 
 
+=======
+        //Debug.Log(floorVelocity);
+>>>>>>> Magnet_Debug
     }
 
     private void PlayerJump()

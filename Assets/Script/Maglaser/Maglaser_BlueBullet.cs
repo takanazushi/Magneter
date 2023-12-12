@@ -25,7 +25,7 @@ public class Maglaser_BlueBullet : Maglaser_Bullet
         //Null‚Å‚È‚¯‚ê‚Î¥Î‚Ìƒ^ƒCƒv‚ğİ’è
         if (magnet != null)
         {
-            magnet.SetType_Magnat(Type_Magnet.N);
+            magnet.SetType_Magnat(Type_Magnet.S);
         }
 
         //’e‚Ìíœ

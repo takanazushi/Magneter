@@ -123,6 +123,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+<<<<<<< HEAD
 --- !u!4 &44875149 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7160052900073873458, guid: c7cc886f707991146bfba32468ec8788, type: 3}
@@ -82708,3 +82709,9 @@ SceneRoots:
   - {fileID: 6145919512597357556}
   - {fileID: 4280076550418189371}
   - {fileID: 1324086320954299119}
+=======
+--- !u!1660057539 &9223372036854775807
+SceneRoots:
+  m_ObjectHideFlags: 0
+  m_Roots: []
+>>>>>>> Magnet_Debug
