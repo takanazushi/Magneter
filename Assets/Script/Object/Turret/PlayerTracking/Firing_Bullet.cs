@@ -7,11 +7,13 @@ public class Firing_Bullet : MonoBehaviour
 {
     //Prefabs‚Å•¡»‚·‚é•¨‚ğ“ü‚ê‚é
     [SerializeField, Header("’ePrefab‚ğ“ü‚ê‚Ä‚­‚¾‚³‚¢")]
-    protected  GameObject BulletObj;
+     protected GameObject BulletObj;
 
     void Start()
-    {   
+    {
+        BulletObj.transform.position = transform.position;
         StartCoroutine(ShotCoroutine());
+        
     }
 
     public virtual IEnumerator ShotCoroutine()
