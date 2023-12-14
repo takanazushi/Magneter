@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b515ab28ce2978e4183745eed6edcedc
+=======
+guid: ee731b395d613a64b9cf58d40c888fa9
+>>>>>>> OptionScene
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}

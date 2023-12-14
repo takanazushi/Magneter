@@ -1641,7 +1641,7 @@ GameObject:
   - component: {fileID: 2954357831099501312}
   - component: {fileID: 8679945320615853144}
   - component: {fileID: 1068762309058689076}
-  - component: {fileID: 4469151050698941530}
+  - component: {fileID: 8679945320615853145}
   m_Layer: 5
   m_Name: FadeOutImage
   m_TagString: Untagged
@@ -1724,23 +1724,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4469151050698941530
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2567241440922154216}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4641b61640616d14fa0c52a0056f673f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _FadeOut: {fileID: 2100000, guid: 69c468570707cd34eb882bd3670d828a, type: 2}
-  onFadeInComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  image: {fileID: 2567241440922154216}
 --- !u!114 &4861391223723488852
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1936,6 +1919,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2567241440922154216}
   m_CullTransparentMesh: 1
+--- !u!114 &8679945320615853145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2567241440922154216}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4641b61640616d14fa0c52a0056f673f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _FadeOut: {fileID: 2100000, guid: 69c468570707cd34eb882bd3670d828a, type: 2}
+  onFadeInComplete:
+    m_PersistentCalls:
+      m_Calls: []
+  image: {fileID: 2567241440922154216}
+  sprites: {fileID: 21300000, guid: eb9c9d761573d1347a502cd21ff3a8e5, type: 3}
+  newColor: {r: 0, g: 0.4716981, b: 0.3978177, a: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
