@@ -17,6 +17,9 @@ public class GameManager : MonoBehaviour
     [SerializeField, Header("ƒvƒŒƒCƒ„[HP‚ğ•Û")]
     public int HP = 3;
 
+    public bool[] stageClearFlag = new bool[3] { true, false, false };
+
+
     void Awake()
     {
         if (instance == null)
