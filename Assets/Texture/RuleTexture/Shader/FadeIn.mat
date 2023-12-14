@@ -41,11 +41,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-<<<<<<< HEAD
-    - _Alpha: 0.99923337
-=======
-    - _Alpha: 0.9986785
->>>>>>> OptionScene
+    - _Alpha: 0.99917966
     - _EnableExternalAlpha: 0
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 1}

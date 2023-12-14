@@ -2389,7 +2389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eb9c9d761573d1347a502cd21ff3a8e5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0bf0625467ab4764cae906467ed3e813, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2473,8 +2473,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   image: {fileID: 9050479630641724053}
-  sprites: {fileID: 21300000, guid: 0bf0625467ab4764cae906467ed3e813, type: 3}
-  newColor: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1 &7071651074188717160
 GameObject:
   m_ObjectHideFlags: 0

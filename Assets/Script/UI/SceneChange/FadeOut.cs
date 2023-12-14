@@ -16,12 +16,6 @@ public class FadeOut : MonoBehaviour, IChangeRoutine
     [SerializeField]
     private GameObject image;
 
-    [SerializeField]
-    private Sprite sprites;
-
-    [SerializeField]
-    private Color newColor;
-
     private Image imgCompornent;
 
     // Start is called before the first frame update
@@ -36,16 +30,6 @@ public class FadeOut : MonoBehaviour, IChangeRoutine
 
     public IEnumerator Execute(string sceneName)
     {
-        if (sceneName == "Option")
-        {
-            imgCompornent.sprite = sprites;
-            _FadeOut.color = newColor;
-        }
-        else
-        {
-            _FadeOut.color = Color.black;
-        }
-
         image.SetActive(true);
 
         // アニメーションの時間
