@@ -4,7 +4,13 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Floor
+  - Enemy
+  - Checkpoint
+  - MoveFloor
+  - kabe
+  - RedBullet
+  - BlueBullet
+  - Goal
   layers:
   - Default
   - TransparentFX

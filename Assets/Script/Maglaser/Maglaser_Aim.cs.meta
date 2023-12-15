@@ -1,5 +1,9 @@
 fileFormatVersion: 2
-guid: 8ef62f527eaadbc4ca10bada07c800b9
+<<<<<<<< HEAD:Assets/Script/Maglaser/Maglaser_Aim.cs.meta
+guid: e6c92f22e1c1d5f4eb87702e6b13278b
+========
+guid: 6c70da0513d9a8844b485daaf34aed2b
+>>>>>>>> Enemy_Warlk_fall:Assets/Script/Enemy_WalkFall.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
