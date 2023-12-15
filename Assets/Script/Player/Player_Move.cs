@@ -172,6 +172,7 @@ public class Player_Move : MonoBehaviour
         jumpMoveX = 3.0f;
         jumpCount = 0;
         jumpflag = false;
+        anim.SetBool("jump", false);
 
         //Debug.Log("ジャンプフラグは：" + jumpflag);
     }
@@ -303,12 +304,14 @@ public class Player_Move : MonoBehaviour
             float pwa = jumpForce;
 
             jumpflag = true;
+            anim.SetBool("jump", true);
             rb.velocity = new Vector2(rb.velocity.x, 0);
 
             //瞬間的な力を加える
             rb.AddForce(transform.up * pwa, ForceMode2D.Impulse);
             jumpCount++;
         }
+       
     }
 
     RaycastHit2D[] CheckGroundStatus()
