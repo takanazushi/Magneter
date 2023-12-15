@@ -677,6 +677,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4
   rayLength: 0.7
+  windMoveSpeed: 0
 --- !u!50 &413184912
 Rigidbody2D:
   serializedVersion: 4
@@ -784,7 +785,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b73d37eea833b024ab3bdb016b4a78d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 100
   invi_Time: 2
 --- !u!61 &413184916
 BoxCollider2D:
@@ -1448,7 +1448,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0
   cycle: 0.75
-  delTime: 3
+  delTime: 10
 --- !u!212 &1383069361
 SpriteRenderer:
   m_ObjectHideFlags: 0

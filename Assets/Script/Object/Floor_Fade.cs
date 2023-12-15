@@ -7,23 +7,23 @@ public class Floor_Fade : MonoBehaviour
 {   
     
     //α値
-    [SerializeField]
+    [SerializeField,Header("α値")]
     private float cloa = 0.0f;
     
     //消えていく速度
-    [SerializeField]
+    [SerializeField,Header("消えていく速度")]
     private float fadeSp = 0.01f;
     
     //表れる速度
-    [SerializeField]
+    [SerializeField,Header("表れる速度")]
     private float EmergeSp = 0.01f;
     
     //現れている時間
-    [SerializeField]
+    [SerializeField,Header("現れている時間")]
     private float EmergeT = 3.0f;
 
     //消えている時間
-    [SerializeField]
+    [SerializeField,Header("消えている時間")]
     private float FadeT = 10.0f;
 
 
