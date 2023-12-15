@@ -7,6 +7,7 @@ public class Goal_mng : MonoBehaviour
     public static Goal_mng instance;
 
     bool Goalflg;
+
     public bool Is_Goal
     {
         get { return Goalflg; }
