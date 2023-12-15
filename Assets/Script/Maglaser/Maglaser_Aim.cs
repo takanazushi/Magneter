@@ -1,20 +1,36 @@
-using System.Collections;
-using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.SearchService;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Maglaser_Aim : MonoBehaviour
 {
     [SerializeField, Header("照準の線")]
     public LineRenderer aimLine;
 
-    //角度
-    private float angle;
+    [SerializeField,Header("銃口")]
+    private Transform tgetopoint;
+
+    /// <summary>
+    /// 自身のSpriteRenderer
+    /// </summary>
+    SpriteRenderer tgetopointSprite;
+
+    ///銃口の角度
+    private float mazin;
+
+    private void Start()
+    {
+        //銃口の角度を算出
+        Vector3 nozuru = (tgetopoint.position - transform.position).normalized;
+        mazin = Mathf.Atan2(nozuru.y, nozuru.x) * Mathf.Rad2Deg;
+        
+        tgetopointSprite=GetComponent<SpriteRenderer>();
+    }
 
     private void Update()
     {
         UpdateAimDirection();
-        UpdateAimLine();
     }
 
     /// <summary>
@@ -25,14 +41,18 @@ public class Maglaser_Aim : MonoBehaviour
         //マウスの位置を取得
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        //プレイヤーの位置からマウスの位置に向かうベクトル計算
-        Vector3 aimDirection = (mousePosition - this.transform.position).normalized;
+        //自分の位置からマウスの位置に向かうベクトル計算
+        Vector3 aimDirection = (mousePosition - transform.position).normalized;
 
-        //ベクトルから角度を取得
-        angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        //右方向基準でなす角度
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        //角度分+90度回転
-        this.transform.rotation = Quaternion.Euler(0, 0, angle + 90f);
+        float kakolu = angle + mazin;
+
+        //銃の反転ありなしで角度を補正
+        kakolu = tgetopointSprite.flipX ? kakolu + 180 : kakolu - mazin * 2;
+
+        transform.rotation = Quaternion.Euler(0, 0, kakolu);
     }
 
     /// <summary>
@@ -45,7 +65,7 @@ public class Maglaser_Aim : MonoBehaviour
         Vector3 linestatr = transform.position;
         linestatr.z = -1;
         aimLine.SetPosition(0, linestatr);
-
+        float angle = 0;
         //終了地点
         Vector3 endPosition = gameObject.transform.position + Quaternion.Euler(0, 0, angle) * Vector3.right * 2f;
         endPosition.z = -1;
