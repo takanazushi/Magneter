@@ -59,10 +59,10 @@ public class Magnet : MonoBehaviour
     public bool inversion = false;
     public bool notType = false;
 
-    public string Gat_Magnet()
-    {
-        return Type.ToString();
-    }
+    //public string Gat_Magnet()
+    //{
+    //    return Type.ToString();
+    //}
 
     //極によって自分の色を変更する（仮）
     //type：指定した極
