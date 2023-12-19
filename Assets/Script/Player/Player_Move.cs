@@ -30,9 +30,9 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("風の減速値")]
     private float windMoveSpeed = 0.0f;
 
-    //todo 追加1 ベルトコンベアに乗った時の変数
+    //ベルトコンベアに乗った時の変数
     private float converspeed;
-    //todo 追加2 ベルトコンベアに流れてるブロックに乗った時の変数
+    //ベルトコンベアに流れてるブロックに乗った時の変数
     private float blockspeed;
 
     /// <summary>
@@ -141,7 +141,7 @@ public class Player_Move : MonoBehaviour
         //移動処理
         PlayerWalk();
 
-        //todo ベルトコンベアの速度を足して通常速度より速くなった時
+        //ベルトコンベアの速度を足して通常速度より速くなった時
         if(rb.velocity.x > 5.0 || rb.velocity.x < -5.0)
         {
             jumpMoveX += 0.1f;
@@ -165,7 +165,13 @@ public class Player_Move : MonoBehaviour
 
         //Debug.Log("ジャンプフラグは：" + jumpflag);
 
-        //todo Jump値リセット
+        //todo ゴールに触れたらタイマーストップ
+        if(other.gameObject.tag == "Goal")
+        {
+            Goal_mng.instance.Is_Goal = true;
+        }
+
+        //Jump値リセット
         jumpMoveX = 3.0f;
         jumpCount = 0;
         jumpflag = false;
@@ -175,18 +181,18 @@ public class Player_Move : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        //todo ベルトコンベアに流れてるブロックに乗った時
+        //ベルトコンベアに流れてるブロックに乗った時
         if (collision.gameObject.name == "ConverBlock")
         {
             //ブロックのスピード取得
             blockspeed = CoverVeltThing.Instance.returnSpeed();
         }
-        //todo 右に流れるベルトコンベアの時
+        //右に流れるベルトコンベアの時
         if (collision.gameObject.name == "PlusVeltConver")
         {
             converspeed = 3;
         }
-        //todo 左に流れるベルトコンベアの時
+        //左に流れるベルトコンベアの時
         if (collision.gameObject.name == "MinusVeltConver")
         {
             converspeed = -3;
@@ -196,7 +202,7 @@ public class Player_Move : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
 
-        if (collision.gameObject.tag == "MoveFloor")
+        if (collision.gameObject.CompareTag("MoveFloor"))
         {
             moveFloor = null;
             // Debug.Log("動く床と当たってない");
@@ -204,11 +210,16 @@ public class Player_Move : MonoBehaviour
 
         converspeed = 0;
       
-        //todo ブロックから離れた時
+        //ブロックから離れた時
         if (collision.gameObject.name == "ConverBlock")
         {
             blockspeed = 0;
         }
+
+        //if (collision.gameObject.CompareTag("Goal"))
+        //{
+        //    //Goal_mng.instance.Is_Goal = true;
+        //}
     }
 
     private void PlayerWalk()
@@ -287,7 +298,7 @@ public class Player_Move : MonoBehaviour
 
         //Debug.Log(floorVelocity);
 
-        //todo 追加7 コンベアとブロックのスピード加算
+        //追加7 コンベアとブロックのスピード加算
         rb.velocity += new Vector2(converspeed + blockspeed, 0);
 
 

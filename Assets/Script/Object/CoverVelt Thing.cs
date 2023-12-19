@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CoverVeltThing : MonoBehaviour
 {
-
-    //todo スクリプト内全て
     private Rigidbody2D rb;
 
     //インスタンスの定義

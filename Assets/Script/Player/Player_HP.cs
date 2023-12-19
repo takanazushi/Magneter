@@ -70,6 +70,8 @@ public class Player_HP : MonoBehaviour
 
             //プレイヤーのHPをリセットする
             GameManager.instance.HP = GameManager.instance.RestHP;
+            //todo 前回の経過時間を保存
+            PlayerPrefs.SetFloat("PreviousElapsedTime", ClearTime.instance.second);
 
             //現在のシーンを再度読み込む
             Debug.Log("現在のシーンを再度読み込む");
