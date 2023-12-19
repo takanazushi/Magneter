@@ -11,8 +11,7 @@ using UnityEngine.UIElements;
 //必要なコンポーネント定義
 [RequireComponent(typeof(CompositeCollider2D))]
 
-
-public class CameraControl : MonoBehaviour
+public class CameraAriaControl : MonoBehaviour
 {
 
     /// <summary>
@@ -52,7 +51,6 @@ public class CameraControl : MonoBehaviour
         {
             return;
         }
-            //if (collision.name != m_Camera.Follow.name) { return; }
 
         //カメラを有効化
         m_Camera.Priority = 1;
@@ -65,7 +63,6 @@ public class CameraControl : MonoBehaviour
         {
             return;
         }
-        //if (collision.name != m_Camera.Follow.name) { return; }
 
         //カメラを有効化
         m_Camera.Priority = 0;

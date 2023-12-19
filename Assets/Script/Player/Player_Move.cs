@@ -59,21 +59,21 @@ public class Player_Move : MonoBehaviour
 
     void Start()
     {
-        //if (GameManager.instance.checkpointNo > -1)
-        //{
-        //    // ワープ先のチェックポイントオブジェクトを見つける("checkpoint (1)" のような名前になっているもの）
-        //    GameObject checkpointObject = GameObject.Find("checkpoint (" + GameManager.instance.checkpointNo + ")");
+        if (GameManager.instance.checkpointNo > -1)
+        {
+            // ワープ先のチェックポイントオブジェクトを見つける("checkpoint (1)" のような名前になっているもの）
+            GameObject checkpointObject = GameObject.Find("checkpoint (" + GameManager.instance.checkpointNo + ")");
 
-        //    // チェックポイントオブジェクトが見つかった場合は、プレイヤーをワープさせる
-        //    if (checkpointObject != null)
-        //    {
-        //        transform.position = checkpointObject.transform.position;
-        //    }
-        //    else
-        //    {
-        //        Debug.Log(GameManager.instance.checkpointNo + "チェックポイントを通過していない");
-        //    }
-        //}
+            // チェックポイントオブジェクトが見つかった場合は、プレイヤーをワープさせる
+            if (checkpointObject != null)
+            {
+                transform.position = checkpointObject.transform.position;
+            }
+            else
+            {
+                Debug.Log(GameManager.instance.checkpointNo + "チェックポイントを通過していない");
+            }
+        }
 
         rb = GetComponent<Rigidbody2D>();
 

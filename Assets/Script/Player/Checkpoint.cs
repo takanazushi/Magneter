@@ -14,6 +14,14 @@ public class Checkpoint : MonoBehaviour
     [SerializeField, Header("チェックポイントNo")]
     private int checkNo = 0;
 
+    /// <summary>
+    /// カメラ番号
+    /// </summary>
+    [SerializeField, Header("カメラ番号")]
+    private int CameraNo;
+
+
+
     //デバック用
     private void Start()
     {
@@ -25,6 +33,7 @@ public class Checkpoint : MonoBehaviour
         if (collision.gameObject.name == "Player" && GameManager.instance.checkpointNo <= checkNo)
         {
             GameManager.instance.checkpointNo = checkNo;
+            GameManager.instance.StartCamera = CameraNo;
 
             //デバック用
             //通ったら赤
