@@ -55,6 +55,8 @@ public class Player_Move : MonoBehaviour
 
     private Animator anim = null;
 
+    private Player_HP playerHP;
+
     void Start()
     {
         //if (GameManager.instance.checkpointNo > -1)
@@ -76,6 +78,8 @@ public class Player_Move : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        playerHP = GetComponent<Player_HP>();
 
         if (spriteRenderer == null)
         {
@@ -138,6 +142,15 @@ public class Player_Move : MonoBehaviour
             }
         }
 
+        if (playerHP.Inviflg == true)
+        {
+            anim.SetBool("damage", true);
+        }
+        else
+        {
+            anim.SetBool("damage", false);
+        }
+
         //移動処理
         PlayerWalk();
 
@@ -151,6 +164,8 @@ public class Player_Move : MonoBehaviour
                 jumpMoveX = 7.0f;
             }
         }
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
@@ -175,6 +190,7 @@ public class Player_Move : MonoBehaviour
         jumpMoveX = 3.0f;
         jumpCount = 0;
         jumpflag = false;
+        anim.SetBool("jump", false);
 
         //Debug.Log("ジャンプフラグは：" + jumpflag);
     }
@@ -309,12 +325,14 @@ public class Player_Move : MonoBehaviour
             float pwa = jumpForce;
 
             jumpflag = true;
+            anim.SetBool("jump", true);
             rb.velocity = new Vector2(rb.velocity.x, 0);
 
             //瞬間的な力を加える
             rb.AddForce(transform.up * pwa, ForceMode2D.Impulse);
             jumpCount++;
         }
+       
     }
 
     RaycastHit2D[] CheckGroundStatus()

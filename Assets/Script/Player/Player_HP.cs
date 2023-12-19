@@ -14,6 +14,11 @@ public class Player_HP : MonoBehaviour
     [SerializeField, Header("無敵時間"), Tooltip("単位：秒")]
     public float invi_Time;
 
+    public bool Inviflg
+    {
+        get { return inviflg; }
+    }
+
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -55,7 +60,6 @@ public class Player_HP : MonoBehaviour
     //damage:受けるダメージ
     public void HitDamage(int damage)
     {
-
         //ダメージを受ける
         GameManager.instance.HP -= damage;
 
