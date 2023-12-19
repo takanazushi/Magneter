@@ -58,6 +58,8 @@ public class Player_Move : MonoBehaviour
 
     private Animator anim = null;
 
+    private Player_HP playerHP;
+
     void Start()
     {
         //if (GameManager.instance.checkpointNo > -1)
@@ -79,6 +81,8 @@ public class Player_Move : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        playerHP = GetComponent<Player_HP>();
 
         if (spriteRenderer == null)
         {
@@ -141,6 +145,15 @@ public class Player_Move : MonoBehaviour
             }
         }
 
+        if (playerHP.Inviflg == true)
+        {
+            anim.SetBool("damage", true);
+        }
+        else
+        {
+            anim.SetBool("damage", false);
+        }
+
         //à⁄ìÆèàóù
         PlayerWalk();
 
@@ -154,6 +167,8 @@ public class Player_Move : MonoBehaviour
                 jumpMoveX = 7.0f;
             }
         }
+
+        
     }
 
     private void OnCollisionEnter2D(Collision2D other)
