@@ -34,8 +34,20 @@ public class MagLaserVar_Shot : MonoBehaviour
     /// </summary>
     private Magnet hitmg;
 
+    GameTimeControl gameTime;
+
+    private void Start()
+    {
+        gameTime = GameTimeControl.instance;
+    }
+
     private void Update()
     {
+        if (gameTime.IsPaused)
+        {
+            return;
+        }
+
         //ç∂ÉNÉäÉbÉN
         if (Input.GetMouseButtonDown(0))
         {
