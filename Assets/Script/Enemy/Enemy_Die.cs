@@ -6,18 +6,13 @@ using UnityEngine.SceneManagement;
 public class Enemy_Die : MonoBehaviour
 {
     [SerializeField, Header("デスポーンするまでの時間")]
-<<<<<<< HEAD
-    private float despawnTime;
-=======
     private int despawnTime;
->>>>>>> origin/FromTopEnemy
 
     private GameObject parent;
 
     private void Start()
     {
         //親オブジェクトを取得
-<<<<<<< HEAD
         parent = transform.root.gameObject;
     }
 
@@ -31,12 +26,7 @@ public class Enemy_Die : MonoBehaviour
             //一定時間後に親オブジェクトを消す
             //DestroyObject(parent, despawnTime);
         }
-    }
-
-=======
-        //parent = transform.root.gameObject;
-    }
-    
+    }    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         //if (collision.gameObject.name != parent.name && collision.gameObject.name != "Player" &&
@@ -56,5 +46,4 @@ public class Enemy_Die : MonoBehaviour
             Enemy_TopCreate.instance.enemy_outcount = 1;
         }
     }
->>>>>>> origin/FromTopEnemy
 }
