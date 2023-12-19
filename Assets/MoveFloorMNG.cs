@@ -302,7 +302,8 @@ public class MoveFloorMNG : MonoBehaviour
     {
         private MoveFloorMNG _target;
         private readonly float _wait_Min = 0.01f;
-        private void Awake()
+
+        private void OnEnable()
         {
             _target = target as MoveFloorMNG;
         }
@@ -312,11 +313,11 @@ public class MoveFloorMNG : MonoBehaviour
             EditorGUI.BeginChangeCheck();
             serializedObject.Update();
 
-            serializedObject.FindProperty("speed").floatValue =
-                 EditorGUILayout.FloatField("足場移動速度", _target.speed);
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("speed")
+            , new GUIContent("足場移動速度"));
 
             //説明文追加
-            string tooiptext="エラー";
+            string tooiptext ="エラー";
             switch (_target.moveType) 
             {
                 case MoveType.Patrol:
@@ -330,20 +331,17 @@ public class MoveFloorMNG : MonoBehaviour
                     break;
                     
             }
-
-            serializedObject.FindProperty("moveType").enumValueIndex = Convert.ToInt32(
-                 EditorGUILayout.EnumPopup("移動タイプ", _target.moveType));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("moveType")
+            , new GUIContent("移動タイプ"));
             EditorGUILayout.HelpBox(tooiptext, MessageType.Info);
 
 
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("wait")
+            , new GUIContent ("足場を生成する頻度", "x秒間隔で足場の移動を開始させる"));
             //最小値を設定
-            float _wait = math.max(EditorGUILayout.FloatField(
-                new GUIContent("足場を生成する頻度", "x秒間隔で足場の移動を開始させる"), _target.wait),
-                _wait_Min);
-            serializedObject.FindProperty("wait").floatValue = _wait;
+            serializedObject.FindProperty("wait").floatValue =
+                math.max(_wait_Min, serializedObject.FindProperty("wait").floatValue);
               
-
-
             //デバック折り畳み
             serializedObject.FindProperty("accmenu").boolValue =
                  EditorGUILayout.Foldout(_target.accmenu, "デバック");
@@ -358,17 +356,11 @@ public class MoveFloorMNG : MonoBehaviour
                      EditorGUILayout.Foldout(_target.accmenu1, "色設定");
                 if (_target.accmenu1)
                 {
-                    serializedObject.FindProperty("ColorArrowDebug").colorValue =
-                        EditorGUILayout.ColorField("矢印表示色", _target.ColorArrowDebug);
-
-                    serializedObject.FindProperty("ColorPointDebug").colorValue =
-                        EditorGUILayout.ColorField("ポイント表示色", _target.ColorPointDebug);
-
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("ColorArrowDebug")
+                    , new GUIContent("矢印表示色"));
+                    EditorGUILayout.PropertyField(serializedObject.FindProperty("ColorPointDebug")
+                    , new GUIContent("ポイント表示色"));
                 }
-
-                //_target.OpenDebug = EditorGUILayout.ToggleLeft("表示", _target.OpenDebug);
-                //_target.ColorArrowDebug = EditorGUILayout.ColorField("矢印表示色", _target.ColorArrowDebug);
-                //_target.ColorPointDebug = EditorGUILayout.ColorField("ポイント表示色", _target.ColorPointDebug);
             }
 
 
@@ -378,6 +370,7 @@ public class MoveFloorMNG : MonoBehaviour
                 Undo.RecordObject(_target, "test_");
                 EditorUtility.SetDirty(_target);
                 
+                //値が変更された場合
                 if (serializedObject.ApplyModifiedProperties())
                 {
                     _target.OnInspectorChange();

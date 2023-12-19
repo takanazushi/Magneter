@@ -1,14 +1,13 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using Unity.Jobs;
-using Unity.VisualScripting;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
-using UnityEngine.Tilemaps;
+using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
+using UnityEngine.U2D;
 
-
-//マグネット試作
+//マグネット
 public class Magnet : MonoBehaviour
 {
 
@@ -18,7 +17,7 @@ public class Magnet : MonoBehaviour
     public Sprite MagnetS;
     public Sprite MagnetN;
     public Sprite MagnetNone;
-
+    
     //マグネットマネージャー
     [SerializeField]
     private MagnetManager magnetManager;
@@ -54,22 +53,35 @@ public class Magnet : MonoBehaviour
         set => Type = value;
     }
 
-    //磁気の強さ
-    [SerializeField,Header("自分が受ける影響値")]
+    /// <summary>
+    /// 磁力影響値（受ける強さ）
+    /// </summary>
+    [SerializeField]
     private float Power;
 
     /// <summary>
     /// 磁気の固定化
     /// true:固定
     /// </summary>
-    [SerializeField, Header("磁気の固定")]
+    [SerializeField]
     private bool Type_Fixed;
+
+    
+    [SerializeField]
+    private bool Debagu_fla;
+    
+    /// <summary>
+    /// デバック表示用
+    /// 磁力範囲内マグネットオブジェクトの
+    /// 位置と力を保存して、Gizumoで仕様します
+    /// </summary>
+    private List<Transform> Debagu_list = new();
 
     private void Reset()
     {
         LenMagnrt = 10;
         magnetManager = GameObject.Find("MagnetManager").GetComponent<MagnetManager>();
-        Power = 0.1f;
+        Power = 1;
         Type = Type_Magnet.None;
         Type_Fixed = false;
     }
@@ -85,6 +97,9 @@ public class Magnet : MonoBehaviour
 
     private void FixedUpdate()
     {
+        //デバック用データ初期化
+        Debagu_list.Clear();
+
         //磁力なしの場合は処理しない
         if (Type == Type_Magnet.None)
         {
@@ -129,8 +144,27 @@ public class Magnet : MonoBehaviour
 
             //力を加える
             pair.gbRid.velocity += force;
+
+            //デバック用保存
+            Debagu_list.Add(pair.gbRid.transform);
         }
 
+    }
+
+    private void OnDrawGizmos()
+    {
+        if (!Debagu_fla) { return; }
+
+        //デバック用データが存在する場合
+        if (EditorApplication.isPlaying&& Debagu_list.Count!=0)
+        {
+            foreach (Transform pair in Debagu_list)
+            {
+                //関係しているマグネットへ線を描画
+                Gizmos.color = Color.red;
+                Gizmos.DrawLine(transform.position, pair.transform.position);
+            }
+        }
     }
 
     /// <summary>
@@ -182,5 +216,67 @@ public class Magnet : MonoBehaviour
         }
     }
 
+    #region エディタ
+#if UNITY_EDITOR
+
+    [CustomEditor(typeof(Magnet))]
+    public class MoveFloorMNG_Editor : Editor
+    {
+        private Magnet _target;
+        private readonly float _wait_Min = 0.01f;
+        private void Awake()
+        {
+            _target = target as Magnet;
+        }
+
+        public override void OnInspectorGUI()
+        {
+            EditorGUI.BeginChangeCheck();
+            serializedObject.Update();
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("magnetManager")
+                 , new GUIContent("マグネットマネージャー"));
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("MagnetS")
+                 , new GUIContent("S画像"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("MagnetN")
+                 , new GUIContent("N画像"));
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("MagnetNone")
+                 , new GUIContent("None画像"));
+
+            EditorGUILayout.Space();
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Type")
+                , new GUIContent("磁気"));
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("LenMagnrt")
+                , new GUIContent("磁力影響範囲"));
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Power")
+                , new GUIContent("磁力影響値","値が大きいほど磁力の影響をより受けます"));
+
+            EditorGUILayout.Space();
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Type_Fixed")
+                , new GUIContent("磁気の固定"));
+
+            EditorGUILayout.Space();
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("Debagu_fla")
+                , new GUIContent("デバック表示"));
+
+            if (EditorGUI.EndChangeCheck())
+            {
+                //値が変更された場合
+                serializedObject.ApplyModifiedProperties();
+            }
+        }
+    }
+
+
+
+
+#endif
+    #endregion
 
 }
