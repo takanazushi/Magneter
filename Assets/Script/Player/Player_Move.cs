@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class Player_Move : MonoBehaviour
 {
-    //変えたところ　todo振ってます
-
     [SerializeField, Header("横移動の速さ")]
     private float walkMoveX;
 
@@ -23,7 +21,6 @@ public class Player_Move : MonoBehaviour
     [SerializeField, Header("レイの長さ"),
         Tooltip("")]
     float rayLength = 1.0f;
-
 
     /// <summary>
     /// 足場に触れている場合のみ有効
@@ -56,6 +53,8 @@ public class Player_Move : MonoBehaviour
 
     private SpriteRenderer spriteRenderer;
 
+    private Animator anim = null;
+
     void Start()
     {
         //if (GameManager.instance.checkpointNo > -1)
@@ -84,6 +83,10 @@ public class Player_Move : MonoBehaviour
         }
 
         jumpflag = false;
+
+        anim=GetComponent<Animator>();
+
+        spriteRenderer.flipX = true;
     }
 
     // 物理演算をしたい場合はFixedUpdateを使うのが一般的
@@ -101,13 +104,13 @@ public class Player_Move : MonoBehaviour
         //右向き
         if (mousePosition.x > transform.position.x)
         {
-            spriteRenderer.flipX = false;
-            SetChildObjectRotation(false);
+            spriteRenderer.flipX = true;
+            SetChildObjectRotation(true);
         }
         else if (mousePosition.x < transform.position.x)
         {
-            spriteRenderer.flipX = true;
-            SetChildObjectRotation(true);
+            spriteRenderer.flipX = false;
+            SetChildObjectRotation(false);
         }
 
         //レイの処理結果を受け取る
@@ -241,11 +244,19 @@ public class Player_Move : MonoBehaviour
         //左右反転
         if (horizontalInput > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
+            spriteRenderer.flipX = true;
+            anim.SetBool("move", true);
+            //transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
         }
         else if (horizontalInput < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
+            spriteRenderer.flipX = false;
+            anim.SetBool("move", true);
+            //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
+        }
+        else
+        {
+            anim.SetBool("move", false);
         }
        
         
@@ -323,7 +334,7 @@ public class Player_Move : MonoBehaviour
             childRenderer.flipX = isLeft;
         }
 
-        // プレイヤーの子オブジェクトを取得
+        // プレイヤーの子オブジェクト座標を取得
         Transform[] childTransforms = GetComponentsInChildren<Transform>();
 
         // 各子オブジェクトの位置を設定
@@ -334,7 +345,7 @@ public class Player_Move : MonoBehaviour
             {
                 Vector3 newPosition = childTransform.localPosition;
 
-                newPosition.x = isLeft ? -Mathf.Abs(newPosition.x) : Mathf.Abs(newPosition.x);
+                newPosition.x = isLeft ? Mathf.Abs(newPosition.x) : -Mathf.Abs(newPosition.x);
 
                 childTransform.localPosition = newPosition;
             }

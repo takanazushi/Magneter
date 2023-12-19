@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using static UnityEditor.ShaderData;
 
+[RequireComponent(typeof(LineRenderer))]
 public class MagLaserVar_Shot : MonoBehaviour
 {
     [SerializeField, Header("照準の線")]
@@ -17,9 +18,6 @@ public class MagLaserVar_Shot : MonoBehaviour
 
     [SerializeField,Header("判定するレイヤー")]
     LayerMask mask;
-
-    [SerializeField, Header("備考"), TextArea(1, 6)]
-    private string text;
 
     /// <summary>
     /// プレイヤー位置→マウス位置方向ベクトル
@@ -147,4 +145,10 @@ public class MagLaserVar_Shot : MonoBehaviour
         Coline_erase = null;
     }
 
+
+    private void Reset()
+    {
+        aimLine=GetComponent<LineRenderer>();
+        raylen = 15;
+    }
 }
