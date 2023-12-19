@@ -38,6 +38,8 @@ public class Maglaser_Aim : MonoBehaviour
     /// </summary>
     private void UpdateAimDirection()
     {
+        //ゲームが停止中は更新しない
+        if (GameTimeControl.instance.IsPaused) { return; }
         //マウスの位置を取得
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -60,7 +62,7 @@ public class Maglaser_Aim : MonoBehaviour
     /// </summary>
     private void UpdateAimLine()
     {
-        //照準戦の位置を設定
+        //照準線の位置を設定
         //開始地点
         Vector3 linestatr = transform.position;
         linestatr.z = -1;
