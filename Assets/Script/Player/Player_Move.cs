@@ -229,6 +229,7 @@ public class Player_Move : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
 
         //風に当たっている状態の速度取得
+<<<<<<< HEAD
 
         if (Wind.instance != null)
         {
@@ -238,6 +239,9 @@ public class Player_Move : MonoBehaviour
         {
             windMoveSpeed = 0;
         }
+=======
+        //windMoveSpeed = Wind.instance.getMoveSpeed;
+>>>>>>> origin/FromTopEnemy
 
         //横移動スピード
         float Lateralspeed;
@@ -300,8 +304,6 @@ public class Player_Move : MonoBehaviour
 
         //追加7 コンベアとブロックのスピード加算
         rb.velocity += new Vector2(converspeed + blockspeed, 0);
-
-
     }
 
     private void PlayerJump()
