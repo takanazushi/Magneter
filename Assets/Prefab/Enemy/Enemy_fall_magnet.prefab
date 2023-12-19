@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 8001582600833236208}
   - component: {fileID: 4364668432539105345}
   - component: {fileID: 5675546312895367577}
+  - component: {fileID: 4281803212786208870}
   - component: {fileID: 3567735387343653551}
   - component: {fileID: 5592942950471758608}
-  - component: {fileID: 4281803212786208870}
   m_Layer: 0
   m_Name: Enemy_fall_magnet
   m_TagString: Enemy
@@ -30,8 +30,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2412844474934746772}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 70.1, y: 34.847054, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.497, y: -0.82162094, z: -0.28066412}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -163,34 +163,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &3567735387343653551
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2412844474934746772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b24bd16be9298a34a9700cd86bb2244f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 1
-  Left: 0
-  checkhanten: {fileID: 3944029696958416613}
---- !u!114 &5592942950471758608
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2412844474934746772}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa7cad5ff90f58345b7ad48c6e5b593a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Hit_Damage: 1
 --- !u!114 &4281803212786208870
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -209,7 +181,36 @@ MonoBehaviour:
   magnetManager: {fileID: 0}
   LenMagnrt: 10
   Type: 1
-  Power: 100
+  inversion: 0
+  Power: 10
+--- !u!114 &3567735387343653551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412844474934746772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24bd16be9298a34a9700cd86bb2244f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1
+  Left: 0
+  magnet: {fileID: 0}
+--- !u!114 &5592942950471758608
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2412844474934746772}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa7cad5ff90f58345b7ad48c6e5b593a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Hit_Damage: 1
 --- !u!1 &3883008178470465154
 GameObject:
   m_ObjectHideFlags: 0
@@ -227,7 +228,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6536637670624250564
 Transform:
   m_ObjectHideFlags: 0

@@ -16,15 +16,15 @@ public class MagnetManager : MonoBehaviour
     [SerializeField]
     private GameObject MagnetS;
 
-    [SerializeField]
-    private GameObject MagnetN;
-
-    [SerializeField]
-    private GameObject MagnetNon;
-
-    ////生成する敵オブジェクト
     //[SerializeField]
-    //private GameObject EnemyMagnetS;
+    //private GameObject MagnetN;
+
+    //[SerializeField]
+    //private GameObject MagnetNon;
+
+    //生成する敵オブジェクト
+    [SerializeField]
+    private GameObject EnemyMagnet;
 
     //[SerializeField]
     //private GameObject EnemyMagnetN;
@@ -47,72 +47,44 @@ public class MagnetManager : MonoBehaviour
             }
         }
 
-        foreach (Transform child in MagnetN.GetComponentsInChildren<Transform>())
+        //foreach (Transform child in MagnetN.GetComponentsInChildren<Transform>())
+        //{
+        //    GameObject childObject = child.gameObject;
+        //    MagnetUpdateData magnetUpData = new MagnetUpdateData();
+        //    magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
+        //    magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
+
+        //    if (childObject.name != MagnetN.name)
+        //    {
+        //        gbMagnet.Add(magnetUpData);
+        //    }
+        //}
+
+        //foreach (Transform child in MagnetNon.GetComponentsInChildren<Transform>())
+        //{
+        //    GameObject childObject = child.gameObject;
+        //    MagnetUpdateData magnetUpData = new MagnetUpdateData();
+        //    magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
+        //    magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
+
+        //    if (childObject.name != MagnetNon.name)
+        //    {
+        //        gbMagnet.Add(magnetUpData);
+        //    }
+        //}
+
+        foreach (Transform child in EnemyMagnet.transform)
         {
             GameObject childObject = child.gameObject;
             MagnetUpdateData magnetUpData = new MagnetUpdateData();
             magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
             magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
 
-            if (childObject.name != MagnetN.name)
+            if (childObject.name != EnemyMagnet.name)
             {
                 gbMagnet.Add(magnetUpData);
             }
         }
-
-        foreach (Transform child in MagnetNon.GetComponentsInChildren<Transform>())
-        {
-            GameObject childObject = child.gameObject;
-            MagnetUpdateData magnetUpData = new MagnetUpdateData();
-            magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
-            magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
-
-            if (childObject.name != MagnetNon.name)
-            {
-                gbMagnet.Add(magnetUpData);
-            }
-        }
-
-
-        ////敵
-        //foreach (Transform child in EnemyMagnetS.GetComponentsInChildren<Transform>())
-        //{
-        //    GameObject childObject = child.gameObject;
-        //    MagnetUpdateData magnetUpData = new MagnetUpdateData();
-        //    magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
-        //    magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
-
-        //    if (childObject.name != EnemyMagnetS.name)
-        //    {
-        //        gbMagnet.Add(magnetUpData);
-        //    }
-        //}
-
-        //foreach (Transform child in EnemyMagnetN.GetComponentsInChildren<Transform>())
-        //{
-        //    GameObject childObject = child.gameObject;
-        //    MagnetUpdateData magnetUpData = new MagnetUpdateData();
-        //    magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
-        //    magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
-
-        //    if (childObject.name != EnemyMagnetN.name)
-        //    {
-        //        gbMagnet.Add(magnetUpData);
-        //    }
-        //}
-
-        //foreach (Transform child in EnemyMagnetNon.GetComponentsInChildren<Transform>())
-        //{
-        //    GameObject childObject = child.gameObject;
-        //    MagnetUpdateData magnetUpData = new MagnetUpdateData();
-        //    magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
-        //    magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
-
-        //    if (childObject.name != EnemyMagnetNon.name)
-        //    {
-        //        gbMagnet.Add(magnetUpData);
-        //    }
-        //}
     }
 
     //対象のオブジェクトを取得
@@ -134,7 +106,6 @@ public class MagnetManager : MonoBehaviour
                 Rgb.Add(item);
             }
         }
-
         return Rgb;
     }
 

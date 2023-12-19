@@ -55,6 +55,10 @@ public class Magnet : MonoBehaviour
         set => Type = value;
     }
 
+    //敵の反転
+    public bool inversion = false;
+    public bool notType = false;
+
     public string Gat_Magnet()
     {
         return Type.ToString();
@@ -91,8 +95,6 @@ public class Magnet : MonoBehaviour
     //箱と弾の判定
     void OnCollisionEnter2D(Collision2D collision)
     {
-
-       
         if (collision.gameObject.tag == "RedBullet")
         {
             SetType_Magnat(Type_Magnet.N);
@@ -119,6 +121,7 @@ public class Magnet : MonoBehaviour
         SetType_Magnat(Type);
 
     }
+    public float a;
 
     private void FixedUpdate()
     {
@@ -147,7 +150,7 @@ public class Magnet : MonoBehaviour
             vector_tocl = pair.gbRid.position;
 
             //タイルマップ用：タイルマップに対応可能かわかんない
-            if (pair.Til != null) 
+            if (pair.Til != null)
             {
 
                 //int torTilx = (int)pair.gbRid.position.x;
@@ -180,18 +183,37 @@ public class Magnet : MonoBehaviour
             Vector2 force = new Vector2();
             force = direction.normalized * magneticForce;
 
+
+            a = magneticForce;
+
             //相手と同じ極だった場合反転
             if (Type == pair.gbMagnet.Type)
             {
                 force *= -1;
+
+                notType = false;
             }
+            else
+            {
+                notType = true;
+            }
+            //磁力が一定以上か
+            if (magneticForce > 4)
+            {
+                inversion = true;
+            }
+            else
+            {
+                inversion = false;
+                notType = false;
+            }
+
+
+
+
 
             //力を加える
             pair.gbRid.AddForce(force);
         }
-
     }
-
-
-
 }

@@ -206,7 +206,7 @@ public class Player_Move : MonoBehaviour
 
         rb.velocity = velocity;
 
-        Debug.Log(floorVelocity);
+        //Debug.Log(floorVelocity);
     }
 
     private void PlayerJump()
