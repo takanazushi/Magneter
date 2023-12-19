@@ -19,6 +19,9 @@ public class MagLaserVar_Shot : MonoBehaviour
     [SerializeField,Header("判定するレイヤー")]
     LayerMask mask;
 
+    [SerializeField,Header("Muzzle2のオブジェクト")]
+    GameObject Muzzle;
+
     /// <summary>
     /// プレイヤー位置→マウス位置方向ベクトル
     /// </summary>
@@ -119,7 +122,10 @@ public class MagLaserVar_Shot : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //プレイヤーの位置からマウスの位置に向かう方向ベクトル計算
-        aimDirection = (mousePosition - this.transform.position).normalized;
+        //aimDirection = (mousePosition - this.transform.position).normalized;
+
+        //ノズルの位置からノズル2に向かう方向ベクトル計算
+        aimDirection = (this.transform.position - Muzzle.transform.position).normalized;
 
         //ベクトルから角度を取得(ラジアン角)
         angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;

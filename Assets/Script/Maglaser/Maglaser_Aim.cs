@@ -44,7 +44,7 @@ public class Maglaser_Aim : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //自分の位置からマウスの位置に向かうベクトル計算
-        Vector3 aimDirection = (mousePosition - transform.position).normalized;
+        Vector3 aimDirection = (mousePosition - transform.parent.position).normalized;
 
         //右方向基準でなす角度
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
