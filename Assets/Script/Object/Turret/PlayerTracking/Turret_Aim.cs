@@ -10,14 +10,24 @@ public class Turret_Aim : MonoBehaviour
     [SerializeField, Header("目標になるオブジェクトのトランスフォーム")]
     private Transform ballTrans; // ターゲットのオブジェクトのトランスフォーム
 
+    [SerializeField, Header("軸の最大回転角度")]
+    private float maxRotation;
 
+    [SerializeField, Header("軸の最低回転角度")]
+    private float minRotation;
 
     private void Update()
     {
+        //todo
         // 向きたい方向を計算
         Vector3 dir = (ballTrans.position - arrowTrans.position);
+        
+        // 回転を制限する
+        float angle = Vector3.Angle(Vector3.right, dir);
+        float sign = Mathf.Sign(Vector3.Cross(Vector3.right, dir).y);
+        angle = Mathf.Clamp(angle * sign, minRotation, maxRotation);
 
-        // ここで向きたい方向に回転させてます
-        arrowTrans.rotation = Quaternion.FromToRotation(new Vector3(1,0,0), dir);
+        // 回転を適用
+        transform.rotation = Quaternion.Euler(0, 0, -angle);
     }
 }

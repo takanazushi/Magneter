@@ -27,6 +27,12 @@ public class Turret_FollowerBullet : MonoBehaviour
 
         // ’e‚Ì•ûŒü‚ðŽ©‹@‚©‚ç“G‚ÖŒü‚¯‚é
         bulletDirection = target.position - transform.position;
+
+        //todo ’e‚Ì”­ŽËŠp“x‚Ì§ŒÀ
+        if(bulletDirection.y > -5)
+        {
+            bulletDirection.y = -5;
+        }
     }
 
     //‰æ–Ê“à‚Å“®‚©‚·
@@ -56,9 +62,7 @@ public class Turret_FollowerBullet : MonoBehaviour
             rb.velocity = bulletDirection * moveSpeed;
 
             //10•bŒã‚É–C’e‚ð”j‰ó‚·‚é
-            Destroy(gameObject, 10.0f);
-        }
-
-           
+            Destroy(gameObject, 5.0f);
+        }   
     }
 }

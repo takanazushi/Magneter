@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5213688535224852550}
   - component: {fileID: 2414243557055720073}
   - component: {fileID: 5630410569457155462}
+  - component: {fileID: 7232370711571217308}
   m_Layer: 0
   m_Name: NozuleAim
   m_TagString: Untagged
@@ -97,7 +98,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b4b97cc07e541347908d6a7f6160162, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BulletObj: {fileID: 0}
+  BulletObj: {fileID: 5655268590565049571, guid: 2f9dab39f28120a4ab168dedf045585e, type: 3}
+--- !u!114 &7232370711571217308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2431643025639154692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efef395b69e7fa447b47489ad3232b29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arrowTrans: {fileID: 5213688535224852550}
+  ballTrans: {fileID: 0}
+  maxRotation: 140
+  minRotation: 45
 --- !u!1 &6101737914116477345
 GameObject:
   m_ObjectHideFlags: 0
@@ -108,7 +125,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2542064810017808643}
   - component: {fileID: 6117947920696982812}
-  - component: {fileID: 3275767812785575980}
   m_Layer: 0
   m_Name: Turret_WithAim
   m_TagString: Untagged
@@ -184,17 +200,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &3275767812785575980
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6101737914116477345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efef395b69e7fa447b47489ad3232b29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  arrowTrans: {fileID: 0}
-  ballTrans: {fileID: 0}
