@@ -20,6 +20,15 @@ public class MagnetManager : MonoBehaviour
     [SerializeField]
     private GameObject MagnetNon;
 
+    //生成する敵オブジェクト
+    [SerializeField]
+    private GameObject EnemyMagnet;
+
+    [SerializeField]
+    private GameObject EnemyMagnetN;
+
+    [SerializeField]
+    private GameObject EnemyMagnetNon;
 
     private void Awake()
     {
@@ -76,8 +85,21 @@ public class MagnetManager : MonoBehaviour
                 {
                     gbMagnet.Add(magnetUpData);
                 }
-            }
 
+            }
+        }
+
+        foreach (Transform child in EnemyMagnet.transform)
+        {
+            GameObject childObject = child.gameObject;
+            MagnetUpdateData magnetUpData = new MagnetUpdateData();
+            magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
+            magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
+
+            if (childObject.name != EnemyMagnet.name)
+            {
+                gbMagnet.Add(magnetUpData);
+            }
         }
     }
 
@@ -101,7 +123,6 @@ public class MagnetManager : MonoBehaviour
                 Rgb.Add(item);
             }
         }
-
         return Rgb;
     }
 

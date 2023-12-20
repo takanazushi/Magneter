@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_WalkFall : MonoBehaviour
@@ -10,36 +8,55 @@ public class Enemy_WalkFall : MonoBehaviour
     [SerializeField, Header("“G‚Ì‘¬“x")]
     private float speed;
 
+    /// <summary>
+    /// ¶Œü‚«ƒtƒ‰ƒO
+    /// </summary>
     [SerializeField]
-    private bool Left;//¶Œü‚«
+    private bool Left = false;
 
-    ////[Header("ÚG”»’è")] 
-    //public Enemy_hanten checkhanten;
+    [Header("ÚG”»’è")]
+    private Magnet magnet;
+
+    /// <summary>
+    /// ¥—Í‚Ì‰e‹¿”ÍˆÍ“à‚©?
+    /// </summary>
+    public bool inversionWalk = true;
 
     private Rigidbody2D rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        magnet=GetComponent<Magnet>();
     }
 
     // •¨—‰‰Z‚ğ‚µ‚½‚¢ê‡‚ÌFixedUpdate
     void FixedUpdate()
     {
-        //if (checkhanten.isOn)
-        //{
-        //    Left = !Left;
-        //}
-
-        //‰EˆÚ“®
-        if (!Left)
+        if (inversionWalk && magnet.inversion)
         {
-            rb.velocity = new Vector2(speed, rb.velocity.y);
+            inversionWalk = false;
+            Left = !Left;
         }
-        //¶ˆÚ“®
-        else
+        else if (!magnet.inversion)
         {
-            rb.velocity = new Vector2(-speed, rb.velocity.y);
+            inversionWalk = true;
+        }
+
+        if (!magnet.inversion && !magnet.notType)     
+        {
+            //¶ˆÚ“®
+            if (Left)
+            {
+                rb.velocity = new Vector2(-speed, rb.velocity.y);
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            //‰EˆÚ“®
+            else
+            {
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
         }
 
         ////—‰ºŒã‚™‚ª-10“_‚Åíœ
@@ -48,10 +65,11 @@ public class Enemy_WalkFall : MonoBehaviour
         //    Destroy(this.gameObject);
         //}
     }
-
-    //todo G‚ê‚½
+    
     private void OnCollisionEnter2D(Collision2D collision)
     {
+
+
         //°‚Æ‚Ìˆ—‚Í–³‹
         if (collision.gameObject.name == "Floor")
         {
@@ -78,6 +96,11 @@ public class Enemy_WalkFall : MonoBehaviour
         //{
         //    Left = (Left == true) ? false : true;
         //}
-    }
 
+        Left = !Left;
+        if (magnet.inversion)
+        {
+            inversionWalk = true;
+        }
+    }
 }

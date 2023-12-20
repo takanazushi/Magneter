@@ -3,6 +3,8 @@ using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
+using Unity.Jobs;
+using Unity.VisualScripting;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using UnityEngine.U2D;
@@ -52,6 +54,27 @@ public class Magnet : MonoBehaviour
         get => Type;
         set => Type = value;
     }
+    //磁気の強さ
+    [SerializeField]
+    private float Power;
+
+    //敵の反転
+
+    /// <summary>
+    /// 磁力の影響を一定以上受けているときtrue
+    /// </summary>
+    public bool inversion = false;
+
+    /// <summary>
+    /// 
+    /// </summary>
+    public bool notType = false;
+
+    //public string Gat_Magnet()
+    //{
+    //    return Type.ToString();
+    //}
+    public float a;
 
     /// <summary>
     /// 磁力影響値（受ける強さ）
@@ -85,6 +108,41 @@ public class Magnet : MonoBehaviour
         Type = Type_Magnet.None;
         Type_Fixed = false;
     }
+        Type = type;
+        switch (Type)
+        {
+            //S極は青
+            case Type_Magnet.S:
+                MainSpriteRenderer.sprite = MagnetS;
+                //Renderer.color = Color.blue;
+                break;
+            //N極は赤
+            case Type_Magnet.N:
+                MainSpriteRenderer.sprite = MagnetN;
+                //Renderer.color = Color.red;
+                break;
+            //なしは白
+            case Type_Magnet.None:
+                MainSpriteRenderer.sprite = MagnetNone;
+                //Renderer.color = Color.white;
+                break;
+        }
+    }
+
+    //箱と弾の判定
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "RedBullet")
+        {
+            SetType_Magnat(Type_Magnet.N);
+            Debug.Log("当たった");
+        }
+        else if (collision.gameObject.tag == "BlueBullet")
+        {
+            SetType_Magnat(Type_Magnet.S);
+        }
+    }
+
 
     private void Start()
     {
@@ -144,9 +202,35 @@ public class Magnet : MonoBehaviour
 
             //力を加える
             pair.gbRid.velocity += force;
+        a = magneticForce;
 
-            //デバック用保存
-            Debagu_list.Add(pair.gbRid.transform);
+        //相手と同じ極だった場合反転
+        if (Type == pair.gbMagnet.Type)
+        {
+            force *= -1;
+
+            notType = false;
+        }
+        else
+        {
+            notType = true;
+        }
+        //磁力が一定以上か
+        if (magneticForce > 4)
+        {
+            Debug.Log("inversion=true");
+            inversion = true;
+        }
+        else
+        {
+            inversion = false;
+            notType = false;
+        }
+
+
+
+        //デバック用保存
+        Debagu_list.Add(pair.gbRid.transform);
         }
 
     }
@@ -228,6 +312,7 @@ public class Magnet : MonoBehaviour
         {
             _target = target as Magnet;
         }
+
 
         public override void OnInspectorGUI()
         {
