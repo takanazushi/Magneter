@@ -959,11 +959,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 388086391088916737, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.5
+      value: 3.2642
       objectReference: {fileID: 0}
     - target: {fileID: 388086391088916737, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.5
+      value: 1.36585
       objectReference: {fileID: 0}
     - target: {fileID: 388086391088916737, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_LocalScale.z
@@ -971,11 +971,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 388086391088916737, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.37
+      value: -0.66
       objectReference: {fileID: 0}
     - target: {fileID: 388086391088916737, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.6
+      value: 3.2
       objectReference: {fileID: 0}
     - target: {fileID: 388086391088916737, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1028,6 +1028,10 @@ PrefabInstance:
     - target: {fileID: 944762329857897272, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305204283894817459, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: m_Constraints
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1310,6 +1314,10 @@ PrefabInstance:
       propertyPath: magnetManager
       value: 
       objectReference: {fileID: 981364971}
+    - target: {fileID: 5592942950471758608, guid: b9cf16c80e41e9a4fb079d82e0715a81, type: 3}
+      propertyPath: Hit_Damage
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8327016907053793865, guid: b9cf16c80e41e9a4fb079d82e0715a81, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.497
@@ -1356,7 +1364,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2412844474934746772, guid: b9cf16c80e41e9a4fb079d82e0715a81, type: 3}
-      insertIndex: -1
+      insertIndex: 5
       addedObject: {fileID: 8327016906478664853}
   m_SourcePrefab: {fileID: 100100000, guid: b9cf16c80e41e9a4fb079d82e0715a81, type: 3}
 --- !u!1 &929100849
@@ -1822,6 +1830,10 @@ PrefabInstance:
     - target: {fileID: 3883008178470465154, guid: b9cf16c80e41e9a4fb079d82e0715a81, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4281803212786208870, guid: b9cf16c80e41e9a4fb079d82e0715a81, type: 3}
+      propertyPath: Type
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4281803212786208870, guid: b9cf16c80e41e9a4fb079d82e0715a81, type: 3}
       propertyPath: Power
@@ -2350,7 +2362,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e34230cdb7aada44be397dba1e7d7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnet: {fileID: 266610155}
 --- !u!1 &1959661565
 GameObject:
   m_ObjectHideFlags: 0
@@ -3381,7 +3392,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5e34230cdb7aada44be397dba1e7d7a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  magnet: {fileID: 4281803213368700603}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

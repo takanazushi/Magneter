@@ -19,15 +19,6 @@ public class Enemy_hanten : MonoBehaviour
         Magnet magnet = collision.gameObject.GetComponent<Magnet>();
         //親オブジェクトを取得
         parent = transform.root.gameObject;
-        //親のマグネット属性と衝突したマグネットの属性が一緒の場合
-        //if (parent.gameObject.GetComponent<Magnet>().Gat_Magnet() == magnet.Gat_Magnet())
-        //{
-        //    isOn = true;
-        //}
-        //else //if(parent.gameObject.GetComponent<Magnet>().Gat_Magnet() != magnet.Gat_Magnet())
-        //{
-        //    isOn = false;
-        //}
     }
 
     private void OnTriggerExit2D(Collider2D collision)

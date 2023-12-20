@@ -54,15 +54,27 @@ public class Magnet : MonoBehaviour
         get => Type;
         set => Type = value;
     }
+    //磁気の強さ
+    [SerializeField]
+    private float Power;
 
     //敵の反転
+
+    /// <summary>
+    /// 磁力の影響を一定以上受けているときtrue
+    /// </summary>
     public bool inversion = false;
+
+    /// <summary>
+    /// 
+    /// </summary>
     public bool notType = false;
 
     //public string Gat_Magnet()
     //{
     //    return Type.ToString();
     //}
+    public float a;
 
     //極によって自分の色を変更する（仮）
     //type：指定した極
@@ -106,9 +118,6 @@ public class Magnet : MonoBehaviour
         }
     }
 
-    //磁気の強さ
-    [SerializeField]
-    private float Power;
 
 
 
@@ -121,7 +130,6 @@ public class Magnet : MonoBehaviour
         SetType_Magnat(Type);
 
     }
-    public float a;
 
     private void FixedUpdate()
     {
@@ -200,6 +208,7 @@ public class Magnet : MonoBehaviour
             //磁力が一定以上か
             if (magneticForce > 4)
             {
+                Debug.Log("inversion=true");
                 inversion = true;
             }
             else

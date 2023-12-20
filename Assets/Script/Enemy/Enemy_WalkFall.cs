@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using static Magnet;
 
 public class Enemy_WalkFall : MonoBehaviour
 {
     [SerializeField, Header("“G‚Ì‘¬“x")]
     private float speed = 1;
 
+    /// <summary>
+    /// ¶Œü‚«ƒtƒ‰ƒO
+    /// </summary>
     [SerializeField]
-    private bool Left = false;//¶Œü‚«
+    private bool Left = false;
 
     [Header("ÚG”»’è")]
-    public Magnet magnet;
+    private Magnet magnet;
 
-    //¥—Í‚Ì‰e‹¿”ÍˆÍ“à‚©
+    /// <summary>
+    /// ¥—Í‚Ì‰e‹¿”ÍˆÍ“à‚©?
+    /// </summary>
     public bool inversionWalk = true;
 
     private Rigidbody2D rb;
@@ -23,6 +24,7 @@ public class Enemy_WalkFall : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        magnet=GetComponent<Magnet>();
     }
 
     // •¨—‰‰Z‚ğ‚µ‚½‚¢ê‡‚ÌFixedUpdate
@@ -38,19 +40,19 @@ public class Enemy_WalkFall : MonoBehaviour
             inversionWalk = true;
         }
 
-        if (!magnet.inversion || !magnet.inversion && !magnet.notType)     
+        if (!magnet.inversion && !magnet.notType)     
         {
-            //‰EˆÚ“®
-            if (!Left)
-            {
-                rb.velocity = new Vector2(speed, rb.velocity.y);
-                transform.localScale = new Vector3(-1, 1, 1);
-            }
             //¶ˆÚ“®
-            else
+            if (Left)
             {
                 rb.velocity = new Vector2(-speed, rb.velocity.y);
                 transform.localScale = new Vector3(1, 1, 1);
+            }
+            //‰EˆÚ“®
+            else
+            {
+                rb.velocity = new Vector2(speed, rb.velocity.y);
+                transform.localScale = new Vector3(-1, 1, 1);
             }
         }
 
