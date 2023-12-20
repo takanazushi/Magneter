@@ -14,10 +14,15 @@ public class Turret_Aim : MonoBehaviour
 
     private void Update()
     {
+        RotateArrow();
+    }
+
+    private void RotateArrow()
+    {
         // Œü‚«‚½‚¢•ûŒü‚ðŒvŽZ
         Vector3 dir = (ballTrans.position - arrowTrans.position);
 
         // ‚±‚±‚ÅŒü‚«‚½‚¢•ûŒü‚É‰ñ“]‚³‚¹‚Ä‚Ü‚·
-        arrowTrans.rotation = Quaternion.FromToRotation(new Vector3(1,0,0), dir);
+        arrowTrans.rotation = Quaternion.FromToRotation(new Vector3(1, 0, 0), dir);
     }
 }
