@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
+//todo:使用してないみたいです
 public class Enemy_hanten : MonoBehaviour
 {
-    //このスクリプト使ってません。
     ///// <summary>
     ///// 判定内に敵か壁がある
     ///// </summary>
-    //[HideInInspector] public bool isOn = false;
+    [HideInInspector] public bool isOn = false;
 
     private GameObject parent;
 

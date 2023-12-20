@@ -10,119 +10,117 @@ public class MagnetManager : MonoBehaviour
      , Tooltip("手動設定可能です")]
     List<MagnetUpdateData> gbMagnet;
 
-    //生成するオブジェクト
     [SerializeField]
-    private GameObject MagnetS;
+    List<Transform> Magne_Parent;
 
-    [SerializeField]
-    private GameObject MagnetN;
+    //[SerializeField]
+    //private GameObject MagnetS;
 
-    [SerializeField]
-    private GameObject MagnetNon;
+    //[SerializeField]
+    //private GameObject MagnetN;
 
-    //生成する敵オブジェクト
-    [SerializeField]
-    private GameObject EnemyMagnet;
+    //[SerializeField]
+    //private GameObject MagnetNon;
 
-    [SerializeField]
-    private GameObject EnemyMagnetN;
+    ////生成する敵オブジェクト
+    //[SerializeField]
+    //private GameObject EnemyMagnet;
 
-    [SerializeField]
-    private GameObject EnemyMagnetNon;
+    //[SerializeField]
+    //private GameObject EnemyMagnetN;
+
+    //[SerializeField]
+    //private GameObject EnemyMagnetNon;
 
     private void Awake()
     {
-        //子オブジェクトのRigidbody2DとMagnetを取得しリストに登録
-        if (MagnetS)
+        //子オブジェクトのRigidbody2D,Magnet,tagを取得しリストに登録
+        if (Magne_Parent.Count != 0)
         {
-            foreach (Transform child in MagnetS.GetComponentsInChildren<Transform>())
+            foreach (Transform mg_child in Magne_Parent)
             {
-                GameObject childObject = child.gameObject;
-                MagnetUpdateData magnetUpData = new()
-                {
-                    gbMagnet = childObject.GetComponent<Magnet>(),
-                    gbRid = childObject.GetComponent<Rigidbody2D>()
-                };
+                if (mg_child == null) { Debug.Log("mag__Parent"); continue; }
 
-                if (childObject.name != MagnetS.name)
+                foreach (Transform child in mg_child.GetComponentsInChildren<Transform>())
                 {
-                    gbMagnet.Add(magnetUpData);
-                }
-            }
-        }
+                    if (child == null) { Debug.Log("mg_child"); continue; }
 
-        if (MagnetN)
-        {
-            foreach (Transform child in MagnetN.GetComponentsInChildren<Transform>())
-            {
-                GameObject childObject = child.gameObject;
-                MagnetUpdateData magnetUpData = new()
-                {
-                    gbMagnet = childObject.GetComponent<Magnet>(),
-                    gbRid = childObject.GetComponent<Rigidbody2D>()
-                };
+                    GameObject childObject = child.gameObject;
 
-                if (childObject.name != MagnetN.name)
-                {
-                    gbMagnet.Add(magnetUpData);
-                }
-            }
+                    //親オブジェクトの場合はスキップ
+                    if (childObject.name == mg_child.name) { continue; }
 
-        }
+                    //情報取得
+                    MagnetUpdateData magnetUpData = new()
+                    {
+                        gbMagnet = childObject.GetComponent<Magnet>(),
+                        gbRid = childObject.GetComponent<Rigidbody2D>(),
+                        gbtag = childObject.tag
+                    };
 
-        if (MagnetNon)
-        {
-            foreach (Transform child in MagnetNon.GetComponentsInChildren<Transform>())
-            {
-                GameObject childObject = child.gameObject;
-                MagnetUpdateData magnetUpData = new()
-                {
-                    gbMagnet = childObject.GetComponent<Magnet>(),
-                    gbRid = childObject.GetComponent<Rigidbody2D>()
-                };
+                    //取得失敗
+                    if(magnetUpData.gbMagnet==null||
+                        magnetUpData.gbRid == null)
+                    {
+                        continue;
+                    }
 
-                if (childObject.name != MagnetNon.name)
-                {
                     gbMagnet.Add(magnetUpData);
                 }
 
+
+
+
             }
+
         }
 
-        foreach (Transform child in EnemyMagnet.transform)
-        {
-            GameObject childObject = child.gameObject;
-            MagnetUpdateData magnetUpData = new MagnetUpdateData();
-            magnetUpData.gbMagnet = childObject.GetComponent<Magnet>();
-            magnetUpData.gbRid = childObject.GetComponent<Rigidbody2D>();
-
-            if (childObject.name != EnemyMagnet.name)
-            {
-                gbMagnet.Add(magnetUpData);
-            }
-        }
     }
 
-    //対象のオブジェクトを取得
-    //pos：範囲の中心位置
-    //len：範囲の半径
-    public List<MagnetUpdateData> GetSearchMagnet(Vector2 pos, float len)
+    /// <summary>
+    /// マグネット対象のオブジェクトを取得
+    /// </summary>
+    /// <param name="pos">範囲の中心位置</param>
+    /// <param name="len">範囲の半径</param>
+    /// <param name="tag">除外タグ</param>
+    /// <returns>対象のオブジェクト</returns>
+    public List<MagnetUpdateData> GetSearchMagnet(Vector2 pos, float len, string[] tag=null)
     {
         List<MagnetUpdateData> Rgb = new();
 
         foreach (MagnetUpdateData item in gbMagnet)
         {
-            Type_Magnet type_ = item.gbMagnet.PuroTypeManet;
-            //範囲内and
-            //極がなし、例外でない場合
-            //の場合リストに追加
-            if (type_ != Type_Magnet.None &&
-                type_ != Type_Magnet.Exc &&
-                len * len >= (item.gbRid.position - pos).sqrMagnitude)
+            bool hit = false;
+            //タグが一致した場合除外
+            if (tag != null)
             {
-                Rgb.Add(item);
+                foreach(string t_itemin in tag)
+                {
+                    if (item.gbtag == t_itemin)
+                    {
+                        hit = true;
+                        break;
+                    }
+                }
+            }
+
+            if (!hit)
+            {
+
+                Type_Magnet type_ = item.gbMagnet.PuroTypeManet;
+                //範囲内and
+                //極がなし、例外でない場合
+                //の場合リストに追加
+                if (type_ != Type_Magnet.None &&
+                    type_ != Type_Magnet.Exc &&
+                    len * len >= (item.gbRid.position - pos).sqrMagnitude)
+                {
+                    Rgb.Add(item);
+                }
             }
         }
+
+
         return Rgb;
     }
 

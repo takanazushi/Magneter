@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8327016907053793865}
   - component: {fileID: 8001582600833236208}
   - component: {fileID: 4364668432539105345}
-  - component: {fileID: 5675546312895367577}
+  - component: {fileID: 944322132094441464}
   - component: {fileID: 4281803212786208870}
   - component: {fileID: 3567735387343653551}
   - component: {fileID: 5592942950471758608}
@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 2412844474934746772}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.497, y: -0.82162094, z: -0.28066412}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.032, y: -0.703, z: -0.28066412}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6536637670624250564}
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 25d9c8bca30151f4d84b2dbdc98a4797, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 0.98039216}
   m_FlipX: 0
   m_FlipY: 0
@@ -118,7 +118,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5675546312895367577
+--- !u!61 &944322132094441464
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,18 +150,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.46}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 3.89, y: 4.21}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 3.18, y: 3.3}
   m_EdgeRadius: 0
 --- !u!114 &4281803212786208870
 MonoBehaviour:
@@ -182,7 +182,11 @@ MonoBehaviour:
   LenMagnrt: 10
   Type: 1
   inversion: 0
+  notType: 0
+  a: 0
   Power: 10
+  Type_Fixed: 0
+  Debagu_fla: 0
 --- !u!114 &3567735387343653551
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,7 +201,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 1
   Left: 0
-  magnet: {fileID: 0}
+  inversionWalk: 1
 --- !u!114 &5592942950471758608
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -3,11 +3,8 @@ using System.Collections.Generic;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
-using Unity.Jobs;
-using Unity.VisualScripting;
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
-using UnityEngine.U2D;
+using static UnityEditor.Progress;
 
 //マグネット
 public class Magnet : MonoBehaviour
@@ -31,11 +28,6 @@ public class Magnet : MonoBehaviour
     //影響を与えられる範囲
     [SerializeField]
     private float LenMagnrt;
-    public float PuroLengthMagnrt
-    {
-        get => LenMagnrt;
-        set => LenMagnrt = value;
-    }
 
     //極の種類
     public enum Type_Magnet
@@ -54,27 +46,6 @@ public class Magnet : MonoBehaviour
         get => Type;
         set => Type = value;
     }
-    //磁気の強さ
-    [SerializeField]
-    private float Power;
-
-    //敵の反転
-
-    /// <summary>
-    /// 磁力の影響を一定以上受けているときtrue
-    /// </summary>
-    public bool inversion = false;
-
-    /// <summary>
-    /// 
-    /// </summary>
-    public bool notType = false;
-
-    //public string Gat_Magnet()
-    //{
-    //    return Type.ToString();
-    //}
-    public float a;
 
     /// <summary>
     /// 磁力影響値（受ける強さ）
@@ -89,8 +60,15 @@ public class Magnet : MonoBehaviour
     [SerializeField]
     private bool Type_Fixed;
 
-    
-    [SerializeField]
+    /// <summary>
+    /// マグネットの計算を行うか
+    /// </summary>
+    private bool Magnet_Updetaflg;
+
+    /// <summary>
+    /// デバックフラグ
+    /// </summary>
+    [SerializeField,Header("デバック表示")]
     private bool Debagu_fla;
     
     /// <summary>
@@ -107,42 +85,23 @@ public class Magnet : MonoBehaviour
         Power = 1;
         Type = Type_Magnet.None;
         Type_Fixed = false;
-    }
-        Type = type;
         switch (Type)
         {
             //S極は青
             case Type_Magnet.S:
                 MainSpriteRenderer.sprite = MagnetS;
-                //Renderer.color = Color.blue;
                 break;
             //N極は赤
             case Type_Magnet.N:
                 MainSpriteRenderer.sprite = MagnetN;
-                //Renderer.color = Color.red;
                 break;
             //なしは白
             case Type_Magnet.None:
                 MainSpriteRenderer.sprite = MagnetNone;
-                //Renderer.color = Color.white;
                 break;
         }
-    }
 
-    //箱と弾の判定
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "RedBullet")
-        {
-            SetType_Magnat(Type_Magnet.N);
-            Debug.Log("当たった");
-        }
-        else if (collision.gameObject.tag == "BlueBullet")
-        {
-            SetType_Magnat(Type_Magnet.S);
-        }
     }
-
 
     private void Start()
     {
@@ -151,10 +110,21 @@ public class Magnet : MonoBehaviour
 
         //極に合わせて色を変える
         SetSprite();
+
+        //この、コンポーネントがある場合FixedUpdateを行わない
+        if (GetComponent<Enemy_WalkFall>())
+        {
+            Magnet_Updetaflg = true;
+        }
     }
 
     private void FixedUpdate()
     {
+        if (Magnet_Updetaflg)
+        {
+            return;
+        }
+
         //デバック用データ初期化
         Debagu_list.Clear();
 
@@ -202,35 +172,9 @@ public class Magnet : MonoBehaviour
 
             //力を加える
             pair.gbRid.velocity += force;
-        a = magneticForce;
 
-        //相手と同じ極だった場合反転
-        if (Type == pair.gbMagnet.Type)
-        {
-            force *= -1;
-
-            notType = false;
-        }
-        else
-        {
-            notType = true;
-        }
-        //磁力が一定以上か
-        if (magneticForce > 4)
-        {
-            Debug.Log("inversion=true");
-            inversion = true;
-        }
-        else
-        {
-            inversion = false;
-            notType = false;
-        }
-
-
-
-        //デバック用保存
-        Debagu_list.Add(pair.gbRid.transform);
+            //デバック用保存
+            Debagu_list.Add(pair.gbRid.transform);
         }
 
     }
@@ -249,6 +193,57 @@ public class Magnet : MonoBehaviour
                 Gizmos.DrawLine(transform.position, pair.transform.position);
             }
         }
+    }
+
+    /// <summary>
+    /// 自分が受ける影響の合算を取得
+    /// </summary>
+    /// <param name="tag">除外タグ</param>
+    /// <returns>受ける影響値</returns>
+    public Vector2 Magnet_Power(string[] tag=null)
+    {
+        Vector2 force = Vector2.zero;
+
+        //対象のオブジェクト取得
+        List<MagnetUpdateData> list = magnetManager.GetSearchMagnet(this.transform.position, LenMagnrt, tag);
+
+        foreach (MagnetUpdateData pair in list)
+        {
+            //オブジェクトが
+            //orマグネットではない場合※多分ない、一応
+            //or自分の場合
+            //は処理せず次へ
+            if (pair.gbMagnet == null ||
+                name == pair.gbRid.name)
+            {
+                continue;
+            }
+
+            //マグネット位置
+            Vector2 vector_tocl = pair.gbRid.position;
+
+            //磁力の方向を計算
+            Vector2 direction = vector_tocl - (Vector2)transform.position;
+
+            // 磁場の影響度を計算(距離の二乗に反比例)
+            float magneticForce = pair.gbMagnet.Power / direction.sqrMagnitude;
+
+            //与える力
+            Vector2 pair_force = direction * magneticForce;
+
+            //相手と同じ極だった場合反転
+            if (Type == pair.gbMagnet.Type)
+            {
+                pair_force *= -1;
+            }
+
+            //くりっぴんぐ
+            pair_force = Vector2.ClampMagnitude(pair_force, 5.0f);
+
+            force += pair_force;
+        }
+
+        return force;
     }
 
     /// <summary>

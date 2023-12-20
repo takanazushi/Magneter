@@ -3,6 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using static Magnet;
 
+/// <summary>
+/// 接触したマグネット磁気を自身と同じにする
+/// 名前変更した方がいいかも
+/// </summary>
 [RequireComponent(typeof(Magnet))]
 public class Enemy_Magnet : MonoBehaviour
 {
@@ -29,9 +33,6 @@ public class Enemy_Magnet : MonoBehaviour
                 // 極の種類を設定
                 collisionMagnet.SetType_Magnat(magnet.PuroTypeManet);
             }
-
-            //デバッグ表示
-            Debug.Log("敵が箱に磁力付与！");
         }
     }
 
