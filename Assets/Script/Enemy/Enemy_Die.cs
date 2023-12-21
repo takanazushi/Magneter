@@ -18,8 +18,14 @@ public class Enemy_Die : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Enemyタグを持つオブジェクトとの当たり判定を無視
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
+
         if (collision.gameObject.name != parent.name && collision.gameObject.name != "Player" &&
-            collision.gameObject.tag != "BlueBllet" && collision.gameObject.tag != "RedBullet")  
+            !collision.gameObject.CompareTag("Enemy"))  
         {
             Debug.Log("Enemyめり込んだ" + collision.gameObject.name);
 
@@ -29,6 +35,12 @@ public class Enemy_Die : MonoBehaviour
     }    
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            // Enemyタグを持つオブジェクトとの当たり判定を無視
+            Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+        }
+
         //if (collision.gameObject.name != parent.name && collision.gameObject.name != "Player" &&
         //    collision.gameObject.tag != "BlueBllet" && collision.gameObject.tag != "RedBullet")  
         //{
@@ -38,7 +50,7 @@ public class Enemy_Die : MonoBehaviour
         //    //DestroyObject(parent, despawnTime);
         //}
         //電気床の処理  GameObject Electric Floorは仮で作りました
-        if(collision.gameObject.name == "Electric Floor")
+        if (collision.gameObject.name == "Electric Floor")
         {
             //触れた敵を消去
             Destroy(gameObject);

@@ -31,11 +31,6 @@ public class Magnet : MonoBehaviour
     //影響を与えられる範囲
     [SerializeField]
     private float LenMagnrt;
-    public float PuroLengthMagnrt
-    {
-        get => LenMagnrt;
-        set => LenMagnrt = value;
-    }
 
     //極の種類
     public enum Type_Magnet
@@ -78,6 +73,15 @@ public class Magnet : MonoBehaviour
     /// デバック表示フラグ
     /// </summary>
     [SerializeField]
+    /// <summary>
+    /// マグネットの計算を行うか
+    /// </summary>
+    private bool Magnet_Updetaflg;
+
+    /// <summary>
+    /// デバックフラグ
+    /// </summary>
+    [SerializeField,Header("デバック表示")]
     private bool Debagu_fla;
     
     /// <summary>
@@ -94,6 +98,22 @@ public class Magnet : MonoBehaviour
         Power = 1;
         Type = Type_Magnet.None;
         Type_Fixed = false;
+        switch (Type)
+        {
+            //S極は青
+            case Type_Magnet.S:
+                MainSpriteRenderer.sprite = MagnetS;
+                break;
+            //N極は赤
+            case Type_Magnet.N:
+                MainSpriteRenderer.sprite = MagnetN;
+                break;
+            //なしは白
+            case Type_Magnet.None:
+                MainSpriteRenderer.sprite = MagnetNone;
+                break;
+        }
+
     }
 
     private void Start()
@@ -103,10 +123,21 @@ public class Magnet : MonoBehaviour
 
         //極に合わせて色を変える
         SetSprite();
+
+        //この、コンポーネントがある場合FixedUpdateを行わない
+        if (GetComponent<Enemy_WalkFall>())
+        {
+            Magnet_Updetaflg = true;
+        }
     }
 
     private void FixedUpdate()
     {
+        if (Magnet_Updetaflg)
+        {
+            return;
+        }
+
         //デバック用データ初期化
         Debagu_list.Clear();
 
@@ -176,6 +207,57 @@ public class Magnet : MonoBehaviour
                 Gizmos.DrawLine(transform.position, pair.transform.position);
             }
         }
+    }
+
+    /// <summary>
+    /// 自分が受ける影響の合算を取得
+    /// </summary>
+    /// <param name="tag">除外タグ</param>
+    /// <returns>受ける影響値</returns>
+    public Vector2 Magnet_Power(string[] tag=null)
+    {
+        Vector2 force = Vector2.zero;
+
+        //対象のオブジェクト取得
+        List<MagnetUpdateData> list = magnetManager.GetSearchMagnet(this.transform.position, LenMagnrt, tag);
+
+        foreach (MagnetUpdateData pair in list)
+        {
+            //オブジェクトが
+            //orマグネットではない場合※多分ない、一応
+            //or自分の場合
+            //は処理せず次へ
+            if (pair.gbMagnet == null ||
+                name == pair.gbRid.name)
+            {
+                continue;
+            }
+
+            //マグネット位置
+            Vector2 vector_tocl = pair.gbRid.position;
+
+            //磁力の方向を計算
+            Vector2 direction = vector_tocl - (Vector2)transform.position;
+
+            // 磁場の影響度を計算(距離の二乗に反比例)
+            float magneticForce = pair.gbMagnet.Power / direction.sqrMagnitude;
+
+            //与える力
+            Vector2 pair_force = direction * magneticForce;
+
+            //相手と同じ極だった場合反転
+            if (Type == pair.gbMagnet.Type)
+            {
+                pair_force *= -1;
+            }
+
+            //くりっぴんぐ
+            pair_force = Vector2.ClampMagnitude(pair_force, 5.0f);
+
+            force += pair_force;
+        }
+
+        return force;
     }
 
     /// <summary>

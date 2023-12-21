@@ -12,6 +12,14 @@ public class MagnetUpdateData
     /// </summary>
     public Magnet gbMagnet;
 
+    /// <summary>
+    /// Rigidbody2D
+    /// </summary>
     public Rigidbody2D gbRid;
+
+    /// <summary>
+    /// É^ÉO
+    /// </summary>
+    public string gbtag;
 
 }
