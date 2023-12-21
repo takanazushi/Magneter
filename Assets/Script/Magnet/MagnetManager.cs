@@ -22,11 +22,11 @@ public class MagnetManager : MonoBehaviour
         {
             foreach (Transform mg_child in Magne_Parent)
             {
-                if (mg_child == null) { Debug.Log("mag_Parent_null"); continue; }
+                if (mg_child == null) { continue; }
 
-                foreach (Transform child in mg_child.GetComponentsInChildren<Transform>(true))
+                foreach (Transform child in mg_child)
                 {
-                    if (child == null) { Debug.Log("mg_child_null"); continue; }
+                    if (child == null) { continue; }
 
                     //親オブジェクトの場合はスキップ
                     if (child.name == mg_child.name) { continue; }
@@ -43,7 +43,7 @@ public class MagnetManager : MonoBehaviour
                     if(magnetUpData.gbMagnet==null||
                         magnetUpData.gbRid == null)
                     {
-                        Debug.Log("mg_child取得エラー:" + child.name);
+                        Debug.Log("エラー");
                         continue;
                     }
                     gbMagnet.Add(magnetUpData);
@@ -55,7 +55,7 @@ public class MagnetManager : MonoBehaviour
         {
             foreach (Transform child in Magne_ojt)
             {
-                if (child == null) { Debug.Log("mag__null"); continue; }
+                if (child == null) {  continue; }
 
                 //情報取得
                 MagnetUpdateData magnetUpData = new()
@@ -69,10 +69,8 @@ public class MagnetManager : MonoBehaviour
                 if (magnetUpData.gbMagnet == null ||
                     magnetUpData.gbRid == null)
                 {
-                    Debug.Log("mg_child取得エラー");
                     continue;
                 }
-                Debug.Log("成功:"+ child.name);
                 gbMagnet.Add(magnetUpData);
             }
         }
