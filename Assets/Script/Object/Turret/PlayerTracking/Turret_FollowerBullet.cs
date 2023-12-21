@@ -28,8 +28,11 @@ public class Turret_FollowerBullet : MonoBehaviour
         // 弾の方向を自機から敵へ向ける
         bulletDirection = target.position - transform.position;
 
-        //10秒後にオブジェクトを破棄
-        Destroy(gameObject, 10.0f);
+        //todo 弾の発射角度の制限
+        if (bulletDirection.y > -5)
+        {
+            bulletDirection.y = -5;
+        }
     }
 
     //画面内で動かす
@@ -52,19 +55,14 @@ public class Turret_FollowerBullet : MonoBehaviour
         //画面内で実行
         if (InField)
         {
-            MoveBullet();
+            //向き固定
+            bulletDirection.Normalize();
+
+            //その向きにスピードを掛ける
+            rb.velocity = bulletDirection * moveSpeed;
+
+            //10秒後に砲弾を破壊する
+            Destroy(gameObject, 5.0f);
         }
-    }
-
-    /// <summary>
-    /// 弾の移動処理
-    /// </summary>
-    private void MoveBullet()
-    {
-        //向き固定
-        bulletDirection.Normalize();
-
-        //その向きにスピードを掛ける
-        rb.velocity = bulletDirection * moveSpeed;
     }
 }
