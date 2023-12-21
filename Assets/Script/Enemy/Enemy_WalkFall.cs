@@ -27,6 +27,13 @@ public class Enemy_WalkFall : MonoBehaviour
     private bool Left;
 
     /// <summary>
+    /// アニメーター
+    /// </summary>
+    [SerializeField]
+    private Animator animator;
+
+
+    /// <summary>
     /// 敵用マグネット
     /// </summary>
     [SerializeField, HideInInspector]
@@ -51,6 +58,27 @@ public class Enemy_WalkFall : MonoBehaviour
             transform.localScale = new
                 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
+    }
+
+    private void Update()
+    {
+        if(magnet.PuroTypeManet == Type_Magnet.S)
+        {
+            Debug.Log("S極です");
+            SetAnimation("Enemy_Blue_walk");
+            
+        }
+        else if(magnet.PuroTypeManet == Type_Magnet.N)
+        {
+            Debug.Log("N極です");
+            SetAnimation("Enemy_Red_walk");
+        }
+        else if(magnet.PuroTypeManet == Type_Magnet.None)
+        {
+            Debug.Log("極指定してないです");
+            SetAnimation("Enemy_None_walk");
+        }
+        
     }
 
     // 物理演算をしたい場合のFixedUpdate
@@ -136,5 +164,11 @@ public class Enemy_WalkFall : MonoBehaviour
         Left = !Left;
         transform.localScale = new
             (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
+
+    private void SetAnimation(string animationName)
+    {
+        //アニメーションを再生
+        animator.Play(animationName);
     }
 }
