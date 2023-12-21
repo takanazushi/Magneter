@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8267640f2f1d8954cb8f5df91a56d769, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isOn: 0
 --- !u!1 &6372341061048687091
 GameObject:
   m_ObjectHideFlags: 0
@@ -104,7 +105,6 @@ GameObject:
   - component: {fileID: 2294164745615077884}
   - component: {fileID: 8862155350250875097}
   - component: {fileID: 573318903947592609}
-  - component: {fileID: -2798740535386170092}
   m_Layer: 0
   m_Name: Enemy_fall
   m_TagString: Enemy
@@ -265,8 +265,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b24bd16be9298a34a9700cd86bb2244f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  Speed: 0
+  X_Resist: 0
   Left: 1
+  magnet: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!114 &573318903947592609
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -280,19 +283,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Hit_Damage: 1
---- !u!114 &-2798740535386170092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6372341061048687091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79ea770426223a04e89d450272b73dd6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  despawnTime: 10
 --- !u!1 &7831389003388422003
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,7 +398,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -436,4 +426,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ea770426223a04e89d450272b73dd6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  despawnTime: 0

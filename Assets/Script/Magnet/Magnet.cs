@@ -98,22 +98,6 @@ public class Magnet : MonoBehaviour
         Power = 1;
         Type = Type_Magnet.None;
         Type_Fixed = false;
-        switch (Type)
-        {
-            //Sã…ÇÕê¬
-            case Type_Magnet.S:
-                MainSpriteRenderer.sprite = MagnetS;
-                break;
-            //Nã…ÇÕê‘
-            case Type_Magnet.N:
-                MainSpriteRenderer.sprite = MagnetN;
-                break;
-            //Ç»ÇµÇÕîí
-            case Type_Magnet.None:
-                MainSpriteRenderer.sprite = MagnetNone;
-                break;
-        }
-
     }
 
     private void Start()
@@ -182,7 +166,6 @@ public class Magnet : MonoBehaviour
 
             //Ç≠ÇËÇ¡Ç“ÇÒÇÆ
             force = Vector2.ClampMagnitude(force, MaxPower);
-            Debug.Log(force);
 
             //óÕÇâ¡Ç¶ÇÈ
             pair.gbRid.velocity += force;

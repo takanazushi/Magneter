@@ -64,6 +64,7 @@ public class Enemy_WalkFall : MonoBehaviour
             if(magnet.PuroTypeManet!= Type_Magnet.None&&
                 magnet.PuroTypeManet != Type_Magnet.Exc)
             {
+                //除外に自身のタグを設定
                 mg_speed = magnet.Magnet_Power(new string[] { tag });
 
                 //横方向に一定以上の力を受けた場合
@@ -112,6 +113,7 @@ public class Enemy_WalkFall : MonoBehaviour
         {
             // Enemyタグを持つオブジェクトとの当たり判定を無視
             Physics2D.IgnoreCollision(collision.collider, GetComponent<Collider2D>());
+            return;
         }
 
         //床との処理は無視

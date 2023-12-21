@@ -6,75 +6,76 @@ using static Magnet;
 public class MagnetManager : MonoBehaviour
 {
     //管理するマグネット
-    [SerializeField, Header("管理マグネット")
-     , Tooltip("手動設定可能です")]
     List<MagnetUpdateData> gbMagnet;
 
-    [SerializeField]
+    [SerializeField,Header("管理するマグネットの親")]
     List<Transform> Magne_Parent;
 
-    //[SerializeField]
-    //private GameObject MagnetS;
-
-    //[SerializeField]
-    //private GameObject MagnetN;
-
-    //[SerializeField]
-    //private GameObject MagnetNon;
-
-    ////生成する敵オブジェクト
-    //[SerializeField]
-    //private GameObject EnemyMagnet;
-
-    //[SerializeField]
-    //private GameObject EnemyMagnetN;
-
-    //[SerializeField]
-    //private GameObject EnemyMagnetNon;
+    [SerializeField,Header("管理するマグネット")]
+    List<Transform> Magne_ojt;
 
     private void Awake()
     {
+        gbMagnet = new();
         //子オブジェクトのRigidbody2D,Magnet,tagを取得しリストに登録
         if (Magne_Parent.Count != 0)
         {
             foreach (Transform mg_child in Magne_Parent)
             {
-                if (mg_child == null) { Debug.Log("mag__Parent"); continue; }
+                if (mg_child == null) { Debug.Log("mag_Parent_null"); continue; }
 
-                foreach (Transform child in mg_child.GetComponentsInChildren<Transform>())
+                foreach (Transform child in mg_child.GetComponentsInChildren<Transform>(true))
                 {
-                    if (child == null) { Debug.Log("mg_child"); continue; }
-
-                    GameObject childObject = child.gameObject;
+                    if (child == null) { Debug.Log("mg_child_null"); continue; }
 
                     //親オブジェクトの場合はスキップ
-                    if (childObject.name == mg_child.name) { continue; }
+                    if (child.name == mg_child.name) { continue; }
 
                     //情報取得
                     MagnetUpdateData magnetUpData = new()
                     {
-                        gbMagnet = childObject.GetComponent<Magnet>(),
-                        gbRid = childObject.GetComponent<Rigidbody2D>(),
-                        gbtag = childObject.tag
+                        gbMagnet = child.GetComponent<Magnet>(),
+                        gbRid = child.GetComponent<Rigidbody2D>(),
+                        gbtag = child.tag
                     };
 
                     //取得失敗
                     if(magnetUpData.gbMagnet==null||
                         magnetUpData.gbRid == null)
                     {
+                        Debug.Log("mg_child取得エラー:" + child.name);
                         continue;
                     }
-
                     gbMagnet.Add(magnetUpData);
                 }
-
-
-
-
             }
-
         }
 
+        if (Magne_ojt.Count != 0)
+        {
+            foreach (Transform child in Magne_ojt)
+            {
+                if (child == null) { Debug.Log("mag__null"); continue; }
+
+                //情報取得
+                MagnetUpdateData magnetUpData = new()
+                {
+                    gbMagnet = child.GetComponent<Magnet>(),
+                    gbRid = child.GetComponent<Rigidbody2D>(),
+                    gbtag = child.tag
+                };
+
+                //取得失敗
+                if (magnetUpData.gbMagnet == null ||
+                    magnetUpData.gbRid == null)
+                {
+                    Debug.Log("mg_child取得エラー");
+                    continue;
+                }
+                Debug.Log("成功:"+ child.name);
+                gbMagnet.Add(magnetUpData);
+            }
+        }
     }
 
     /// <summary>
@@ -90,6 +91,9 @@ public class MagnetManager : MonoBehaviour
 
         foreach (MagnetUpdateData item in gbMagnet)
         {
+            //非アクティブは対象外
+            if (!item.gbRid.gameObject.activeSelf) { continue; }
+
             bool hit = false;
             //タグが一致した場合除外
             if (tag != null)
