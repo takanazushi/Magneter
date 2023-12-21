@@ -172,13 +172,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09397210724e6b848aa582c9aeb971ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MagnetS: {fileID: -1793508851, guid: 07279350161eec1429e9f746012b4753, type: 3}
-  MagnetN: {fileID: 1678396032, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
-  MagnetNone: {fileID: 1399172594, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
+  MagnetS: {fileID: 0}
+  MagnetN: {fileID: 0}
+  MagnetNone: {fileID: 0}
   magnetManager: {fileID: 0}
-  LenMagnrt: 10
-  Type: 1
-  Power: 100
+  LenMagnrt: 5
+  Type: 2
+  Power: 1
+  MaxPower: 0
+  Type_Fixed: 0
+  Debagu_fla: 0
 --- !u!114 &8022260057511826930
 MonoBehaviour:
   m_ObjectHideFlags: 0

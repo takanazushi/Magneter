@@ -302,16 +302,23 @@ public class MoveFloorMNG : MonoBehaviour
     {
         private MoveFloorMNG _target;
         private readonly float _wait_Min = 0.01f;
+        private SerializedProperty _script;
 
         private void OnEnable()
         {
             _target = target as MoveFloorMNG;
+            _script = serializedObject.FindProperty("m_Script");
         }
 
         public override void OnInspectorGUI()
         {
             EditorGUI.BeginChangeCheck();
             serializedObject.Update();
+
+            using (new EditorGUI.DisabledScope(true))
+            {
+                EditorGUILayout.PropertyField(_script);
+            }
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("speed")
             , new GUIContent("ë´èÍà⁄ìÆë¨ìx"));

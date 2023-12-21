@@ -6,6 +6,8 @@ using UnityEditor;
 using UnityEngine;
 using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
 using UnityEngine.U2D;
+using static UnityEditor.PlayerSettings;
+using Unity.Burst.CompilerServices;
 
 //マグネット
 public class Magnet : MonoBehaviour
@@ -60,20 +62,28 @@ public class Magnet : MonoBehaviour
     private float Power;
 
     /// <summary>
+    /// 磁力最大影響値
+    /// </summary>
+    [SerializeField]
+    private float MaxPower;
+
+    /// <summary>
     /// 磁気の固定化
     /// true:固定
     /// </summary>
     [SerializeField]
     private bool Type_Fixed;
 
-    
+    /// <summary>
+    /// デバック表示フラグ
+    /// </summary>
     [SerializeField]
     private bool Debagu_fla;
     
     /// <summary>
     /// デバック表示用
     /// 磁力範囲内マグネットオブジェクトの
-    /// 位置と力を保存して、Gizumoで仕様します
+    /// 位置と力を保存して、Gizumoで使用します
     /// </summary>
     private List<Transform> Debagu_list = new();
 
@@ -140,7 +150,8 @@ public class Magnet : MonoBehaviour
             }
 
             //くりっぴんぐ
-            force = Vector2.ClampMagnitude(force, 1.0f);
+            force = Vector2.ClampMagnitude(force, MaxPower);
+            Debug.Log(force);
 
             //力を加える
             pair.gbRid.velocity += force;
@@ -220,19 +231,29 @@ public class Magnet : MonoBehaviour
 #if UNITY_EDITOR
 
     [CustomEditor(typeof(Magnet))]
+    [CanEditMultipleObjects]
     public class MoveFloorMNG_Editor : Editor
     {
         private Magnet _target;
         private readonly float _wait_Min = 0.01f;
-        private void Awake()
+        private SerializedProperty _script;
+
+        private void OnEnable()
         {
             _target = target as Magnet;
+            _script = serializedObject.FindProperty("m_Script");
         }
+
 
         public override void OnInspectorGUI()
         {
             EditorGUI.BeginChangeCheck();
             serializedObject.Update();
+
+            using (new EditorGUI.DisabledScope(true))
+            {
+                EditorGUILayout.PropertyField(_script);
+            }
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("magnetManager")
                  , new GUIContent("マグネットマネージャー"));
@@ -254,6 +275,9 @@ public class Magnet : MonoBehaviour
 
             EditorGUILayout.PropertyField(serializedObject.FindProperty("Power")
                 , new GUIContent("磁力影響値","値が大きいほど磁力の影響をより受けます"));
+
+            EditorGUILayout.PropertyField(serializedObject.FindProperty("MaxPower")
+                , new GUIContent("磁力最大影響値"));
 
             EditorGUILayout.Space();
 
