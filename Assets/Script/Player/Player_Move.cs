@@ -204,12 +204,12 @@ public class Player_Move : MonoBehaviour
             blockspeed = CoverVeltThing.Instance.returnSpeed();
         }
         //右に流れるベルトコンベアの時
-        if (collision.gameObject.name == "PlusVeltConver")
+        if (collision.gameObject.name == "PlusBeltConveyor")
         {
             converspeed = 3;
         }
         //左に流れるベルトコンベアの時
-        if (collision.gameObject.name == "MinusVeltConver")
+        if (collision.gameObject.name == "MinusBeltConveyor")
         {
             converspeed = -3;
         }
