@@ -4,7 +4,12 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Floor
+  - Enemy
+  - Checkpoint
+  - MoveFloor
+  - kabe
+  - RedBullet
+  - BlueBullet
   layers:
   - Default
   - TransparentFX
@@ -12,7 +17,7 @@ TagManager:
   - 
   - Water
   - UI
-  - 
+  - Magnet
   - 
   - 
   - 

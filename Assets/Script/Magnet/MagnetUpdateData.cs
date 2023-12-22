@@ -7,9 +7,11 @@ using UnityEngine.Tilemaps;
 [System.Serializable]
 public class MagnetUpdateData
 {
+    /// <summary>
+    /// マグネットスクリプト
+    /// </summary>
     public Magnet gbMagnet;
+
     public Rigidbody2D gbRid;
 
-    //タイルマップ用：タイルマップに対応可能かわかんない
-    public Tilemap Til;
 }
