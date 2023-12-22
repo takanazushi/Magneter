@@ -22,10 +22,10 @@ public class Firing_Bullet : MonoBehaviour
             //カメラ座標取得
             Vector3 viewPos = mainCamera.WorldToViewportPoint(transform.position);
 
-            // todo カメラ範囲内(弾がプレイヤーに届く距離)で生成
+            //カメラ範囲内(弾がプレイヤーに届く距離)で生成
             if(viewPos.x > 0.25 && viewPos.x < 1)
             {
-                //todo 座標取得
+                //座標取得
                 BulletObj.transform.position = transform.position;
                 //生成
                 Instantiate(BulletObj);

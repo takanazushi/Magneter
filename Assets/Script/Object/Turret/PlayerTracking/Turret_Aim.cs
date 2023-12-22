@@ -16,18 +16,29 @@ public class Turret_Aim : MonoBehaviour
     [SerializeField, Header("²‚ÌÅ’á‰ñ“]Šp“x")]
     private float minRotation;
 
+    private Camera mainCamera;
+
+    private void Start()
+    {
+        mainCamera = Camera.main;
+    }
+
     private void Update()
     {
+        //ƒJƒƒ‰À•Wæ“¾
+        Vector3 viewPos = mainCamera.WorldToViewportPoint(transform.position);
+
         //todo
         // Œü‚«‚½‚¢•ûŒü‚ğŒvZ
         Vector3 dir = (ballTrans.position - arrowTrans.position);
-        
-        // ‰ñ“]‚ğ§ŒÀ‚·‚é
-        float angle = Vector3.Angle(Vector3.right, dir);
-        float sign = Mathf.Sign(Vector3.Cross(Vector3.right, dir).y);
-        angle = Mathf.Clamp(angle * sign, minRotation, maxRotation);
+
+        //Šp“x‚É•ÏŠ·
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg - 90;
+
+        //§ŒÀ
+        angle = Mathf.Clamp(angle, minRotation, maxRotation);
 
         // ‰ñ“]‚ğ“K—p
-        transform.rotation = Quaternion.Euler(0, 0, -angle);
+        transform.rotation = Quaternion.AngleAxis(angle,Vector3.forward);
     }
 }
