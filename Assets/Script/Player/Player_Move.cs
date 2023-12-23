@@ -96,6 +96,7 @@ public class Player_Move : MonoBehaviour
     // 物理演算をしたい場合はFixedUpdateを使うのが一般的
     void FixedUpdate()
     {
+        if (!GameManager.instance.Is_Ster_camera_end) { return; }
         //重力を追加で掛ける
         //Rigidbody2D->GravityScaleからいじるか迷い中・・・
         //rb.velocity = new(rb.velocity.x, rb.velocity.y - 0.5f);

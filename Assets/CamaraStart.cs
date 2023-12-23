@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class CamaraStart : MonoBehaviour
 {
-    [SerializeField]
-    CinemachineVirtualCameraBase[] cameras;
 
     void Start()
     {
@@ -14,9 +12,5 @@ public class CamaraStart : MonoBehaviour
         //cameras[GameManager.instance.StartCamera].Priority = 1;
     }
 
-    public void Camera_Set()
-    {
-        cameras[GameManager.instance.StartCamera].Priority = 1;
-    }
 
 }

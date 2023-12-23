@@ -48,3 +48,6 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: cut_in
+    uniqueID: 1245168979
+    locked: 0
