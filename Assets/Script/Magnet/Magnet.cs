@@ -297,7 +297,7 @@ public class Magnet : MonoBehaviour
 
     [CustomEditor(typeof(Magnet))]
     [CanEditMultipleObjects]
-    public class MoveFloorMNG_Editor : Editor
+    public class Magnet_Editor : Editor
     {
         private Magnet _target;
         private readonly float _wait_Min = 0.01f;
