@@ -179,8 +179,9 @@ MonoBehaviour:
   LenMagnrt: 5
   Type: 2
   Power: 1
-  MaxPower: 0
+  MaxPower: 1
   Type_Fixed: 0
+  Magnet_Updetaflg: 0
   Debagu_fla: 0
 --- !u!114 &8022260057511826930
 MonoBehaviour:
