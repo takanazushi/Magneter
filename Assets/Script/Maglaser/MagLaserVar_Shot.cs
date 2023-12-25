@@ -1,7 +1,9 @@
 using System.Collections;
+using System.Reflection.Emit;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.Experimental.GraphView.GraphView;
 using static UnityEditor.ShaderData;
 
 [RequireComponent(typeof(LineRenderer))]
@@ -22,6 +24,12 @@ public class MagLaserVar_Shot : MonoBehaviour
     [SerializeField,Header("Muzzle2のオブジェクト")]
     GameObject Muzzle;
 
+    [SerializeField]
+    Laser_Texture LasetT_R;
+
+    [SerializeField]
+    Laser_Texture LasetT_B;
+
     /// <summary>
     /// プレイヤー位置→マウス位置方向ベクトル
     /// </summary>
@@ -36,6 +44,12 @@ public class MagLaserVar_Shot : MonoBehaviour
     /// ヒットしたオブジェクトのマグネット
     /// </summary>
     private Magnet hitmg;
+
+    /// <summary>
+    /// レーザー角度
+    /// </summary>
+    float angle;
+
 
     GameTimeControl gameTime;
 
@@ -55,7 +69,7 @@ public class MagLaserVar_Shot : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             LaserDrawRay();
-
+            LaserTexture_Shot(LasetT_R);
             if (RayHitMag())
             {
                 hitmg.SetType_Magnat(Magnet.Type_Magnet.N);
@@ -67,7 +81,7 @@ public class MagLaserVar_Shot : MonoBehaviour
         else if (Input.GetMouseButtonDown(1))
         {
             LaserDrawRay();
-
+            LaserTexture_Shot(LasetT_B);
             if (RayHitMag())
             {
                 hitmg.SetType_Magnat(Magnet.Type_Magnet.S);
@@ -116,20 +130,12 @@ public class MagLaserVar_Shot : MonoBehaviour
     /// </summary>
     private void LaserDrawRay()
     {
-        float angle;
-
-        //マウスの位置を取得
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        //プレイヤーの位置からマウスの位置に向かう方向ベクトル計算
-        //aimDirection = (mousePosition - this.transform.position).normalized;
 
         //ノズルの位置からノズル2に向かう方向ベクトル計算
         aimDirection = (this.transform.position - Muzzle.transform.position).normalized;
 
         //ベクトルから角度を取得(ラジアン角)
         angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-
 
         Vector3[] Poss =
         {
@@ -142,6 +148,12 @@ public class MagLaserVar_Shot : MonoBehaviour
 
         //線非表示コルーチン開始
         Coline_erase ??= StartCoroutine(LaserErase());
+    }
+
+    void LaserTexture_Shot(Laser_Texture laser_Texture)
+    {
+        //ノズル位置に置き換え
+        laser_Texture.Show(Muzzle.transform.position, angle);
     }
 
     /// <summary>
