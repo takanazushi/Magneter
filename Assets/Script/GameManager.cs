@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, Header("ƒJƒƒ‰ŠJn”Ô†")]
     public int StartCamera;
 
-    public bool[] stageClearFlag = new bool[3] { true, false, false };
+    public bool[] stageClearFlag = new bool[4] { true, false, false, false };
 
 
     void Awake()
