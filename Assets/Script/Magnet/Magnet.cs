@@ -300,13 +300,31 @@ public class Magnet : MonoBehaviour
     public class MoveFloorMNG_Editor : Editor
     {
         private Magnet _target;
+        private SpriteRenderer _spriteRenderer;
         private readonly float _wait_Min = 0.01f;
         private SerializedProperty _script;
 
         private void OnEnable()
         {
             _target = target as Magnet;
+            _spriteRenderer=_target.GetComponent<SpriteRenderer>();
             _script = serializedObject.FindProperty("m_Script");
+
+            //磁力タイプによってspriteを変更
+            Type_Magnet type_Magnet = (Type_Magnet)serializedObject.FindProperty("Type").enumValueIndex;
+            switch (type_Magnet)
+            {
+                case Type_Magnet.None:
+                    _spriteRenderer.sprite = (Sprite)serializedObject.FindProperty("MagnetNone").objectReferenceValue;
+                    break;
+                case Type_Magnet.S:
+                    _spriteRenderer.sprite = (Sprite)serializedObject.FindProperty("MagnetS").objectReferenceValue;
+                    break;
+                case Type_Magnet.N:
+                    _spriteRenderer.sprite = (Sprite)serializedObject.FindProperty("MagnetN").objectReferenceValue;
+                    break;
+            }
+
         }
 
 
@@ -358,6 +376,21 @@ public class Magnet : MonoBehaviour
             {
                 //値が変更された場合
                 serializedObject.ApplyModifiedProperties();
+
+                //磁力タイプによってspriteを変更
+                Type_Magnet type_Magnet = (Type_Magnet)serializedObject.FindProperty("Type").enumValueIndex;
+                switch (type_Magnet)
+                {
+                    case Type_Magnet.None:
+                        _spriteRenderer.sprite = (Sprite)serializedObject.FindProperty("MagnetNone").objectReferenceValue;
+                        break;
+                    case Type_Magnet.S:
+                        _spriteRenderer.sprite = (Sprite)serializedObject.FindProperty("MagnetS").objectReferenceValue;
+                        break;
+                    case Type_Magnet.N:
+                        _spriteRenderer.sprite = (Sprite)serializedObject.FindProperty("MagnetN").objectReferenceValue;
+                        break;
+                }
             }
         }
     }
