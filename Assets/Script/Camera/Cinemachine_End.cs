@@ -52,6 +52,7 @@ public class Cinemachine_End : CinemachineExtension
         if (count >= evnt.GetPersistentEventCount())
         {
             GameManager.instance.Is_Ster_camera_end = true;
+            //Debug.Log("jtdj");
             count = 0;
         }
 

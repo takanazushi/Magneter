@@ -77,12 +77,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1678396032, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
+  m_Sprite: {fileID: 1399172594, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 1.79, y: 1.77}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -152,7 +152,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1.79, y: 1.77}
-    newSize: {x: 1, y: 1}
+    newSize: {x: 1.79, y: 1.77}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -172,9 +172,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09397210724e6b848aa582c9aeb971ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MagnetS: {fileID: 0}
-  MagnetN: {fileID: 0}
-  MagnetNone: {fileID: 0}
+  MagnetS: {fileID: -1793508851, guid: 07279350161eec1429e9f746012b4753, type: 3}
+  MagnetN: {fileID: 1678396032, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
+  MagnetNone: {fileID: 1399172594, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 0}
   LenMagnrt: 5
   Type: 2
