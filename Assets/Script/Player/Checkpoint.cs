@@ -33,7 +33,7 @@ public class Checkpoint : MonoBehaviour
         if (collision.gameObject.name == "Player" && GameManager.instance.checkpointNo <= checkNo)
         {
             GameManager.instance.checkpointNo = checkNo;
-            GameManager.instance.StartCamera = CameraNo;
+            GameManager.instance.SetStaetCamera();
 
             //デバック用
             //通ったら赤

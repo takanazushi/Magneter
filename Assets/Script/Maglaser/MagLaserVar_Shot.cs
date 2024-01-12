@@ -52,15 +52,17 @@ public class MagLaserVar_Shot : MonoBehaviour
 
 
     GameTimeControl gameTime;
+    GameManager game_manager;
 
     private void Start()
     {
         gameTime = GameTimeControl.instance;
+        game_manager=GameManager.instance;
     }
 
     private void Update()
     {
-        if (gameTime.IsPaused)
+        if (gameTime.IsPaused|| !game_manager.Is_Ster_camera_end)
         {
             return;
         }
@@ -73,7 +75,6 @@ public class MagLaserVar_Shot : MonoBehaviour
             if (RayHitMag())
             {
                 hitmg.SetType_Magnat(Magnet.Type_Magnet.N);
-                Debug.Log("Nに変更");
             }
 
         }
@@ -85,7 +86,6 @@ public class MagLaserVar_Shot : MonoBehaviour
             if (RayHitMag())
             {
                 hitmg.SetType_Magnat(Magnet.Type_Magnet.S);
-                Debug.Log("Sに変更");
             }
 
         }
@@ -106,11 +106,6 @@ public class MagLaserVar_Shot : MonoBehaviour
         {
             //マグネット取得
             hitmg = hit[0].rigidbody.GetComponent<Magnet>();
-
-            foreach (var item in hit)
-            {
-                Debug.Log(item.transform.name);
-            }
 
             //マグネットオブジェクトがある場合
             if (hitmg)

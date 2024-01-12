@@ -46,6 +46,12 @@ public class CameraAriaControl : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        //スタート時のカメラ遷移中は判定しない
+        if (!GameManager.instance.Is_Ster_camera_end)
+        {
+            return;
+        }
+
         //注目オブジェクトの場合
         if (m_Camera.Follow != null && collision.name != m_Camera.Follow.name)
         {

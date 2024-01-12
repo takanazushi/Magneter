@@ -1,6 +1,8 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
+using Unity.VisualScripting;
 using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -20,8 +22,19 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// カメラ開始番号
     /// </summary>
-    [SerializeField, Header("カメラ開始番号")]
-    public int StartCamera;
+    [SerializeField, Header("開始カメラ")]
+    private CinemachineVirtualCameraBase StartCamera;
+
+    /// <summary>
+    /// スタート時のカメラ遷移中フラグ
+    /// </summary>
+    [SerializeField]
+    bool Ster_Camera_end;
+    public bool Is_Ster_camera_end
+    {
+        get { return Ster_Camera_end; }
+        set { Ster_Camera_end = value;}
+    }
 
     public bool[] stageClearFlag = new bool[3] { true, false, false };
 
@@ -39,6 +52,15 @@ public class GameManager : MonoBehaviour
             //インスタンスが存在する場合は破棄
             Destroy(gameObject);
         }
+
+        //カメラの遷移開始
+        SetStaetCamera();
+
+    }
+
+    public void SetStaetCamera()
+    {
+        StartCamera.Priority = 1;
     }
 
     //HP取得
