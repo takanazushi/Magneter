@@ -297,7 +297,7 @@ public class Magnet : MonoBehaviour
 
     [CustomEditor(typeof(Magnet))]
     [CanEditMultipleObjects]
-    public class MoveFloorMNG_Editor : Editor
+    public class Magnet_Editor : Editor
     {
         private Magnet _target;
         private SpriteRenderer _spriteRenderer;
