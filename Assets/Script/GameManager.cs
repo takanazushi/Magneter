@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
         set { Ster_Camera_end = value;}
     }
 
-    public bool[] stageClearFlag = new bool[3] { true, false, false };
+    public bool[] stageClearFlag = new bool[4] { true, false, false, false };
 
 
     void Awake()
