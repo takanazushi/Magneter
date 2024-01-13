@@ -46,6 +46,9 @@ public class GameManager : MonoBehaviour
             instance = this;
             //シーン間でオブジェクトが破棄されないようにする
             DontDestroyOnLoad(gameObject);
+
+            Debug.Log("ゲームマネージャー存在します。");
+            Debug.Log("プレイヤーのチェックポイント" + checkpointNo);
         }
         else
         {
