@@ -1,17 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Player_HP : MonoBehaviour
 {
-    /// <summary>
-    /// 無敵フラグtrue:ダメージ無効
-    /// </summary>
+    //無敵フラグ
+    //true:ダメージ無効
     private bool inviflg = false;
 
-    /// <summary>
-    /// 無敵時間
-    /// </summary>
+    //無敵時間
     [SerializeField, Header("無敵時間"), Tooltip("単位：秒")]
     public float invi_Time;
 
@@ -23,20 +22,16 @@ public class Player_HP : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        //HP回復コンポーネントを取得
-        HP_Heal heal = collision.gameObject.GetComponent<HP_Heal>();
-        if (heal)
-        {
-            HitHeal(heal.hit_Heal);
-        }
 
-        //接触ダメージ判定
         //無敵時間中は無視
         if (inviflg) { return; }
 
         //ダメージコンポーネントを取得
+        //処理重いかも
         Damage damage = collision.gameObject.GetComponent<Damage>();
-        if (damage)
+
+        //ある場合
+        if (damage != null)
         {
             //設定されたダメージを取得してダメージを受ける
             HitDamage(damage.hit_damage);
@@ -46,38 +41,23 @@ public class Player_HP : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
-        //接触ダメージ判定
+
         //無敵時間中は無視
         if (inviflg) { return; }
 
         //ダメージコンポーネントを取得
+        //処理重いかも
         Damage damage = collision.gameObject.GetComponent<Damage>();
-        if (damage)
+
+        //ある場合
+        if (damage != null)
         {
             //設定されたダメージを取得してダメージを受ける
             HitDamage(damage.hit_damage);
         }
     }
 
-    /// <summary>
-    /// 回復を反映
-    /// </summary>
-    /// <param name="damage">受ける回復</param>
-    public void HitHeal(int damage)
-    {
-        //ダメージを受ける
-        //todo:最大HPを設定
-        GameManager.instance.HP += damage;
-        GameManager.instance.HP=Mathf.Clamp(GameManager.instance.HP, 0,3);
-
-        //デバック確認用
-        Debug.Log("HP:" + GameManager.instance.HP);
-    }
-
-    /// <summary>
-    /// ダメージを反映
-    /// </summary>
-    /// <param name="damage">受けるダメージ</param>
+    //damage:受けるダメージ
     public void HitDamage(int damage)
     {
         //ダメージを受ける
@@ -119,5 +99,4 @@ public class Player_HP : MonoBehaviour
         //無敵フラグセット
         inviflg = false;
     }
-
 }

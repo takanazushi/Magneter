@@ -17,29 +17,13 @@ public class Firing_NoAim: MonoBehaviour
     private float fireRate = 1.0f;
 
     [SerializeField]
-    private bool shootToLeft;
-
-    //todo
-    [SerializeField]
-    private bool shoottoup;
+    private bool shootToLeft = true;
 
     private float nextFireTime;
 
-    //todo
-    private Camera mainCamera;
-
-    void Start()
-    {
-        //todo
-        mainCamera = Camera.main;
-    }
-
     void Update()
     {
-        //todo
-        Vector3 viewPos = mainCamera.WorldToViewportPoint(transform.position);
-
-        if (Time.time > nextFireTime && viewPos.x > 0 && viewPos.x < 1)
+        if (Time.time > nextFireTime)
         {
             FireBullet();
             nextFireTime = Time.time + fireRate;
@@ -54,23 +38,15 @@ public class Firing_NoAim: MonoBehaviour
 
         if (bulletScript != null)
         {
-            //if (shootToLeft)
-            //{
-            //    bulletScript.SetDirection(Vector2.left);
-            //}
-            //else
-            //{
-            //    bulletScript.SetDirection(Vector2.right);
-            //}
-
-            if(shoottoup)
+            if (shootToLeft)
             {
-                bulletScript.SetDirection(Vector2.up);
+                bulletScript.SetDirection(Vector2.left);
             }
             else
             {
-                bulletScript.SetDirection(Vector2.down);
+                bulletScript.SetDirection(Vector2.right);
             }
+
         }
     }
 }

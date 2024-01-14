@@ -9,16 +9,17 @@ public class Enemy_hanten : MonoBehaviour
     ///// <summary>
     ///// 判定内に敵か壁がある
     ///// </summary>
-    private bool isOn = false;
+    [HideInInspector] public bool isOn = false;
 
-    public bool GetIsOn
-    {
-        get { return isOn; }
-    }
+    private GameObject parent;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-          isOn = true;
+        //衝突したオブジェクトのMagnetComponentを取得
+        Magnet magnet = collision.gameObject.GetComponent<Magnet>();
+        //親オブジェクトを取得
+        parent = transform.root.gameObject;
     }
 
     private void OnTriggerExit2D(Collider2D collision)

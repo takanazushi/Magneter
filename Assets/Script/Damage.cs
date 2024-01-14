@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Damage : MonoBehaviour
 {
+    //タイルに対してつけてもPlayer側のOnCollisionStay2Dあたりでうまくいかないことが確認されてるよ
     [SerializeField, Header("接触時ダメージ")]
     private int Hit_Damage;
 

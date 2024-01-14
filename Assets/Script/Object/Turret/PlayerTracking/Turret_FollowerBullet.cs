@@ -27,18 +27,11 @@ public class Turret_FollowerBullet : MonoBehaviour
 
         // íeÇÃï˚å¸Çé©ã@Ç©ÇÁìGÇ÷å¸ÇØÇÈ
         bulletDirection = target.position - transform.position;
-
-        //todo íeÇÃî≠éÀäpìxÇÃêßå¿
-        if(bulletDirection.y > -5)
-        {
-            bulletDirection.y = -5;
-        }
     }
 
     //âÊñ ì‡Ç≈ìÆÇ©Ç∑
     private void OnBecameVisible()
     {
-        if (!GameManager.instance.Is_Ster_camera_end) { return; }
         //âÊñ ì‡Ç…Ç¢ÇÈÇ∆Ç´true
         InField = true;
     }
@@ -53,9 +46,8 @@ public class Turret_FollowerBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         //âÊñ ì‡Ç≈é¿çs
-        if (InField&&GameManager.instance.Is_Ster_camera_end)
+        if (InField)
         {
             //å¸Ç´å≈íË
             bulletDirection.Normalize();
@@ -64,7 +56,9 @@ public class Turret_FollowerBullet : MonoBehaviour
             rb.velocity = bulletDirection * moveSpeed;
 
             //10ïbå„Ç…ñCíeÇîjâÛÇ∑ÇÈ
-            Destroy(gameObject, 5.0f);
-        }   
+            Destroy(gameObject, 10.0f);
+        }
+
+           
     }
 }

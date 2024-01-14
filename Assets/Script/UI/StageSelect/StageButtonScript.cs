@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class StageButtonScript : MonoBehaviour
 {
     [SerializeField]
-    private Image[] buttonImage= new Image[4];
+    private Image[] buttonImage= new Image[3];
 
     [SerializeField]
     private Sprite button_StageNone;
@@ -14,12 +14,11 @@ public class StageButtonScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 3; i++)
         {
             if (!GameManager.instance.stageClearFlag[i])
             {
                 buttonImage[i].sprite = button_StageNone;
-                Debug.Log("Stage" + i);
             }
         }
     }

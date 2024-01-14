@@ -26,7 +26,6 @@ public class Maglaser_Aim : MonoBehaviour
         mazin = Mathf.Atan2(nozuru.y, nozuru.x) * Mathf.Rad2Deg;
         
         tgetopointSprite=GetComponent<SpriteRenderer>();
-        tgetopointSprite.flipX = true;  
     }
 
     private void Update()
@@ -40,8 +39,7 @@ public class Maglaser_Aim : MonoBehaviour
     private void UpdateAimDirection()
     {
         //ゲームが停止中は更新しない
-        if (GameTimeControl.instance.IsPaused||
-            !GameManager.instance.Is_Ster_camera_end) { return; }
+        if (GameTimeControl.instance.IsPaused) { return; }
         //マウスの位置を取得
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

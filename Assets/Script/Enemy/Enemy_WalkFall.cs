@@ -1,6 +1,5 @@
 using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Rendering.Universal;
 using static Magnet;
 
 ///<summary>
@@ -35,13 +34,6 @@ public class Enemy_WalkFall : MonoBehaviour
 
 
     /// <summary>
-    /// Light2D
-    /// </summary>
-    [SerializeField]
-    private Light2D light2D;
-
-
-    /// <summary>
     /// 敵用マグネット
     /// </summary>
     [SerializeField, HideInInspector]
@@ -57,8 +49,6 @@ public class Enemy_WalkFall : MonoBehaviour
         magnet = GetComponent<Magnet>();
         Speed = 1;
         X_Resist = 0.3f;
-
-        
     }
 
     private void Start()
@@ -68,14 +58,27 @@ public class Enemy_WalkFall : MonoBehaviour
             transform.localScale = new
                 (transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         }
-
-        MagnetColorChange();
     }
 
     private void Update()
     {
-        MagnetColorChange();
-
+        if(magnet.PuroTypeManet == Type_Magnet.S)
+        {
+            Debug.Log("S極です");
+            SetAnimation("Enemy_Blue_walk");
+            
+        }
+        else if(magnet.PuroTypeManet == Type_Magnet.N)
+        {
+            Debug.Log("N極です");
+            SetAnimation("Enemy_Red_walk");
+        }
+        else if(magnet.PuroTypeManet == Type_Magnet.None)
+        {
+            Debug.Log("極指定してないです");
+            SetAnimation("Enemy_None_walk");
+        }
+        
     }
 
     // 物理演算をしたい場合のFixedUpdate
@@ -167,33 +170,5 @@ public class Enemy_WalkFall : MonoBehaviour
     {
         //アニメーションを再生
         animator.Play(animationName);
-    }
-
-    private void MagnetColorChange()
-    {
-        if(light2D.enabled == false)
-        {
-            light2D.enabled = true;
-        }
-
-        if (magnet.PuroTypeManet == Type_Magnet.S)
-        {
-            Debug.Log("S極です");
-            SetAnimation("Enemy_Blue_walk");
-            light2D.color = Color.blue;
-
-        }
-        else if (magnet.PuroTypeManet == Type_Magnet.N)
-        {
-            Debug.Log("N極です");
-            SetAnimation("Enemy_Red_walk");
-            light2D.color = Color.red;
-        }
-        else if (magnet.PuroTypeManet == Type_Magnet.None)
-        {
-            Debug.Log("極指定してないです");
-            SetAnimation("Enemy_None_walk");
-            light2D.enabled = false;
-        }
     }
 }
