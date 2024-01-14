@@ -38,9 +38,45 @@ public class GameManager : MonoBehaviour
 
     public bool[] stageClearFlag = new bool[4] { true, false, false, false };
 
+    //Sceneが有効になった時
+    private void OnEnable()
+    {
+        //自動的にMethod呼び出し
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    //Sceneが無効になった時
+    private void OnDisable()
+    {
+        //自動的にMethod削除
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    //Sceneが読み込まれる度に呼び出し
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (StartCamera == null && checkpointNo == -1)
+        {
+
+            Debug.Log("StartCameraない");
+
+            // GameObject(1)を見つける
+            GameObject parentObject = GameObject.Find("Camera");
+
+            // Camera_Childを見つける
+            Transform childObject = parentObject.transform.Find("Camera_Control");
+
+            // Start_Camera_Listを見つける
+            CinemachineVirtualCameraBase startCameraList = childObject.Find("Start_Camera_List").GetComponent<CinemachineVirtualCameraBase>();
+
+            // StartCameraに代入する
+            StartCamera = startCameraList;
+        }
+    }
 
     void Awake()
     {
+       
         if (instance == null)
         {
             instance = this;
