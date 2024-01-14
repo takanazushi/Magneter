@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -17,8 +18,9 @@ public class Checkpoint : MonoBehaviour
     /// <summary>
     /// カメラ番号
     /// </summary>
-    [SerializeField, Header("カメラ番号")]
-    private int CameraNo;
+    [SerializeField, Header("カメラ"),
+        Tooltip("チェックポイントから開始時のカメラ")]
+    private CinemachineVirtualCamera Stert_Camera;
 
     [SerializeField, Header("通過後スプライト")]
     private Sprite passdSprite;
@@ -41,13 +43,12 @@ public class Checkpoint : MonoBehaviour
         if (collision.gameObject.name == "Player" && GameManager.instance.checkpointNo <= checkNo)
         {
             GameManager.instance.checkpointNo = checkNo;
-            GameManager.instance.SetStaetCamera();
+            //GameManager.instance.SetStaetCamera();
 
             //デバック用
             //通ったら赤
             spriteRenderer.sprite = passdSprite;
             myLight.enabled = true;
-            Debug.Log(GameManager.instance.checkpointNo);
         }
     }
 }

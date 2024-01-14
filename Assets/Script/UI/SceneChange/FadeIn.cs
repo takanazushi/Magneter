@@ -40,6 +40,6 @@ public class FadeIn : MonoBehaviour
         }
 
         image.enabled = false;
-
+        GameManager.instance.Is_Player_StopFlg = false;
     }
 }

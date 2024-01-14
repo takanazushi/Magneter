@@ -1,4 +1,5 @@
 using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -38,6 +39,24 @@ public class GameManager : MonoBehaviour
 
     public bool[] stageClearFlag = new bool[4] { true, false, false, false };
 
+    /// <summary>
+    /// プレイヤーの操作可能判定
+    /// true:操作無効
+    /// </summary>
+    bool Player_PlayFlg;
+    public bool Is_Player_StopFlg
+    {
+        get { return Player_PlayFlg; }
+        set { Player_PlayFlg = value; }
+    }
+
+
+
+    [SerializeField,Tooltip("フェードアウト用画像")]
+    private GameObject Image;
+    private string Image_Name = "FadeOutImage";
+    private FadeOut fadeOut;
+
 
     void Awake()
     {
@@ -47,8 +66,8 @@ public class GameManager : MonoBehaviour
             //シーン間でオブジェクトが破棄されないようにする
             DontDestroyOnLoad(gameObject);
 
-            Debug.Log("ゲームマネージャー存在します。");
-            Debug.Log("プレイヤーのチェックポイント" + checkpointNo);
+            //Debug.Log("ゲームマネージャー存在します。");
+            //Debug.Log("プレイヤーのチェックポイント" + checkpointNo);
         }
         else
         {
@@ -56,9 +75,47 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //カメラの遷移開始
-        SetStaetCamera();
+        if (!Ster_Camera_end)
+        {
+            //カメラの遷移開始
+            SetStaetCamera();
+        }
+        SceneManager.activeSceneChanged += SetFadeOutOj;
 
+        fadeOut = Image.GetComponent<FadeOut>();
+        Image_Name = Image.name;
+    }
+
+    
+    void SetFadeOutOj(Scene thisScene, Scene nextScene)
+    {
+        Image = GameObject.Find(Image_Name);
+
+        if(Image != null)
+        {
+            Debug.Log("シーン着替え時：" + Image.name);
+            fadeOut = Image.GetComponent<FadeOut>();
+            Image_Name = Image.name;
+        }
+
+    }
+
+    /// <summary>
+    /// 現在のシーンを再度読み込む
+    /// </summary>
+    public void ActiveSceneReset()
+    {
+        Player_PlayFlg = true;
+        StartCoroutine(fadeOut.Execute(SceneManager.GetActiveScene().name));
+
+        //プレイヤーのHPをリセットする
+        GameManager.instance.HP = GameManager.instance.RestHP;
+        //todo 前回の経過時間を保存
+        PlayerPrefs.SetFloat("PreviousElapsedTime", ClearTime.instance.second);
+
+        //現在のシーンを再度読み込む
+        //Scene activeScene = SceneManager.GetActiveScene();
+        //SceneManager.LoadScene(activeScene.name);
     }
 
     public void SetStaetCamera()

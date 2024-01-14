@@ -42,6 +42,7 @@ public class Maglaser_Aim : MonoBehaviour
         //ゲームが停止中は更新しない
         if (GameTimeControl.instance.IsPaused||
             !GameManager.instance.Is_Ster_camera_end) { return; }
+
         //マウスの位置を取得
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

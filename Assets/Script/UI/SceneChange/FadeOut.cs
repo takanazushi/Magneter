@@ -58,7 +58,6 @@ public class FadeOut : MonoBehaviour, IChangeRoutine
         {
             // シーン遷移処理を開始（明転の開始前に）
             SceneManager.LoadScene(sceneName);
-
         }
     }
 }

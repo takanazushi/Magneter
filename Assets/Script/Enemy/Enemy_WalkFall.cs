@@ -178,20 +178,20 @@ public class Enemy_WalkFall : MonoBehaviour
 
         if (magnet.PuroTypeManet == Type_Magnet.S)
         {
-            Debug.Log("S‹É‚Å‚·");
+            //Debug.Log("S‹É‚Å‚·");
             SetAnimation("Enemy_Blue_walk");
             light2D.color = Color.blue;
 
         }
         else if (magnet.PuroTypeManet == Type_Magnet.N)
         {
-            Debug.Log("N‹É‚Å‚·");
+            //Debug.Log("N‹É‚Å‚·");
             SetAnimation("Enemy_Red_walk");
             light2D.color = Color.red;
         }
         else if (magnet.PuroTypeManet == Type_Magnet.None)
         {
-            Debug.Log("‹ÉŽw’è‚µ‚Ä‚È‚¢‚Å‚·");
+            //Debug.Log("‹ÉŽw’è‚µ‚Ä‚È‚¢‚Å‚·");
             SetAnimation("Enemy_None_walk");
             light2D.enabled = false;
         }

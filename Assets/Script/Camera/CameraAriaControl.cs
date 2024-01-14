@@ -46,7 +46,7 @@ public class CameraAriaControl : MonoBehaviour
         //スタート時のカメラ遷移中は判定しない
         if (!GameManager.instance.Is_Ster_camera_end)
         {
-            Debug.Log("フラグはFalseです");
+            //Debug.Log("フラグはFalseです");
             return;
         }
         

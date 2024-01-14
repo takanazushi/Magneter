@@ -1435,7 +1435,8 @@ MonoBehaviour:
   checkpointNo: -1
   RestHP: 3
   HP: 3
-  StartCamera: 0
+  StartCamera: {fileID: 0}
+  Ster_Camera_end: 0
   stageClearFlag: 01000000
 --- !u!4 &1458232603
 Transform:
@@ -1598,7 +1599,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &5831157184737730274
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1716,7 +1717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
