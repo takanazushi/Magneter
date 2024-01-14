@@ -25,6 +25,8 @@ public class Turret_Aim : MonoBehaviour
 
     private void Update()
     {
+        if (!GameManager.instance.Is_Ster_camera_end) { return; }
+
         //ƒJƒƒ‰À•Wæ“¾
         Vector3 viewPos = mainCamera.WorldToViewportPoint(transform.position);
 

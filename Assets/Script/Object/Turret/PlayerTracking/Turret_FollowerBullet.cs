@@ -38,6 +38,7 @@ public class Turret_FollowerBullet : MonoBehaviour
     //‰æ–Ê“à‚Å“®‚©‚·
     private void OnBecameVisible()
     {
+        if (!GameManager.instance.Is_Ster_camera_end) { return; }
         //‰æ–Ê“à‚É‚¢‚é‚Æ‚«true
         InField = true;
     }
@@ -52,8 +53,9 @@ public class Turret_FollowerBullet : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //‰æ–Ê“à‚ÅÀs
-        if (InField)
+        if (InField&&GameManager.instance.Is_Ster_camera_end)
         {
             //Œü‚«ŒÅ’è
             bulletDirection.Normalize();
