@@ -16,9 +16,16 @@ public class Enemy_Die : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (!collision.gameObject.CompareTag("Enemy"))
         {
+
             return;
+
+           //Debug.Log("Enemyめり込んだ" + collision.gameObject.name);
+
+            //一定時間後に親オブジェクトを消す
+            //DestroyObject(parent, despawnTime);
+
         }
 
         //一定時間後に親オブジェクトを消す

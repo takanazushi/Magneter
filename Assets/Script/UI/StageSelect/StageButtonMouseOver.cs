@@ -23,7 +23,7 @@ public class StageButtonMouseOver : MonoBehaviour,IPointerEnterHandler, IPointer
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (GameManager.instance.stageClearFlag[stageNo - 1])
+        if (GameManager.instance.stageClearFlag[stageNo])
         {
             buttonImage.sprite = changeSprite;
             noiseImage.enabled = false;
@@ -32,7 +32,7 @@ public class StageButtonMouseOver : MonoBehaviour,IPointerEnterHandler, IPointer
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (GameManager.instance.stageClearFlag[stageNo - 1])
+        if (GameManager.instance.stageClearFlag[stageNo])
         {
             noiseImage.enabled = true;
             buttonImage.sprite = nomalSprite;

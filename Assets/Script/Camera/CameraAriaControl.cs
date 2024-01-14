@@ -30,10 +30,6 @@ public class CameraAriaControl : MonoBehaviour
         Tooltip("自動設定")]
     private CompositeCollider2D compositeCollider;
 
-    [SerializeField,
-        Header("敵のCompositeCollider2D"),
-        Tooltip("自動設定")]
-    private CompositeCollider2D EnemycompositeCollider;
 
     /// <summary>
     /// デバック表示フラグ
@@ -45,7 +41,16 @@ public class CameraAriaControl : MonoBehaviour
     bool m_Enable = true;
 
     private void OnTriggerEnter2D(Collider2D collision)
-    {
+    {       
+
+        //スタート時のカメラ遷移中は判定しない
+        if (!GameManager.instance.Is_Ster_camera_end)
+        {
+            Debug.Log("フラグはFalseです");
+            return;
+        }
+        
+
         //注目オブジェクトの場合
         if (m_Camera.Follow != null && collision.name != m_Camera.Follow.name)
         {

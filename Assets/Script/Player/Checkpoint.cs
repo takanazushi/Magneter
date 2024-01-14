@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Checkpoint : MonoBehaviour
 {
     bool collisionflg = true;
     int no;
 
-    //デバック用
     private Renderer renderer;
 
     [SerializeField, Header("チェックポイントNo")]
@@ -20,12 +20,20 @@ public class Checkpoint : MonoBehaviour
     [SerializeField, Header("カメラ番号")]
     private int CameraNo;
 
+    [SerializeField, Header("通過後スプライト")]
+    private Sprite passdSprite;
 
+    private SpriteRenderer spriteRenderer;
+
+    private Light2D myLight;
 
     //デバック用
     private void Start()
     {
         renderer = GetComponent<Renderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        myLight = GetComponent<Light2D>();
+        myLight.enabled = false;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -33,12 +41,12 @@ public class Checkpoint : MonoBehaviour
         if (collision.gameObject.name == "Player" && GameManager.instance.checkpointNo <= checkNo)
         {
             GameManager.instance.checkpointNo = checkNo;
-            GameManager.instance.StartCamera = CameraNo;
+            GameManager.instance.SetStaetCamera();
 
             //デバック用
             //通ったら赤
-            renderer.material.color = Color.red;
-
+            spriteRenderer.sprite = passdSprite;
+            myLight.enabled = true;
             Debug.Log(GameManager.instance.checkpointNo);
         }
     }
