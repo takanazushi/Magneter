@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     //Sceneが読み込まれる度に呼び出し
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect"|| SceneManager.GetActiveScene().name == "Option")
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect"|| SceneManager.GetActiveScene().name == "Option"|| SceneManager.GetActiveScene().name == "Result")
         {
             return;
         }
@@ -116,6 +116,11 @@ public class GameManager : MonoBehaviour
         {
             //インスタンスが存在する場合は破棄
             Destroy(gameObject);
+        }
+
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "Option")
+        {
+            return;
         }
 
         if (!Ster_Camera_end)
