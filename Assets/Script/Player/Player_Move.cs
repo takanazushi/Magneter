@@ -101,6 +101,15 @@ public class Player_Move : MonoBehaviour
         if (!GameManager.instance.Is_Ster_camera_end||
             GameManager.instance.Is_Player_StopFlg) { return; }
 
+        if (!GameManager.instance.Is_Ster_camera_end) { return; }
+
+        //ゴール時の処理
+        if (Goal_mng.instance.Is_Goal)
+        {
+            GoalWalk();
+            return;
+        }
+
         //重力を追加で掛ける
         //Rigidbody2D->GravityScaleからいじるか迷い中・・・
         //rb.velocity = new(rb.velocity.x, rb.velocity.y - 0.5f);
@@ -165,6 +174,18 @@ public class Player_Move : MonoBehaviour
         
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        //todo ゴールに触れたらタイマーストップ
+        if (collision.gameObject.CompareTag("Goal"))
+        {
+            Goal_mng.instance.ResultStart();
+
+
+
+        }
+    }
+
     private void OnCollisionEnter2D(Collision2D other)
     {
         //if (other.gameObject.tag == "MoveFloor")
@@ -177,11 +198,6 @@ public class Player_Move : MonoBehaviour
 
         //Debug.Log("ジャンプフラグは：" + jumpflag);
 
-        //todo ゴールに触れたらタイマーストップ
-        if(other.gameObject.tag == "Goal")
-        {
-            Goal_mng.instance.Is_Goal = true;
-        }
 
         //Jump値リセット
         jumpMoveX = 3.0f;
@@ -382,6 +398,42 @@ public class Player_Move : MonoBehaviour
             }
 
         }
+    }
+
+    /// <summary>
+    /// ゴール時の移動
+    /// </summary>
+    void GoalWalk()
+    {
+        //横移動を取得
+        float horizontalInput=1;
+
+        //左右反転
+        if (horizontalInput > 0)
+        {
+            spriteRenderer.flipX = true;
+            anim.SetBool("move", true);
+            //transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
+        }
+        else if (horizontalInput < 0)
+        {
+            spriteRenderer.flipX = false;
+            anim.SetBool("move", true);
+            //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
+        }
+        else
+        {
+            anim.SetBool("move", false);
+        }
+        //速度生成
+        Vector2 speed = new(horizontalInput, rb.velocity.y);
+
+        //スピード乗算
+        speed.x = speed.x * walkMoveX;
+
+
+        rb.velocity = speed;
+
     }
 
     private void OnDrawGizmos()

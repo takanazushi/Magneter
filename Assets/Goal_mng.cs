@@ -6,7 +6,16 @@ public class Goal_mng : MonoBehaviour
 {
     public static Goal_mng instance;
 
+    [SerializeField,Header("リザルト移動するまでの待機時間（秒）")]
+    private float LoadWait;
+
+    /// <summary>
+    /// ゴール済フラグ
+    /// true:ゴール済
+    /// </summary>
     bool Goalflg;
+
+    WaitForSeconds wait;
 
     public bool Is_Goal
     {
@@ -20,11 +29,23 @@ public class Goal_mng : MonoBehaviour
         {
             instance = this;
         }
-        else
-        {
-            //インスタンスが存在する場合は破棄
-            Destroy(gameObject);
-        }
+        wait=new WaitForSeconds(LoadWait);
+
+    }
+
+    
+    public void ResultStart()
+    {
+        Goalflg = true;
+        StartCoroutine(ResultLoad());
+    }
+
+    IEnumerator ResultLoad()
+    {
+        yield return wait;
+
+        //todo:リザルトシーンに移動
+        Debug.Log("リザルトシーンに移動");
     }
 
 }
