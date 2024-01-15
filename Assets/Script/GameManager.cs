@@ -55,7 +55,11 @@ public class GameManager : MonoBehaviour
     //Sceneが読み込まれる度に呼び出し
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (StartCamera == null && checkpointNo == -1)
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect"|| SceneManager.GetActiveScene().name == "Option")
+        {
+            return;
+        }
+        else if (StartCamera == null && checkpointNo == -1)
         {
 
             Debug.Log("StartCameraない");
@@ -92,14 +96,23 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        //カメラの遷移開始
-        SetStaetCamera();
+            //カメラの遷移開始
+            SetStaetCamera();
+
+
 
     }
 
     public void SetStaetCamera()
     {
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect"|| SceneManager.GetActiveScene().name == "Option")
+        {
+            return;
+        }
+
         StartCamera.Priority = 1;
+
+
     }
 
     //HP取得
