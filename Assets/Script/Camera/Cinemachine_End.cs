@@ -25,7 +25,7 @@ public class Cinemachine_End : CinemachineExtension
 
     public override bool OnTransitionFromCamera(ICinemachineCamera fromCam, Vector3 worldUp, float deltaTime)
     {
-        if (fromCam != null)
+        if (fromCam != null&& !GameManager.instance.Is_Ster_camera_end)
         {
             camera_d = fromCam;
 

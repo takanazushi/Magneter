@@ -34,6 +34,36 @@ public class Enemy_Magnet : MonoBehaviour
                 collisionMagnet.SetType_Magnat(magnet.PuroTypeManet);
             }
         }
+
+        if (collision.gameObject.name.StartsWith("MagnetBox_Rectangle"))
+        {
+            //衝突したオブジェクトのMagnetComponentを取得
+            Magnet collisionMagnet = collision.gameObject.GetComponent<Magnet>();
+
+            //Nullでなければ磁石のタイプを設定
+            if (magnet != null &&
+                collisionMagnet != null &&
+                collisionMagnet.PuroTypeManet == Type_Magnet.None)
+            {
+                // 極の種類を設定
+                collisionMagnet.SetType_Magnat(magnet.PuroTypeManet);
+            }
+        }
+
+        if (collision.gameObject.name.StartsWith("MagnetBox_Slender"))
+        {
+            //衝突したオブジェクトのMagnetComponentを取得
+            Magnet collisionMagnet = collision.gameObject.GetComponent<Magnet>();
+
+            //Nullでなければ磁石のタイプを設定
+            if (magnet != null &&
+                collisionMagnet != null &&
+                collisionMagnet.PuroTypeManet == Type_Magnet.None)
+            {
+                // 極の種類を設定
+                collisionMagnet.SetType_Magnat(magnet.PuroTypeManet);
+            }
+        }
     }
 
 }

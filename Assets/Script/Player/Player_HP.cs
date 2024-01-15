@@ -100,6 +100,7 @@ public class Player_HP : MonoBehaviour
             //現在のシーンを再度読み込む
             Debug.Log("現在のシーンを再度読み込む");
             Scene activeScene = SceneManager.GetActiveScene();
+
             SceneManager.LoadScene(activeScene.name);
         }
 

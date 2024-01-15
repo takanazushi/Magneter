@@ -29,6 +29,15 @@ public class UI_MoveActive : MonoBehaviour
         rectTransform = GetComponent<RectTransform>();
     }
 
+    private void Start()
+    {
+            if (GameManager.instance.Is_Ster_camera_end)
+            {
+                gameObject.SetActive(false);
+            }
+
+    }
+
     private void Update()
     {
         //çXêVíÜÇÃÇ›

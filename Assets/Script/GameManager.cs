@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
     //Scene‚ª“Ç‚İ‚Ü‚ê‚é“x‚ÉŒÄ‚Ño‚µ
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (StartCamera == null && checkpointNo == -1)
+        if (StartCamera == null)
         {
 
             Debug.Log("StartCamera‚È‚¢");
