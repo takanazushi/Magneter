@@ -20,6 +20,12 @@ public class Player_HP : MonoBehaviour
         get { return inviflg; }
     }
 
+    private Animator anim = null;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
@@ -29,6 +35,7 @@ public class Player_HP : MonoBehaviour
         {
             HitHeal(heal.hit_Heal);
         }
+
 
         //接触ダメージ判定
         //無敵時間中は無視
@@ -65,7 +72,6 @@ public class Player_HP : MonoBehaviour
     /// <param name="damage">受ける回復</param>
     public void HitHeal(int damage)
     {
-        //ダメージを受ける
         //todo:最大HPを設定
         GameManager.instance.HP += damage;
         GameManager.instance.HP=Mathf.Clamp(GameManager.instance.HP, 0,3);
@@ -80,6 +86,11 @@ public class Player_HP : MonoBehaviour
     /// <param name="damage">受けるダメージ</param>
     public void HitDamage(int damage)
     {
+        if (GameManager.instance.HP <= 0)
+        {
+            return;
+        }
+
         //ダメージを受ける
         GameManager.instance.HP -= damage;
 
@@ -92,19 +103,18 @@ public class Player_HP : MonoBehaviour
             //仮置き：自身を消す
             //Destroy(this.gameObject);
 
-            //プレイヤーのHPをリセットする
-            GameManager.instance.HP = GameManager.instance.RestHP;
-            //todo 前回の経過時間を保存
-            PlayerPrefs.SetFloat("PreviousElapsedTime", ClearTime.instance.second);
+            //シーンリセット
+            GameManager.instance.ActiveSceneReset();
+            anim.SetBool("damage", true);
+            //anim.Play("damage", -1, 0.1f);
+            //anim.CrossFade("damage", 0.0f, 0, 0.6f);
+            //anim.Play("damage",0,1.0f);
+            //animator.Play("AnimationName", -1, normalizedTime);
 
-            //現在のシーンを再度読み込む
-            Debug.Log("現在のシーンを再度読み込む");
-            Scene activeScene = SceneManager.GetActiveScene();
-            SceneManager.LoadScene(activeScene.name);
+            //アニメーション停止させてもいいカモ
         }
-
         //デバック確認用
-        Debug.Log("HP:" + GameManager.instance.HP);
+        //Debug.Log("HP:" + GameManager.instance.HP);
     }
 
     //無敵時間更新
@@ -112,12 +122,15 @@ public class Player_HP : MonoBehaviour
     {
         //無敵フラグセット
         inviflg = true;
+        anim.SetBool("damage", true);
 
         //無敵時間分停止
         yield return new WaitForSeconds(invi_Time);
 
         //無敵フラグセット
         inviflg = false;
+        anim.SetBool("damage", false);
+
     }
 
 }

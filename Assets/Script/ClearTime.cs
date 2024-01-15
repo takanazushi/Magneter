@@ -75,7 +75,7 @@ public class ClearTime : MonoBehaviour
         }
        
         //•`‰æ
-        timerText.text = hour.ToString() + ":" + minute.ToString("00") + ":" + second.ToString("f2");
+        //timerText.text = hour.ToString() + ":" + minute.ToString("00") + ":" + second.ToString("f2");
 
     }
 

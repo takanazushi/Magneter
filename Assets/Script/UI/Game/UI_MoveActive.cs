@@ -4,6 +4,10 @@ using System.Data;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+/// <summary>
+/// ステージ開始時演出用
+/// </summary>
 public class UI_MoveActive : MonoBehaviour
 {
     
@@ -27,6 +31,14 @@ public class UI_MoveActive : MonoBehaviour
     private void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
+    }
+
+    private void Start()
+    {
+        if (GameManager.instance.Is_Ster_camera_end)
+        {
+            gameObject.SetActive(false);
+        }
     }
 
     private void Update()

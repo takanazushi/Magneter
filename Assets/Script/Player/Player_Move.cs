@@ -64,6 +64,8 @@ public class Player_Move : MonoBehaviour
             // ワープ先のチェックポイントオブジェクトを見つける("checkpoint (1)" のような名前になっているもの）
             GameObject checkpointObject = GameObject.Find("checkpoint (" + GameManager.instance.checkpointNo + ")");
 
+            Debug.Log("チェックポイント通過:" + checkpointObject.name);
+
             // チェックポイントオブジェクトが見つかった場合は、プレイヤーをワープさせる
             if (checkpointObject != null)
             {
@@ -96,7 +98,9 @@ public class Player_Move : MonoBehaviour
     // 物理演算をしたい場合はFixedUpdateを使うのが一般的
     void FixedUpdate()
     {
-        if (!GameManager.instance.Is_Ster_camera_end) { return; }
+        if (!GameManager.instance.Is_Ster_camera_end||
+            GameManager.instance.Is_Player_StopFlg) { return; }
+
         //重力を追加で掛ける
         //Rigidbody2D->GravityScaleからいじるか迷い中・・・
         //rb.velocity = new(rb.velocity.x, rb.velocity.y - 0.5f);
@@ -143,14 +147,6 @@ public class Player_Move : MonoBehaviour
             }
         }
 
-        if (playerHP.Inviflg == true)
-        {
-            anim.SetBool("damage", true);
-        }
-        else
-        {
-            anim.SetBool("damage", false);
-        }
 
         //移動処理
         PlayerWalk();
