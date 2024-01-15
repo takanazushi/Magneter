@@ -50,6 +50,11 @@ public class GameManager : MonoBehaviour
         set { Player_PlayFlg = value; }
     }
 
+    [SerializeField, Tooltip("フェードアウト用画像")]
+    private GameObject Image;
+    private string Image_Name = "FadeOutImage";
+    private FadeOut fadeOut;
+
     //Sceneが有効になった時
     private void OnEnable()
     {
@@ -67,7 +72,10 @@ public class GameManager : MonoBehaviour
     //Sceneが読み込まれる度に呼び出し
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (StartCamera == null && checkpointNo == -1)
+        //プレイヤーのHPをリセットする
+        GameManager.instance.HP = GameManager.instance.RestHP;
+
+        if (StartCamera == null)
         {
 
             Debug.Log("StartCameraない");
@@ -85,13 +93,6 @@ public class GameManager : MonoBehaviour
             StartCamera = startCameraList;
         }
     }
-
-
-    [SerializeField,Tooltip("フェードアウト用画像")]
-    private GameObject Image;
-    private string Image_Name = "FadeOutImage";
-    private FadeOut fadeOut;
-
 
     void Awake()
     {
@@ -116,6 +117,7 @@ public class GameManager : MonoBehaviour
             //カメラの遷移開始
             SetStaetCamera();
         }
+
         SceneManager.activeSceneChanged += SetFadeOutOj;
 
         fadeOut = Image.GetComponent<FadeOut>();
@@ -142,13 +144,11 @@ public class GameManager : MonoBehaviour
     public void ActiveSceneReset()
     {
         Player_PlayFlg = true;
-        StartCoroutine(fadeOut.Execute(SceneManager.GetActiveScene().name));
 
-        //プレイヤーのHPをリセットする
-        GameManager.instance.HP = GameManager.instance.RestHP;
         //todo 前回の経過時間を保存
         PlayerPrefs.SetFloat("PreviousElapsedTime", ClearTime.instance.second);
 
+        StartCoroutine(fadeOut.Execute(SceneManager.GetActiveScene().name));
         //現在のシーンを再度読み込む
         //Scene activeScene = SceneManager.GetActiveScene();
         //SceneManager.LoadScene(activeScene.name);

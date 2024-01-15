@@ -241,6 +241,8 @@ public class Player_Move : MonoBehaviour
         //横移動を取得
         float horizontalInput = Input.GetAxis("Horizontal");
 
+        
+
         //風に当たっている状態の速度取得
 
         if (Wind.instance != null)
@@ -293,6 +295,11 @@ public class Player_Move : MonoBehaviour
 
         //速度生成
         Vector2 speed = new (horizontalInput, rb.velocity.y);
+
+        if (GameManager.instance.HP == 0)
+        {
+            speed = new(0, 0);
+        }
 
         //スピード乗算
         speed.x = speed.x * Lateralspeed;

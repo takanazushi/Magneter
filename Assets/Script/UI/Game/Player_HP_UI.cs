@@ -22,7 +22,7 @@ public class Player_HP_UI : MonoBehaviour
     private void Start()
     {
         //HPŽæ“¾
-        beforeHP = GameManager.instance.HP;
+        beforeHP = GameManager.instance.RestHP;
         CreateHPIcon();
     }
 

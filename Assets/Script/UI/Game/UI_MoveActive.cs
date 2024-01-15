@@ -56,7 +56,12 @@ public class UI_MoveActive : MonoBehaviour
     /// <param name="callback">行動を終了コールバック</param>
     public void ActionStart(UnityAction callback)
     {
-        Actionflg=true;
+        if (GameManager.instance.Is_Ster_camera_end)
+        {
+            return;
+        }
+
+        Actionflg =true;
         wait = new(time);
         StartCoroutine(ActionEnd(callback));
     }
