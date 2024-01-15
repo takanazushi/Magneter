@@ -30,6 +30,12 @@ public class MagLaserVar_Shot : MonoBehaviour
     [SerializeField]
     Laser_Texture LasetT_B;
 
+    [SerializeField]
+    private AudioClip ShotSE;
+
+    [SerializeField]
+    private AudioClip HitSE;
+
     /// <summary>
     /// プレイヤー位置→マウス位置方向ベクトル
     /// </summary>
@@ -53,11 +59,19 @@ public class MagLaserVar_Shot : MonoBehaviour
 
     GameTimeControl gameTime;
     GameManager game_manager;
+    AudioSource audioSource;
 
     private void Start()
     {
         gameTime = GameTimeControl.instance;
         game_manager=GameManager.instance;
+
+        audioSource=GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            Debug.LogError("MuzzleにAudioSourceついてない");
+        }
     }
 
     private void Update()
@@ -70,10 +84,12 @@ public class MagLaserVar_Shot : MonoBehaviour
         //左クリック
         if (Input.GetMouseButtonDown(0))
         {
+            audioSource.PlayOneShot(ShotSE);
             LaserDrawRay();
             LaserTexture_Shot(LasetT_R);
             if (RayHitMag())
             {
+                audioSource.PlayOneShot(HitSE);
                 hitmg.SetType_Magnat(Magnet.Type_Magnet.N);
             }
 
@@ -81,10 +97,12 @@ public class MagLaserVar_Shot : MonoBehaviour
         //右クリック
         else if (Input.GetMouseButtonDown(1))
         {
+            audioSource.PlayOneShot(ShotSE);
             LaserDrawRay();
             LaserTexture_Shot(LasetT_B);
             if (RayHitMag())
             {
+                audioSource.PlayOneShot(HitSE);
                 hitmg.SetType_Magnat(Magnet.Type_Magnet.S);
             }
 

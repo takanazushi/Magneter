@@ -301,6 +301,7 @@ GameObject:
   - component: {fileID: 282293927}
   - component: {fileID: 282293926}
   - component: {fileID: 282293929}
+  - component: {fileID: 282293930}
   m_Layer: 5
   m_Name: Stage2Button
   m_TagString: Untagged
@@ -370,7 +371,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 282293927}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 282293930}
+        m_TargetAssemblyTypeName: ButtonSceneChange, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &282293927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,6 +439,20 @@ MonoBehaviour:
   nomalSprite: {fileID: 21300000, guid: c8bfeee6636672544a12795da9589aa9, type: 3}
   changeSprite: {fileID: 21300000, guid: eb5f58a5149843b47addab2f10559410, type: 3}
   stageNo: 2
+--- !u!114 &282293930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 282293924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b425f44dd09a34e96f086e5abefca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 3
+  Image: {fileID: 9050479631053165118}
 --- !u!1 &365536564
 GameObject:
   m_ObjectHideFlags: 0
@@ -639,6 +666,7 @@ GameObject:
   - component: {fileID: 724030209}
   - component: {fileID: 724030208}
   - component: {fileID: 724030211}
+  - component: {fileID: 724030212}
   m_Layer: 5
   m_Name: Stage3Button
   m_TagString: Untagged
@@ -708,7 +736,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 724030209}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 724030212}
+        m_TargetAssemblyTypeName: ButtonSceneChange, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &724030209
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -764,6 +804,20 @@ MonoBehaviour:
   nomalSprite: {fileID: 21300000, guid: 1858994790d40ac4cb55b10e708de222, type: 3}
   changeSprite: {fileID: 21300000, guid: b543638fdbfb5d24b99a256c95fea528, type: 3}
   stageNo: 3
+--- !u!114 &724030212
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 724030206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b425f44dd09a34e96f086e5abefca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 4
+  Image: {fileID: 9050479631053165118}
 --- !u!1 &789890358
 GameObject:
   m_ObjectHideFlags: 0
@@ -777,6 +831,7 @@ GameObject:
   - component: {fileID: 789890361}
   - component: {fileID: 789890360}
   - component: {fileID: 789890363}
+  - component: {fileID: 789890364}
   m_Layer: 5
   m_Name: Stage1Button
   m_TagString: Untagged
@@ -846,7 +901,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 789890361}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 789890364}
+        m_TargetAssemblyTypeName: ButtonSceneChange, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &789890361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -902,6 +969,20 @@ MonoBehaviour:
   nomalSprite: {fileID: 21300000, guid: 2114f784de5ecc44b89f1ed26b39ad04, type: 3}
   changeSprite: {fileID: 21300000, guid: 9f057e503f2f7dc40b98f61b99538c05, type: 3}
   stageNo: 1
+--- !u!114 &789890364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 789890358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b425f44dd09a34e96f086e5abefca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 2
+  Image: {fileID: 9050479631053165118}
 --- !u!1 &797509373
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +996,7 @@ GameObject:
   - component: {fileID: 797509377}
   - component: {fileID: 797509376}
   - component: {fileID: 797509375}
+  - component: {fileID: 797509379}
   m_Layer: 5
   m_Name: TutorialButton
   m_TagString: Untagged
@@ -1001,7 +1083,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 797509377}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 797509379}
+        m_TargetAssemblyTypeName: ButtonSceneChange, Assembly-CSharp
+        m_MethodName: OnClick
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &797509377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1040,6 +1134,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 797509373}
   m_CullTransparentMesh: 1
+--- !u!114 &797509379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 797509373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12b425f44dd09a34e96f086e5abefca4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nextScene: 0
+  Image: {fileID: 9050479631053165118}
 --- !u!1 &813296872
 GameObject:
   m_ObjectHideFlags: 0
@@ -1414,7 +1522,7 @@ GameObject:
   - component: {fileID: 1458232603}
   - component: {fileID: 1458232602}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1437,7 +1545,11 @@ MonoBehaviour:
   HP: 3
   StartCamera: {fileID: 0}
   Ster_Camera_end: 0
+<<<<<<< HEAD
   stageClearFlag: 01000000
+=======
+  stageClearFlag: 01010000
+>>>>>>> SE・BGM
 --- !u!4 &1458232603
 Transform:
   m_ObjectHideFlags: 0
@@ -1498,6 +1610,147 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 979.4345, y: 543.9432, z: -4.996804}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1985420395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1985420398}
+  - component: {fileID: 1985420397}
+  - component: {fileID: 1985420396}
+  m_Layer: 0
+  m_Name: BGMManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1985420396
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985420395}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 2103956436931621451, guid: 32704523a27a7e64bac98743f504ad24, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 11bba317a3c55e941bb25f845c6968bd, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &1985420397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985420395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47706fc99e8c16b4b9538a9626b162f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1985420398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985420395}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 946.35706, y: 463.38, z: -4.5805655}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1727,3 +1980,4 @@ SceneRoots:
   - {fileID: 81449218}
   - {fileID: 1776562906}
   - {fileID: 1458232603}
+  - {fileID: 1985420398}

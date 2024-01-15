@@ -11,6 +11,9 @@ public class Turret_FollowerBullet : MonoBehaviour
     [SerializeField, Header("弾の発射スピード")]
     private float moveSpeed;
 
+    [SerializeField]
+    private AudioClip ShotSE;
+
     //画面内
     private bool InField = false;
 
@@ -18,10 +21,19 @@ public class Turret_FollowerBullet : MonoBehaviour
 
     private Vector3 bulletDirection;
 
+    AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            Debug.LogError("Battery_FollowerBulletにAudioSourceついてない");
+        }
 
         target = GameObject.FindGameObjectWithTag("Player").transform;
 
@@ -40,6 +52,7 @@ public class Turret_FollowerBullet : MonoBehaviour
     {
         if (!GameManager.instance.Is_Ster_camera_end) { return; }
         //画面内にいるときtrue
+        audioSource.PlayOneShot(ShotSE);
         InField = true;
     }
 

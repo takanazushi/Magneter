@@ -15,6 +15,16 @@ public class MusiMixer : MonoBehaviour
     [SerializeField,Header("SEを調整するスライダー")]
     private Slider SESlider;
 
+    private void Start()
+    {
+        //BGM
+        audioMixer.GetFloat("BGM", out float bgmVolume);
+        BGMSlider.value = bgmVolume;
+        //SE
+        audioMixer.GetFloat("SE", out float seVolume);
+        SESlider.value = seVolume;
+    }
+
     public void SetBGM(float volume)
     {
         //受け取ったボリュームをセット

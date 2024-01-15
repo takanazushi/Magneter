@@ -4,8 +4,10 @@
 public enum SceneNameManager
 {
 	Title,
-	ScenarioSelect,
-	Game,
+	StageSelect,
+	Stage1,
+	Stage2,
+	Stage3,
 	Option,
 	Result,
 }
