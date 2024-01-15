@@ -191,7 +191,7 @@ public class Enemy_WalkFall : MonoBehaviour
         }
         else if (magnet.PuroTypeManet == Type_Magnet.None)
         {
-            Debug.Log("‹ÉŽw’è‚µ‚Ä‚È‚¢‚Å‚·");
+            //Debug.Log("‹ÉŽw’è‚µ‚Ä‚È‚¢‚Å‚·");
             SetAnimation("Enemy_None_walk");
             light2D.enabled = false;
         }
