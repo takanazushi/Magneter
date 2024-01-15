@@ -145,10 +145,12 @@ public class GameManager : MonoBehaviour
     {
         Player_PlayFlg = true;
 
+        StartCoroutine(fadeOut.Execute(SceneManager.GetActiveScene().name));
+
         //todo 前回の経過時間を保存
         PlayerPrefs.SetFloat("PreviousElapsedTime", ClearTime.instance.second);
 
-        StartCoroutine(fadeOut.Execute(SceneManager.GetActiveScene().name));
+        
         //現在のシーンを再度読み込む
         //Scene activeScene = SceneManager.GetActiveScene();
         //SceneManager.LoadScene(activeScene.name);

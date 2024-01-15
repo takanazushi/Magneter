@@ -101,8 +101,6 @@ public class Player_Move : MonoBehaviour
         if (!GameManager.instance.Is_Ster_camera_end||
             GameManager.instance.Is_Player_StopFlg) { return; }
 
-        if (!GameManager.instance.Is_Ster_camera_end) { return; }
-
         //ƒS[ƒ‹‚Ìˆ—
         if (Goal_mng.instance.Is_Goal)
         {
