@@ -23,9 +23,14 @@ public class Checkpoint : MonoBehaviour
     [SerializeField, Header("通過後スプライト")]
     private Sprite passdSprite;
 
+    [SerializeField]
+    private AudioClip passSE;
+
     private SpriteRenderer spriteRenderer;
 
     private Light2D myLight;
+
+    AudioSource audioSource;
 
     //デバック用
     private void Start()
@@ -34,17 +39,29 @@ public class Checkpoint : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         myLight = GetComponent<Light2D>();
         myLight.enabled = false;
+
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("checkPointにAudioSourceついてない");
+        }
+
+        if (GameManager.instance.checkpointNo >= checkNo)
+        {
+            spriteRenderer.sprite = passdSprite;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.name == "Player" && GameManager.instance.checkpointNo <= checkNo)
+        if (collision.gameObject.name == "Player" && GameManager.instance.checkpointNo < checkNo)
         {
             GameManager.instance.checkpointNo = checkNo;
             GameManager.instance.SetStaetCamera();
 
             //デバック用
             //通ったら赤
+            audioSource.PlayOneShot(passSE);
             spriteRenderer.sprite = passdSprite;
             myLight.enabled = true;
             Debug.Log(GameManager.instance.checkpointNo);

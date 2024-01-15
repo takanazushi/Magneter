@@ -22,6 +22,11 @@ public class Player_Move : MonoBehaviour
         Tooltip("")]
     float rayLength = 1.0f;
 
+    [SerializeField]
+    private AudioClip JumpSE;
+
+    AudioSource audioSource;
+
     /// <summary>
     /// 足場に触れている場合のみ有効
     /// </summary>
@@ -57,6 +62,8 @@ public class Player_Move : MonoBehaviour
 
     private Player_HP playerHP;
 
+    private bool hasPlayed = false;
+
     void Start()
     {
         if (GameManager.instance.checkpointNo > -1)
@@ -73,6 +80,13 @@ public class Player_Move : MonoBehaviour
             {
                 Debug.Log(GameManager.instance.checkpointNo + "チェックポイントを通過していない");
             }
+        }
+
+        audioSource = GetComponent<AudioSource>();
+
+        if (audioSource == null)
+        {
+            Debug.LogError("PlayerにAudioSourceついてない");
         }
 
         rb = GetComponent<Rigidbody2D>();
@@ -166,6 +180,7 @@ public class Player_Move : MonoBehaviour
             }
         }
 
+        
         
     }
 
@@ -323,6 +338,12 @@ public class Player_Move : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && this.jumpCount < 1)
         {
+            if (!hasPlayed) // 音がまだ再生されていない場合
+            {
+                audioSource.Play(); // 音を再生する
+                hasPlayed = true; // 音が再生されたことを記録する
+            }
+            
             float pwa = jumpForce;
 
             jumpflag = true;
@@ -333,7 +354,11 @@ public class Player_Move : MonoBehaviour
             rb.AddForce(transform.up * pwa, ForceMode2D.Impulse);
             jumpCount++;
         }
-       
+        else // スペースキーを離した場合
+        {
+            hasPlayed = false; // フラグをリセットする
+        }
+
     }
 
     RaycastHit2D[] CheckGroundStatus()
