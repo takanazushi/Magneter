@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEditor.Build.Reporting;
 using UnityEditor;
 
 public class ClearTime : MonoBehaviour
@@ -15,7 +14,7 @@ public class ClearTime : MonoBehaviour
     //タイマー
     public float second;
     //分
-    private int minute;
+    public int minute;
     //時
     private int hour;
 
@@ -56,7 +55,7 @@ public class ClearTime : MonoBehaviour
             resetflg = true;
         }
         //ゴールまでタイマー加算
-        if(!Goal_mng.instance.Is_Goal)
+        if (Goal_mng.instance != null&& !Goal_mng.instance.Is_Goal) 
         {
             second += Time.deltaTime;
         }
@@ -85,8 +84,8 @@ public class ClearTime : MonoBehaviour
         second = PlayerPrefs.GetFloat("PreviousElapsedTime", 0f);
     }
 
-    private static void BuildPlayerHandler(BuildPlayerOptions options)
-    {
-        PlayerPrefs.DeleteAll();
-    }
+    //private static void BuildPlayerHandler(BuildPlayerOptions options)
+    //{
+    //    PlayerPrefs.DeleteAll();
+    //}
 }

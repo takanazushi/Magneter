@@ -1,13 +1,6 @@
 using Cinemachine;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using Unity.VisualScripting;
-using UnityEditor.UI;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -114,6 +107,11 @@ public class GameManager : MonoBehaviour
 
         //プレイヤーのHPをリセットする
         GameManager.instance.HP = GameManager.instance.RestHP;
+
+
+        fadeOut = Image.GetComponent<FadeOut>();
+        Image_Name = Image.name;
+
     }
 
     void Awake()
@@ -134,7 +132,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "Option")
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "Option" || SceneManager.GetActiveScene().name == "Result")
         {
             return;
         }
@@ -172,6 +170,7 @@ public class GameManager : MonoBehaviour
     {
         Player_PlayFlg = true;
 
+        Debug.Log(fadeOut.name);
         StartCoroutine(fadeOut.Execute(SceneManager.GetActiveScene().name));
 
         //todo 前回の経過時間を保存
@@ -185,7 +184,7 @@ public class GameManager : MonoBehaviour
 
     public void SetStaetCamera()
     {
-        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect"|| SceneManager.GetActiveScene().name == "Option")
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect"|| SceneManager.GetActiveScene().name == "Option" || SceneManager.GetActiveScene().name == "Result")
         {
             return;
         }

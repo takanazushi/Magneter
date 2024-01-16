@@ -1,10 +1,6 @@
 using System.Collections;
-using System.Reflection.Emit;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
-using static UnityEditor.Experimental.GraphView.GraphView;
-using static UnityEditor.ShaderData;
+
 
 [RequireComponent(typeof(LineRenderer))]
 public class MagLaserVar_Shot : MonoBehaviour

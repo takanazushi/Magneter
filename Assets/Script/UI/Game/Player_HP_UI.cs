@@ -1,11 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using UnityEditor.UI;
+
 using UnityEngine;
-using UnityEngine.Rendering;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Player_HP_UI : MonoBehaviour

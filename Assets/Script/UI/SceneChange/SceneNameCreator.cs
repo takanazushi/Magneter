@@ -4,7 +4,9 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Linq;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 
 public static class SceneNameCreator
@@ -33,7 +35,7 @@ public static class SceneNameCreator
     //ファイル名（拡張子なし）
     private static readonly string FILENAME_WITHOUT_EXTENSION = Path.GetFileNameWithoutExtension(PATH);
 
-
+#if UNITY_EDITOR
     [MenuItem(ITEM_NAME)]
     //メニュー項目の作成
     public static void Create()
@@ -94,4 +96,5 @@ public static class SceneNameCreator
         Array.ForEach(INVALUD_CHARS, c => str = str.Replace(c, string.Empty));
         return str;
     }
+#endif
 }

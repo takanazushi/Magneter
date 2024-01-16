@@ -1,3 +1,4 @@
+using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,11 @@ public class Goal_mng : MonoBehaviour
     private string Image_Name = "FadeOutImage";
     private FadeOut fadeOut;
 
+    [SerializeField, Header("通過後スプライト")]
+    private Sprite passdSprite;
+
+    private SpriteRenderer spriteRenderer;
+
     /// <summary>
     /// ゴール済フラグ
     /// true:ゴール済
@@ -29,17 +35,64 @@ public class Goal_mng : MonoBehaviour
         set { Goalflg = value; }
     }
 
+    //Sceneが有効になった時
+    private void OnEnable()
+    {
+        //自動的にMethod呼び出し
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    //Sceneが無効になった時
+    private void OnDisable()
+    {
+        //自動的にMethod削除
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    //Sceneが読み込まれる度に呼び出し
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "Option" || SceneManager.GetActiveScene().name == "Result")
+        {
+            return;
+        }
+
+        if (Image == null)
+        {
+            Debug.Log("フェードアウトのImageない");
+
+            // GameObject(1)を見つける
+            GameObject parentObject = GameObject.Find("Canvas");
+
+            // Camera_Childを見つける
+            Transform childObject = parentObject.transform.Find("FadeImage");
+
+            // Start_Camera_Listを見つける
+            GameObject fadeoutImage = childObject.Find("FadeOutImage").gameObject;
+
+            // StartCameraに代入する
+            Image = fadeoutImage;
+        }
+    }
+
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
         }
+
         wait=new WaitForSeconds(LoadWait);
+
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "Option" || SceneManager.GetActiveScene().name == "Result")
+        {
+            return;
+        }
 
         fadeOut = Image.GetComponent<FadeOut>();
         Image_Name = Image.name;
 
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     
@@ -47,7 +100,20 @@ public class Goal_mng : MonoBehaviour
     {
         Goalflg = true;
 
+        spriteRenderer.sprite = passdSprite;
+
+        GameManager.instance.checkpointNo = -1;
+
         Debug.Log("ゴール");
+
+        if (SceneManager.GetActiveScene().name == "Stage1")
+        {
+            GameManager.instance.stageClearFlag[2] = true;
+        }
+        else if(SceneManager.GetActiveScene().name == "Stage2")
+        {
+            GameManager.instance.stageClearFlag[3] = true;
+        }
 
         StartCoroutine(ResultLoad());
     }

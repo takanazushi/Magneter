@@ -4,10 +4,6 @@ using System.Collections.Generic;
 using UnityEditor;
 #endif
 using UnityEngine;
-using static TMPro.SpriteAssetUtilities.TexturePacker_JsonArray;
-using UnityEngine.U2D;
-using static UnityEditor.PlayerSettings;
-using Unity.Burst.CompilerServices;
 
 //マグネット
 public class Magnet : MonoBehaviour
@@ -176,21 +172,21 @@ public class Magnet : MonoBehaviour
 
     }
 
-    private void OnDrawGizmos()
-    {
-        if (!Debagu_fla) { return; }
+    //private void OnDrawGizmos()
+    //{
+    //    if (!Debagu_fla) { return; }
 
-        //デバック用データが存在する場合
-        if (EditorApplication.isPlaying&& Debagu_list.Count!=0)
-        {
-            foreach (Transform pair in Debagu_list)
-            {
-                //関係しているマグネットへ線を描画
-                Gizmos.color = Color.red;
-                Gizmos.DrawLine(transform.position, pair.transform.position);
-            }
-        }
-    }
+    //    //デバック用データが存在する場合
+    //    if (EditorApplication.isPlaying&& Debagu_list.Count!=0)
+    //    {
+    //        foreach (Transform pair in Debagu_list)
+    //        {
+    //            //関係しているマグネットへ線を描画
+    //            Gizmos.color = Color.red;
+    //            Gizmos.DrawLine(transform.position, pair.transform.position);
+    //        }
+    //    }
+    //}
 
     /// <summary>
     /// 自分が受ける影響の合算を取得
