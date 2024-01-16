@@ -14,7 +14,7 @@ public class Hole : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            Invoke("GameRestart", respawnTime);
+            GameManager.instance.ActiveSceneReset();
         }
     }
 
@@ -23,7 +23,7 @@ public class Hole : MonoBehaviour
         //現在のシーンを再度読み込む
         Debug.Log("現在のシーンを再度読み込む");
         //シーンリセット
-        GameManager.instance.ActiveSceneReset();
+        //GameManager.instance.ActiveSceneReset();
 
         //Scene activeScene = SceneManager.GetActiveScene();
         //SceneManager.LoadScene(activeScene.name);

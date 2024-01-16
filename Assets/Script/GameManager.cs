@@ -76,9 +76,8 @@ public class GameManager : MonoBehaviour
         {
             return;
         }
-     
 
-        else if (StartCamera == null)
+        if (StartCamera == null)
         {
 
             Debug.Log("StartCameraない");
@@ -94,6 +93,23 @@ public class GameManager : MonoBehaviour
 
             // StartCameraに代入する
             StartCamera = startCameraList;
+        }
+
+        if (Image == null)
+        {
+            Debug.Log("フェードアウトのImageない");
+
+            // GameObject(1)を見つける
+            GameObject parentObject = GameObject.Find("Canvas");
+
+            // Camera_Childを見つける
+            Transform childObject = parentObject.transform.Find("FadeImage");
+
+            // Start_Camera_Listを見つける
+            GameObject fadeoutImage = childObject.Find("FadeOutImage").gameObject;
+
+            // StartCameraに代入する
+            Image = fadeoutImage;
         }
 
         //プレイヤーのHPをリセットする
