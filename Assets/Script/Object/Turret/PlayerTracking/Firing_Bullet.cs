@@ -17,6 +17,11 @@ public class Firing_Bullet : MonoBehaviour
     }
     public virtual IEnumerator ShotCoroutine()
     {
+        if (!GameManager.instance.Is_Ster_camera_end) 
+        {
+            yield return new WaitForSeconds(2.0f);
+        }
+
         while (true)
         {
             //ƒJƒƒ‰À•Wæ“¾
@@ -32,7 +37,7 @@ public class Firing_Bullet : MonoBehaviour
             }
 
             // 2.0•b‘Ò‹@‚·‚é
-            yield return new WaitForSeconds(2.0f);
+            yield return new WaitForSeconds(3.0f);
         }
     }
 

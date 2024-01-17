@@ -45,15 +45,21 @@ public class Turret_FollowerBullet : MonoBehaviour
         {
             bulletDirection.y = -5;
         }
+
     }
 
     //‰æ–Ê“à‚Å“®‚©‚·
     private void OnBecameVisible()
     {
-        if (!GameManager.instance.Is_Ster_camera_end) { return; }
+        if (!GameManager.instance.Is_Ster_camera_end) 
+        { 
+            return; 
+        }
         //‰æ–Ê“à‚É‚¢‚é‚Æ‚«true
         audioSource.PlayOneShot(ShotSE);
+
         InField = true;
+        Debug.Log(InField);
     }
 
     //‰æ–ÊŠO‚ÅÁ‚·ˆ—
