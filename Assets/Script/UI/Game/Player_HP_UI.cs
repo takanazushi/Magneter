@@ -11,8 +11,6 @@ public class Player_HP_UI : MonoBehaviour
 
     private int beforeHP;
 
-    public bool Frameflg;
-
     private void Start()
     {
         //HP取得
@@ -31,7 +29,7 @@ public class Player_HP_UI : MonoBehaviour
         for (int i = 0; i < beforeHP; i++)
         {
             //playerIconに入ってる画像を生成
-            GameObject playerHPObj = Instantiate(playerIcon);
+            GameObject playerHPObj = Instantiate(playerIcon,transform);
             //オブジェクトHPを親にする
             playerHPObj.transform.parent = transform;
         }
@@ -41,7 +39,7 @@ public class Player_HP_UI : MonoBehaviour
     private void ShowHPIcon()
     {
         //元のHPと同じときはスルー
-        if (beforeHP == GameManager.instance.GetHP() || Frameflg)
+        if (beforeHP == GameManager.instance.GetHP())
         {
             return;
         }
