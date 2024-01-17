@@ -65,7 +65,12 @@ public class GameManager : MonoBehaviour
     //Sceneが読み込まれる度に呼び出し
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect"|| SceneManager.GetActiveScene().name == "Option"|| SceneManager.GetActiveScene().name == "Result")
+        GameTimeControl.instance.GameTime_Start();
+
+        if (SceneManager.GetActiveScene().name == "Title" ||
+            SceneManager.GetActiveScene().name == "StageSelect"|| 
+            SceneManager.GetActiveScene().name == "Option"|| 
+            SceneManager.GetActiveScene().name == "Result")
         {
             return;
         }
@@ -106,12 +111,11 @@ public class GameManager : MonoBehaviour
         }
 
         //プレイヤーのHPをリセットする
-        GameManager.instance.HP = GameManager.instance.RestHP;
+        instance.HP = instance.RestHP;
 
 
         fadeOut = Image.GetComponent<FadeOut>();
         Image_Name = Image.name;
-
     }
 
     void Awake()
@@ -156,7 +160,6 @@ public class GameManager : MonoBehaviour
 
         if(Image != null)
         {
-            Debug.Log("シーン着替え時：" + Image.name);
             fadeOut = Image.GetComponent<FadeOut>();
             Image_Name = Image.name;
         }
@@ -166,12 +169,12 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// 現在のシーンを再度読み込む
     /// </summary>
-    public void ActiveSceneReset()
+    public void ActiveSceneReset(string scenename)
     {
         Player_PlayFlg = true;
 
         Debug.Log(fadeOut.name);
-        StartCoroutine(fadeOut.Execute(SceneManager.GetActiveScene().name));
+        StartCoroutine(fadeOut.Execute(scenename));
 
         //todo 前回の経過時間を保存
         PlayerPrefs.SetFloat("PreviousElapsedTime", ClearTime.instance.second);
@@ -190,8 +193,6 @@ public class GameManager : MonoBehaviour
         }
 
         StartCamera.Priority = 1;
-
-
     }
 
     //HP取得

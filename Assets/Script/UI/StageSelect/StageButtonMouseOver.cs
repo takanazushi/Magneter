@@ -30,7 +30,7 @@ public class StageButtonMouseOver : MonoBehaviour,IPointerEnterHandler, IPointer
     private void Start()
     {
         button = GetComponent<Button>();
-
+        Debug.Log(stageNo);
         if (!GameManager.instance.stageClearFlag[stageNo])
         {
             button.interactable = false;

@@ -144,13 +144,13 @@ public class Enemy_WalkFall : MonoBehaviour
         //°‚Æ‚Ìˆ—‚Í–³‹
         if (collision.gameObject.name == "Floor")
         {
-            Debug.Log("°‚Æ“–‚½‚Á‚Ä‚é");
+            //Debug.Log("°‚Æ“–‚½‚Á‚Ä‚é");
             return;
         }
 
         if (collision.gameObject.CompareTag("kabe"))
         {
-            Debug.Log("“–‚½‚Á‚½");
+            //Debug.Log("“–‚½‚Á‚½");
             Turn();
         }
 

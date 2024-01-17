@@ -104,7 +104,7 @@ public class Player_HP : MonoBehaviour
             //Destroy(this.gameObject);
 
             //シーンリセット
-            GameManager.instance.ActiveSceneReset();
+            GameManager.instance.ActiveSceneReset(SceneManager.GetActiveScene().name);
             anim.SetBool("damage", true);
             //anim.Play("damage", -1, 0.1f);
             //anim.CrossFade("damage", 0.0f, 0, 0.6f);

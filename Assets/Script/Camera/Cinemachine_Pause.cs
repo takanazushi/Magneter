@@ -67,9 +67,8 @@ public class Cinemachine_Pause : CinemachineExtension
                 float da = blend.BlendWeight - 1.0f;
 
                 //遷移が終了した時ゲーム時間を再開
-                if (Mathf.Abs(da) < 0.01f)
+                if (Mathf.Abs(da) < 0.05f)
                 {
-                    Debug.Log("カメラ：start");
                     timeControl.GameTime_Start();
                     End_Action = true;
                 }

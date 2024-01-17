@@ -14,7 +14,7 @@ public class Hole : MonoBehaviour
     {
         if (collision.gameObject.name == "Player")
         {
-            GameManager.instance.ActiveSceneReset();
+            GameManager.instance.ActiveSceneReset(SceneManager.GetActiveScene().name);
         }
     }
 

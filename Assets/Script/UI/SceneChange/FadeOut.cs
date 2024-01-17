@@ -47,7 +47,8 @@ public class FadeOut : MonoBehaviour, IChangeRoutine
             float alpha = elapsedTime / duration;
             _FadeOut.SetFloat("_Alpha", alpha);
             yield return null;
-            elapsedTime += Time.deltaTime;
+            elapsedTime += Time.unscaledDeltaTime;
+            Debug.Log("Out:"+ elapsedTime);
         }
 
         //アルファ値を1に
