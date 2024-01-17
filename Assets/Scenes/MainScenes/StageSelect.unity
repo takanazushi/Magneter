@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b425f44dd09a34e96f086e5abefca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 4
+  nextScene: 5
   Image: {fileID: 872514332672218825}
 --- !u!114 &1252574291684375506
 MonoBehaviour:
@@ -706,7 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b425f44dd09a34e96f086e5abefca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 0
+  nextScene: 2
   Image: {fileID: 872514332672218825}
 --- !u!4 &1271131031305032683
 Transform:
@@ -793,7 +793,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b425f44dd09a34e96f086e5abefca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 2
+  nextScene: 3
   Image: {fileID: 872514332672218825}
 --- !u!1 &1543064213787117583
 GameObject:
@@ -1239,7 +1239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b425f44dd09a34e96f086e5abefca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 3
+  nextScene: 4
   Image: {fileID: 872514332672218825}
 --- !u!224 &4087802136657333703
 RectTransform:

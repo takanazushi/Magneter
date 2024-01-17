@@ -764,6 +764,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512606e870f9cf94fa3c9458cc43f61e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  LoadWait: 0
+  Image: {fileID: 0}
+  passdSprite: {fileID: 0}
 --- !u!114 &203442011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -777,6 +780,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   second: 0
+  minute: 0
 --- !u!224 &203442012
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1017,6 +1021,7 @@ MonoBehaviour:
   checkNo: 0
   Stert_Camera: {fileID: 0}
   passdSprite: {fileID: 21300000, guid: a7f506a3541bbec47938e6b6126ff167, type: 3}
+  passSE: {fileID: 0}
 --- !u!50 &232859179
 Rigidbody2D:
   serializedVersion: 4
@@ -2180,6 +2185,7 @@ MonoBehaviour:
   checkNo: 2
   Stert_Camera: {fileID: 0}
   passdSprite: {fileID: 21300000, guid: a7f506a3541bbec47938e6b6126ff167, type: 3}
+  passSE: {fileID: 0}
 --- !u!50 &971848399
 Rigidbody2D:
   serializedVersion: 4
@@ -2989,6 +2995,7 @@ MonoBehaviour:
   checkNo: 1
   Stert_Camera: {fileID: 0}
   passdSprite: {fileID: 21300000, guid: a7f506a3541bbec47938e6b6126ff167, type: 3}
+  passSE: {fileID: 0}
 --- !u!50 &1308961847
 Rigidbody2D:
   serializedVersion: 4
@@ -4019,7 +4026,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a699de9428ae60449b62569ba0afbc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _FadeIn: {fileID: 2100000, guid: f47342216d20a73439b44265d93a24b8, type: 2}
+  _FadeIn: {fileID: 2100000, guid: 2d10c2300c1658041b7cc031fd440918, type: 2}
 --- !u!114 &1809716979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12304,8 +12311,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.39974976, y: -2.1743002, z: 0}
-    m_Extent: {x: 25.74515, y: 5.4512, z: 0}
+    m_Center: {x: -0.4034996, y: -2.1707, z: 0}
+    m_Extent: {x: 25.7365, y: 5.4625, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -12878,6 +12885,8 @@ MonoBehaviour:
   Muzzle: {fileID: 596236506645456564}
   LasetT_R: {fileID: 173854929}
   LasetT_B: {fileID: 844598525}
+  ShotSE: {fileID: 0}
+  HitSE: {fileID: 0}
 --- !u!114 &5666154515554051842
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -98454,6 +98463,7 @@ GameObject:
   - component: {fileID: 1023105789520937997}
   - component: {fileID: 9209810429436916913}
   - component: {fileID: 4124151139611292361}
+  - component: {fileID: 9209810429436916914}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -100108,7 +100118,23 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4
   rayLength: 1.2
+  JumpSE: {fileID: 0}
   windMoveSpeed: 0
+--- !u!114 &9209810429436916914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8000036141222660298}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d9f9473d52786b498415d803f54a51b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spriteRenderer: {fileID: 0}
+  originalColor: {r: 1, g: 1, b: 1, a: 1}
+  pressedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &9212577434927736385
 GameObject:
   m_ObjectHideFlags: 0

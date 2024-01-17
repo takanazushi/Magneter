@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12b425f44dd09a34e96f086e5abefca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nextScene: 5
+  nextScene: 6
   Image: {fileID: 2567241440922154216}
 --- !u!114 &115122012
 MonoBehaviour:

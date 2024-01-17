@@ -5,6 +5,7 @@ public enum SceneNameManager
 {
 	Title,
 	StageSelect,
+	Tutorial,
 	Stage1,
 	Stage2,
 	Stage3,

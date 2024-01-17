@@ -104,9 +104,14 @@ public class Goal_mng : MonoBehaviour
 
         GameManager.instance.checkpointNo = -1;
 
-        Debug.Log("ÉSÅ[Éã");
+        GameManager.instance.Is_Ster_camera_end = false;
 
-        if (SceneManager.GetActiveScene().name == "Stage1")
+        Debug.Log("ÉSÅ[Éã");
+        if (SceneManager.GetActiveScene().name == "Tutorial")
+        {
+            GameManager.instance.stageClearFlag[1] = true;
+        }
+        else if (SceneManager.GetActiveScene().name == "Stage1")
         {
             GameManager.instance.stageClearFlag[2] = true;
         }
