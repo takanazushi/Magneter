@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect"|| SceneManager.GetActiveScene().name == "Option"|| SceneManager.GetActiveScene().name == "Result")
         {
+            GameManager.instance.Is_Ster_camera_end = false;
             return;
         }
 

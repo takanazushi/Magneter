@@ -2,6 +2,7 @@ using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class Goal_mng : MonoBehaviour
@@ -20,6 +21,7 @@ public class Goal_mng : MonoBehaviour
     private Sprite passdSprite;
 
     private SpriteRenderer spriteRenderer;
+    private Light2D myLight;
 
     /// <summary>
     /// ゴール済フラグ
@@ -93,20 +95,22 @@ public class Goal_mng : MonoBehaviour
         Image_Name = Image.name;
 
         spriteRenderer = GetComponent<SpriteRenderer>();
+        myLight = GetComponent<Light2D>();
+        myLight.enabled = false;
     }
 
     
     public void ResultStart()
     {
         Goalflg = true;
+        myLight.enabled = true;
 
         spriteRenderer.sprite = passdSprite;
 
         GameManager.instance.checkpointNo = -1;
 
-        GameManager.instance.Is_Ster_camera_end = false;
-
         Debug.Log("ゴール");
+
         if (SceneManager.GetActiveScene().name == "Tutorial")
         {
             GameManager.instance.stageClearFlag[1] = true;
