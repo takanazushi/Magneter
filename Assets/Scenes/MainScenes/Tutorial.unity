@@ -7835,7 +7835,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 1122019465900410827, guid: 32704523a27a7e64bac98743f504ad24, type: 2}
   m_audioClip: {fileID: 8300000, guid: a40af4876e7902e479c97b0d37d561b3, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -8118,8 +8118,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -1.3611984, y: -0.09065008, z: 0}
-    m_Extent: {x: 67.3059, y: 10.787451, z: 0}
+    m_Center: {x: -1.3623009, y: -0.085100174, z: 0}
+    m_Extent: {x: 67.3141, y: 10.7909, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -8709,7 +8709,7 @@ Transform:
   m_GameObject: {fileID: 6399770170310237117}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.049324, y: -23.055687, z: -8.54187}
+  m_LocalPosition: {x: -97.996704, y: -23.124245, z: -12.366618}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -9748,8 +9748,8 @@ MonoBehaviour:
   Muzzle: {fileID: 5979535962535203046}
   LasetT_R: {fileID: 1912027809186769077}
   LasetT_B: {fileID: 5903631621695304842}
-  ShotSE: {fileID: 0}
-  HitSE: {fileID: 0}
+  ShotSE: {fileID: 8300000, guid: b39bba8957b5ca44bb5b01f703eb4c5b, type: 3}
+  HitSE: {fileID: 8300000, guid: e40750073b9ade547a508550879533c8, type: 3}
 --- !u!114 &6504917398670726232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -49999,9 +49999,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9f9473d52786b498415d803f54a51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!114 &8769633166100727169
 MonoBehaviour:
   m_ObjectHideFlags: 0

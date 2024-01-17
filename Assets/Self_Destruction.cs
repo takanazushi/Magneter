@@ -5,9 +5,9 @@ using UnityEngine;
 public class Self_Destruction : MonoBehaviour
 {
     float keyHoldTime = 0f;
-    public SpriteRenderer spriteRenderer;
-    public Color originalColor = Color.white;
-    public Color pressedColor = Color.red;
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor = Color.white;
+    private Color pressedColor = Color.red;
 
     Player_HP player_HP = null;
     
