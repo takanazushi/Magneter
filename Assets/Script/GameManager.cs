@@ -173,7 +173,7 @@ public class GameManager : MonoBehaviour
         Player_PlayFlg = true;
 
         Debug.Log(fadeOut.name);
-        StartCoroutine(fadeOut.Execute(SceneManager.GetActiveScene().name));
+        StartCoroutine(fadeOut.Execute(scenename));
 
         //todo ‘O‰ñ‚ÌŒo‰ßŽžŠÔ‚ð•Û‘¶
         PlayerPrefs.SetFloat("PreviousElapsedTime", ClearTime.instance.second);

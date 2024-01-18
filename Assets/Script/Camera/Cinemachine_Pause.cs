@@ -60,11 +60,14 @@ public class Cinemachine_Pause : CinemachineExtension
             // 現在動いているActiveBlendを取得
             var blend = brain.ActiveBlend;
 
+            
+
             //終了後の処理実行済みの場合は無視
             if (blend != null&& !End_Action)
             {
                 //残りの遷移値
                 float da = blend.BlendWeight - 1.0f;
+                Debug.LogError(blend.BlendWeight);
 
                 //遷移が終了した時ゲーム時間を再開
                 if (Mathf.Abs(da) < 0.01f)
@@ -75,6 +78,14 @@ public class Cinemachine_Pause : CinemachineExtension
                 }
 
 
+            }
+            else
+            {
+                if (blend == null)
+                {
+                    Debug.LogError("ない");
+                }
+                
             }
         }
 

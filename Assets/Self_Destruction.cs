@@ -26,25 +26,29 @@ public class Self_Destruction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.G))
+        if(!Goal_mng.instance.Is_Goal && GameManager.instance.Is_Ster_camera_end)
         {
-            keyHoldTime += Time.deltaTime;
-            ChangeColor(pressedColor);
-            Debug.Log(keyHoldTime);
-
-            if (keyHoldTime >= 3f)
+            if (Input.GetKey(KeyCode.G))
             {
-                keyHoldTime = 0;
-                player_HP.HitDamage(30);
-                Debug.Log("Ž©”š");
+                keyHoldTime += Time.deltaTime;
+                ChangeColor(pressedColor);
+                Debug.Log(keyHoldTime);
+
+                if (keyHoldTime >= 3f)
+                {
+                    keyHoldTime = 0;
+                    player_HP.HitDamage(30);
+                    Debug.Log("Ž©”š");
+                }
+
             }
-            
+            else if (Input.GetKeyUp(KeyCode.G))
+            {
+                ChangeColor(originalColor);
+                keyHoldTime = 0;
+            }
         }
-        else if (Input.GetKeyUp(KeyCode.G))
-        {
-            ChangeColor(originalColor);
-            keyHoldTime = 0;
-        }
+       
     }
 
     private void ChangeColor(Color color)

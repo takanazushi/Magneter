@@ -21,7 +21,13 @@ public class Game_Menu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        menuflg = false;
+        back_ash.SetActive(false);
 
+        foreach (GameObject botta in BottaList)
+        {
+            botta.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -87,6 +93,14 @@ public class Game_Menu : MonoBehaviour
     /// </summary>
     public void GameReStart() 
     {
+        GameTimeControl.instance.GameTime_Start();
+        menuflg = false;
+        back_ash.SetActive(false);
+
+        foreach (GameObject botta in BottaList)
+        {
+            botta.SetActive(false);
+        }
         GameManager.instance.checkpointNo = -1;
         GameManager.instance.Is_Ster_camera_end = false;
         GameManager.instance.ActiveSceneReset(SceneManager.GetActiveScene().name);
@@ -94,6 +108,7 @@ public class Game_Menu : MonoBehaviour
 
     public void StageSelect_SceneLoad()
     {
+        GameTimeControl.instance.GameTime_Start();
         GameManager.instance.ActiveSceneReset("StageSelect");
     }
 }

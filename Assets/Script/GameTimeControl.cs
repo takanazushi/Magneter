@@ -33,17 +33,17 @@ public class GameTimeControl : MonoBehaviour
     private void Update()
     {
         //確認用キー
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            if (!isPaused)
-            {
-                GameTime_Stop();
-            }
-            else
-            {
-                GameTime_Start();
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    if (!isPaused)
+        //    {
+        //        GameTime_Stop();
+        //    }
+        //    else
+        //    {
+        //        GameTime_Start();
+        //    }
+        //}
 
     }
 

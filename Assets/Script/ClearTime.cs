@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEditor;
+using UnityEngine.SceneManagement;
 
 public class ClearTime : MonoBehaviour
 {
@@ -29,6 +30,33 @@ public class ClearTime : MonoBehaviour
         ResumeTimer();
         timerText = GetComponent<TextMeshProUGUI>();
     }
+
+    //Sceneが有効になった時
+    private void OnEnable()
+    {
+        //自動的にMethod呼び出し
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    //Sceneが無効になった時
+    private void OnDisable()
+    {
+        //自動的にMethod削除
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    //Sceneが読み込まれる度に呼び出し
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "Option" || SceneManager.GetActiveScene().name == "Result")
+        {
+            ClearTime.instance.second = 0;
+            ClearTime.instance.second = 0;
+            return;
+        }
+    }
+
 
     void Awake()
     {
