@@ -168,7 +168,7 @@ public class GameManager : MonoBehaviour
     /// <summary>
     /// Œ»İ‚ÌƒV[ƒ“‚ğÄ“x“Ç‚İ‚Ş
     /// </summary>
-    public void ActiveSceneReset()
+    public void ActiveSceneReset(string scenename)
     {
         Player_PlayFlg = true;
 
