@@ -144,7 +144,6 @@ public class Enemy_WalkFall : MonoBehaviour
         //°‚Æ‚Ìˆ—‚Í–³‹
         if (collision.gameObject.name == "Floor")
         {
-            Debug.Log("°‚Æ“–‚½‚Á‚Ä‚é");
             return;
         }
 

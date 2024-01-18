@@ -5,8 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(LineRenderer))]
 public class MagLaserVar_Shot : MonoBehaviour
 {
-    [SerializeField, Header("照準の線")]
-    public LineRenderer aimLine;
+    //[SerializeField, Header("照準の線")]
+    //public LineRenderer aimLine;
 
     /// <summary>
     /// 判定のレイ長さ
@@ -152,17 +152,17 @@ public class MagLaserVar_Shot : MonoBehaviour
         //ベクトルから角度を取得(ラジアン角)
         angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
 
-        Vector3[] Poss =
-        {
-            transform.position,
-            transform.position+Quaternion.Euler(0, 0, angle)*Vector3.right*raylen
-        };
+        //Vector3[] Poss =
+        //{
+        //    transform.position,
+        //    transform.position+Quaternion.Euler(0, 0, angle)*Vector3.right*raylen
+        //};
 
-        //点を設定
-        aimLine.SetPositions(Poss);
+        ////点を設定
+        //aimLine.SetPositions(Poss);
 
-        //線非表示コルーチン開始
-        Coline_erase ??= StartCoroutine(LaserErase());
+        ////線非表示コルーチン開始
+        //Coline_erase ??= StartCoroutine(LaserErase());
     }
 
     void LaserTexture_Shot(Laser_Texture laser_Texture)
@@ -175,25 +175,25 @@ public class MagLaserVar_Shot : MonoBehaviour
     /// 線を非表示にする
     /// </summary>
     /// <returns></returns>
-    IEnumerator LaserErase()
-    {
-        yield return new WaitForSeconds(2.0f);
+    //IEnumerator LaserErase()
+    //{
+    //    yield return new WaitForSeconds(2.0f);
 
-        Vector3[] Poss =
-        {
-            new (0,0,0),
-            new (0,0,0),
-        };
+    //    Vector3[] Poss =
+    //    {
+    //        new (0,0,0),
+    //        new (0,0,0),
+    //    };
 
-        //初期化
-        aimLine.SetPositions(Poss);
-        Coline_erase = null;
-    }
+    //    //初期化
+    //    aimLine.SetPositions(Poss);
+    //    Coline_erase = null;
+    //}
 
 
     private void Reset()
     {
-        aimLine=GetComponent<LineRenderer>();
+        //aimLine=GetComponent<LineRenderer>();
         raylen = 15;
     }
 }

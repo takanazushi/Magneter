@@ -101,8 +101,10 @@ public class Game_Menu : MonoBehaviour
         {
             botta.SetActive(false);
         }
+
         GameManager.instance.checkpointNo = -1;
         GameManager.instance.Is_Ster_camera_end = false;
+        GameManager.instance.Is_Player_Dea_Count = 0;
         GameManager.instance.ActiveSceneReset(SceneManager.GetActiveScene().name);
     }
 

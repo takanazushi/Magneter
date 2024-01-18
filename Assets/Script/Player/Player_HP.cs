@@ -8,6 +8,7 @@ public class Player_HP : MonoBehaviour
     /// 無敵フラグtrue:ダメージ無効
     /// </summary>
     private bool inviflg = false;
+    private Rigidbody2D rb;
 
     /// <summary>
     /// 無敵時間
@@ -25,6 +26,7 @@ public class Player_HP : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -100,6 +102,12 @@ public class Player_HP : MonoBehaviour
         //HPがなくなった場合
         if (GameManager.instance.HP <= 0)
         {
+            //フラグセット
+            GameManager.instance.Is_Player_Death = true;
+
+            //判定タイプを変更
+            rb.bodyType = RigidbodyType2D.Static;
+
             //仮置き：自身を消す
             //Destroy(this.gameObject);
 
@@ -111,8 +119,8 @@ public class Player_HP : MonoBehaviour
             //anim.Play("damage",0,1.0f);
             //animator.Play("AnimationName", -1, normalizedTime);
 
-            //アニメーション停止させてもいいカモ
-
+            //アニメーション停止させてもいいカモ(仮置き)
+            anim.speed = 0.5f;
         }
         //デバック確認用
         //Debug.Log("HP:" + GameManager.instance.HP);
