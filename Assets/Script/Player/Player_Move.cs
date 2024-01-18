@@ -122,6 +122,8 @@ public class Player_Move : MonoBehaviour
             return;
         }
 
+
+
         //重力を追加で掛ける
         //Rigidbody2D->GravityScaleからいじるか迷い中・・・
         //rb.velocity = new(rb.velocity.x, rb.velocity.y - 0.5f);
@@ -210,7 +212,6 @@ public class Player_Move : MonoBehaviour
         //}
 
         //Debug.Log("ジャンプフラグは：" + jumpflag);
-
 
         //Jump値リセット
         jumpMoveX = 3.0f;

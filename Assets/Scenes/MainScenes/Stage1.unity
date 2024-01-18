@@ -3673,6 +3673,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
+  Show_TimeS: 2
 --- !u!61 &1412358216380156230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -10914,8 +10915,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 29.693201, y: 22.154251, z: 0}
-    m_Extent: {x: 36.3391, y: 29.92735, z: 0}
+    m_Center: {x: 29.6875, y: 22.15815, z: 0}
+    m_Extent: {x: 36.3404, y: 29.934052, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -21034,7 +21035,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdf756824095704ab375006f9a1edd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimLine: {fileID: 8857237407281833745}
   raylen: 15
   mask:
     serializedVersion: 2
@@ -22622,8 +22622,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.40639973, y: -2.17315, z: 0}
-    m_Extent: {x: 25.7397, y: 5.45875, z: 0}
+    m_Center: {x: -0.40345, y: -2.1750998, z: 0}
+    m_Extent: {x: 25.74005, y: 5.4568, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -105349,8 +105349,8 @@ GameObject:
   - component: {fileID: 8058571084669319836}
   - component: {fileID: 648646593927707300}
   - component: {fileID: 6330000459584138500}
-  - component: {fileID: 4503322659181308208}
   - component: {fileID: 2458854600938802857}
+  - component: {fileID: 4503322659181308208}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -105658,6 +105658,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
+  Show_TimeS: 2
 --- !u!114 &8742726616229692640
 MonoBehaviour:
   m_ObjectHideFlags: 0

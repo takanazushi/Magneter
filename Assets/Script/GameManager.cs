@@ -48,6 +48,37 @@ public class GameManager : MonoBehaviour
     private string Image_Name = "FadeOutImage";
     private FadeOut fadeOut;
 
+    /// <summary>
+    /// プレイヤーの死亡カウント
+    /// </summary>
+    private int Player_Dea_Count;
+    public int Is_Player_Dea_Count
+    {
+        get { return Player_Dea_Count; }
+        set { Player_Dea_Count=value; }
+    }
+    /// <summary>
+    /// プレイヤーの死亡判定
+    /// true:死んでいる
+    /// </summary>
+    private bool Player_Death;
+    public bool Is_Player_Death
+    {
+        get { return Player_Death; }
+
+        set 
+        { 
+            Player_Death=value;
+            if (Player_Death)
+            {
+                //死亡カウント増加
+                Player_Dea_Count++;
+                Debug.Log("死亡カウント:" + Player_Dea_Count);
+
+            }
+        }
+    }
+
     //Sceneが有効になった時
     private void OnEnable()
     {
@@ -65,9 +96,12 @@ public class GameManager : MonoBehaviour
     //Sceneが読み込まれる度に呼び出し
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect"|| SceneManager.GetActiveScene().name == "Option"|| SceneManager.GetActiveScene().name == "Result")
+        if (SceneManager.GetActiveScene().name == "Title" || 
+            SceneManager.GetActiveScene().name == "StageSelect"||
+            SceneManager.GetActiveScene().name == "Option"|| 
+            SceneManager.GetActiveScene().name == "Result")
         {
-            GameManager.instance.Is_Ster_camera_end = false;
+            instance.Is_Ster_camera_end = false;
             return;
         }
 
@@ -108,8 +142,8 @@ public class GameManager : MonoBehaviour
         }
 
         //プレイヤーのHPをリセットする
-        GameManager.instance.HP = GameManager.instance.RestHP;
-
+        instance.HP = instance.RestHP;
+        Player_Death = false;
 
         fadeOut = Image.GetComponent<FadeOut>();
         Image_Name = Image.name;
@@ -124,9 +158,6 @@ public class GameManager : MonoBehaviour
             instance = this;
             //シーン間でオブジェクトが破棄されないようにする
             DontDestroyOnLoad(gameObject);
-
-            //Debug.Log("ゲームマネージャー存在します。");
-            //Debug.Log("プレイヤーのチェックポイント" + checkpointNo);
         }
         else
         {
@@ -158,7 +189,6 @@ public class GameManager : MonoBehaviour
 
         if(Image != null)
         {
-            Debug.Log("シーン着替え時：" + Image.name);
             fadeOut = Image.GetComponent<FadeOut>();
             Image_Name = Image.name;
         }
@@ -178,10 +208,6 @@ public class GameManager : MonoBehaviour
         //todo 前回の経過時間を保存
         PlayerPrefs.SetFloat("PreviousElapsedTime", ClearTime.instance.second);
 
-        
-        //現在のシーンを再度読み込む
-        //Scene activeScene = SceneManager.GetActiveScene();
-        //SceneManager.LoadScene(activeScene.name);
     }
 
     public void SetStaetCamera()

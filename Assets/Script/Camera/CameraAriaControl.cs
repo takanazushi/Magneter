@@ -43,8 +43,10 @@ public class CameraAriaControl : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {       
 
-        //スタート時のカメラ遷移中は判定しない
-        if (!GameManager.instance.Is_Ster_camera_end)
+        //スタート時のカメラ遷移中
+        //プレイヤーの死亡中
+        //は判定しない
+        if (!GameManager.instance.Is_Ster_camera_end|| GameManager.instance.Is_Player_Death)
         {
             //Debug.Log("フラグはFalseです");
             return;
@@ -65,6 +67,11 @@ public class CameraAriaControl : MonoBehaviour
     {
         //注目オブジェクトの場合
         if(m_Camera.Follow != null && collision.name != m_Camera.Follow.name)
+        {
+            return;
+        }
+
+        if (GameManager.instance.Is_Player_Death)
         {
             return;
         }
