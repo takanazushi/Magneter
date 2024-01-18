@@ -100,7 +100,7 @@ public class ResolutionSetter : MonoBehaviour
             count = 2;
             DisableTexts(0, 1);
         }
-        else if (screenWidth == 1080)
+        else if (screenWidth == 720)
         {
             count = 1;
             DisableTexts(0, 2);
