@@ -19,8 +19,11 @@ public class Laser_Texture : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player")) { return; }
-
+        if(collision.CompareTag("Player")) 
+        { 
+            return; 
+        }
+        Debug.Log("íœ");
         gameObject.SetActive(false);
     }
 

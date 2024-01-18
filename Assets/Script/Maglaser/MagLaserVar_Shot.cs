@@ -119,6 +119,12 @@ public class MagLaserVar_Shot : MonoBehaviour
         if (hit.Length >= 1)
         {
             //マグネット取得
+            Debug.Log(hit[0].point);
+            if (hit[0].rigidbody == null)
+            {
+                return false;
+            }
+
             hitmg = hit[0].rigidbody.GetComponent<Magnet>();
 
             //マグネットオブジェクトがある場合
