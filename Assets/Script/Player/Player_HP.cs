@@ -112,6 +112,7 @@ public class Player_HP : MonoBehaviour
             //animator.Play("AnimationName", -1, normalizedTime);
 
             //アニメーション停止させてもいいカモ
+
         }
         //デバック確認用
         //Debug.Log("HP:" + GameManager.instance.HP);

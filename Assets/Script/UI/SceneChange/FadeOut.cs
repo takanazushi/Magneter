@@ -61,4 +61,5 @@ public class FadeOut : MonoBehaviour, IChangeRoutine
             SceneManager.LoadScene(sceneName);
         }
     }
+
 }

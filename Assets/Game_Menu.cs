@@ -14,6 +14,7 @@ public class Game_Menu : MonoBehaviour
     List<GameObject> BottaList;
 
 
+
     //メニューフラグ
     bool menuflg = false;
 

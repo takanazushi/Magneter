@@ -151,6 +151,7 @@ public class Enemy_WalkFall : MonoBehaviour
         if (collision.gameObject.CompareTag("kabe"))
         {
             //Debug.Log("“–‚½‚Á‚½");
+
             Turn();
         }
 
