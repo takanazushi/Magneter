@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+
         if (StartCamera == null)
         {
 
