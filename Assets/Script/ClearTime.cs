@@ -49,10 +49,10 @@ public class ClearTime : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
 
-        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "Option" || SceneManager.GetActiveScene().name == "Result")
+        if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "Option")
         {
             ClearTime.instance.second = 0;
-            ClearTime.instance.second = 0;
+            ClearTime.instance.minute = 0;
             return;
         }
     }
