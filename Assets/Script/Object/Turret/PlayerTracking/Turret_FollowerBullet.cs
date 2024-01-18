@@ -104,4 +104,9 @@ public class Turret_FollowerBullet : MonoBehaviour
             Destroy(gameObject, 5.0f);
         }   
     }
+
+    private void OnCollisionStay2D(Collision2D collision)
+    {
+        Destroy (gameObject);
+    }
 }

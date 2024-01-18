@@ -333,7 +333,7 @@ MonoBehaviour:
   HP: 3
   StartCamera: {fileID: 0}
   Ster_Camera_end: 0
-  stageClearFlag: 01010000
+  stageClearFlag: 01010101
   Image: {fileID: 0}
 --- !u!4 &103273143
 Transform:

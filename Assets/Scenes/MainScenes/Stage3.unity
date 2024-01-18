@@ -645,7 +645,6 @@ GameObject:
   m_Component:
   - component: {fileID: 203442012}
   - component: {fileID: 203442011}
-  - component: {fileID: 203442010}
   - component: {fileID: 203442009}
   - component: {fileID: 203442008}
   m_Layer: 0
@@ -752,21 +751,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 203442007}
   m_CullTransparentMesh: 1
---- !u!114 &203442010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 203442007}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 512606e870f9cf94fa3c9458cc43f61e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoadWait: 0
-  Image: {fileID: 0}
-  passdSprite: {fileID: 0}
 --- !u!114 &203442011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2790,7 +2774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadWait: 1
-  Image: {fileID: 0}
+  Image: {fileID: 77626438}
   passdSprite: {fileID: 21300000, guid: b26bd87cbc475cd47af2c7f479dacbd8, type: 3}
 --- !u!212 &1035847787
 SpriteRenderer:
@@ -3459,7 +3443,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIcon: {fileID: 124630555797096629, guid: 6134a15559c05a343a5d071f570fd656, type: 3}
-  Frameflg: 1
 --- !u!222 &1339894712
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4164,7 +4147,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIcon: {fileID: 899408793902395476, guid: 397f36ed7a693994e82c8aaf34ee0865, type: 3}
-  Frameflg: 0
 --- !u!222 &1797752335
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -12592,8 +12574,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.39885044, y: -2.17445, z: 0}
-    m_Extent: {x: 25.74125, y: 5.45835, z: 0}
+    m_Center: {x: -0.40604973, y: -2.1731, z: 0}
+    m_Extent: {x: 25.74555, y: 5.4549, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -99535,9 +99517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d9f9473d52786b498415d803f54a51b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRenderer: {fileID: 0}
-  originalColor: {r: 1, g: 1, b: 1, a: 1}
-  pressedColor: {r: 1, g: 0, b: 0, a: 1}
 --- !u!1 &9212577434927736385
 GameObject:
   m_ObjectHideFlags: 0
