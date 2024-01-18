@@ -1260,6 +1260,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 5
       objectReference: {fileID: 0}
@@ -1529,6 +1533,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1037806098, guid: 07279350161eec1429e9f746012b4753, type: 3}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 5
       objectReference: {fileID: 0}
@@ -1706,7 +1714,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -2539,7 +2547,7 @@ MonoBehaviour:
   LenMagnrt: 5
   Type: 2
   Power: 1
-  MaxPower: 1
+  MaxPower: 0.46
   Type_Fixed: 0
   Magnet_Updetaflg: 0
   Debagu_fla: 1
@@ -2766,6 +2774,10 @@ PrefabInstance:
     - target: {fileID: 49495615326117686, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
@@ -3091,7 +3103,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: Power
-      value: 100
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: MagnetN
@@ -3101,6 +3113,10 @@ PrefabInstance:
       propertyPath: MagnetS
       value: 
       objectReference: {fileID: -1793508851, guid: 07279350161eec1429e9f746012b4753, type: 3}
+    - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: MaxPower
+      value: 0.47
+      objectReference: {fileID: 0}
     - target: {fileID: 480772262634534479, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: LenMagnrt
       value: 10
@@ -3148,6 +3164,10 @@ PrefabInstance:
     - target: {fileID: 6175737893448128793, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305204283894817459, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6305204283894817459, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_Constraints
@@ -3673,6 +3693,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
+  Show_TimeS: 2
 --- !u!61 &1412358216380156230
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5899,7 +5920,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -6359,7 +6380,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -6911,7 +6932,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -7703,6 +7724,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1037806098, guid: 07279350161eec1429e9f746012b4753, type: 3}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -7892,6 +7917,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6305204283894817459, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305204283894817459, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
@@ -7982,6 +8011,10 @@ PrefabInstance:
     - target: {fileID: 49495615326117686, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
@@ -8444,6 +8477,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1037806098, guid: 07279350161eec1429e9f746012b4753, type: 3}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -8893,6 +8930,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -8984,6 +9025,10 @@ PrefabInstance:
     - target: {fileID: 49495615326117686, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
@@ -10212,6 +10257,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -10444,6 +10493,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -10650,7 +10703,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -10810,6 +10863,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 1
       objectReference: {fileID: 0}
@@ -10914,8 +10971,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 29.682901, y: 22.16435, z: 0}
-    m_Extent: {x: 36.334602, y: 29.93215, z: 0}
+    m_Center: {x: 29.69485, y: 22.15925, z: 0}
+    m_Extent: {x: 36.33495, y: 29.938349, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -11578,7 +11635,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -17286,6 +17343,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -17901,6 +17962,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -18474,6 +18539,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -18668,6 +18737,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -499791876, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 7
@@ -18988,6 +19061,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -499791876, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -19166,6 +19243,10 @@ PrefabInstance:
     - target: {fileID: 49495615326117686, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
@@ -19384,6 +19465,10 @@ PrefabInstance:
     - target: {fileID: 49495615326117686, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
@@ -19632,7 +19717,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -19718,6 +19803,10 @@ PrefabInstance:
     - target: {fileID: 49495615326117686, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
@@ -20721,7 +20810,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -21041,7 +21130,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdf756824095704ab375006f9a1edd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimLine: {fileID: 8857237407281833745}
   raylen: 15
   mask:
     serializedVersion: 2
@@ -21115,7 +21203,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -21206,6 +21294,10 @@ PrefabInstance:
     - target: {fileID: 49495615326117686, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
@@ -21430,6 +21522,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -21604,6 +21700,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -21711,7 +21811,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -22629,8 +22729,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.40490055, y: -2.1719499, z: 0}
-    m_Extent: {x: 25.7462, y: 5.46285, z: 0}
+    m_Center: {x: -0.40969944, y: -2.1757998, z: 0}
+    m_Extent: {x: 25.740799, y: 5.461, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -104732,6 +104832,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6305204283894817459, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305204283894817459, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -104974,7 +105078,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -105267,6 +105371,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -105475,7 +105583,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -105665,6 +105773,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
+  Show_TimeS: 2
 --- !u!114 &8742726616229692640
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -105889,6 +105998,10 @@ PrefabInstance:
     - target: {fileID: 6175737893448128793, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_WasSpriteAssigned
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6305204283894817459, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
+      propertyPath: m_Mass
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6305204283894817459, guid: 3cab64dc51ad0d042a2ed7a131486a4c, type: 3}
       propertyPath: m_Constraints
@@ -106644,7 +106757,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 100
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -106655,7 +106768,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 2
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4

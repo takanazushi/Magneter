@@ -300,14 +300,14 @@ public class Player_Move : MonoBehaviour
         //¶‰E”½“]
         if (horizontalInput > 0)
         {
-            spriteRenderer.flipX = true;
             anim.SetBool("move", true);
+            anim.SetFloat("Speed", 1);
             //transform.localScale = new Vector3(-transform.localScale.x, transform.localScale.y, 1);
         }
         else if (horizontalInput < 0)
         {
-            spriteRenderer.flipX = false;
             anim.SetBool("move", true);
+            anim.SetFloat("Speed", -1);
             //transform.localScale = new Vector3(transform.localScale.x, transform.localScale.y, 1);
         }
         else

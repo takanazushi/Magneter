@@ -3852,6 +3852,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
+  Show_TimeS: 2
 --- !u!50 &2046177131171300304
 Rigidbody2D:
   serializedVersion: 4
@@ -55733,8 +55734,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 8.35355, y: -0.05334997, z: 0}
-    m_Extent: {x: 75.007355, y: 9.484249, z: 0}
+    m_Center: {x: 8.3382, y: -0.055650234, z: 0}
+    m_Extent: {x: 75.011505, y: 9.476749, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -56024,7 +56025,7 @@ MonoBehaviour:
   m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 703576820293015258}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -56766,7 +56767,7 @@ Transform:
   m_GameObject: {fileID: 3164460908980022354}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.866428, y: 1.2891955, z: -3.3163528}
+  m_LocalPosition: {x: -27.866428, y: 1.2891936, z: -3.3163528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -57556,6 +57557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
+  Show_TimeS: 2
 --- !u!1 &5923223942276124136
 GameObject:
   m_ObjectHideFlags: 0
@@ -57907,7 +57909,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdf756824095704ab375006f9a1edd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimLine: {fileID: 7027812054377639866}
   raylen: 15
   mask:
     serializedVersion: 2
@@ -58355,7 +58356,7 @@ Transform:
   m_GameObject: {fileID: 3794344058633000226}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -27.866428, y: 1.2891955, z: -3.3163528}
+  m_LocalPosition: {x: -27.866428, y: 1.2891936, z: -3.3163528}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -59414,7 +59415,7 @@ MonoBehaviour:
   m_Priority: 0
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 703576820293015258}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
