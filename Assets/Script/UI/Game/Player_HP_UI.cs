@@ -11,6 +11,9 @@ public class Player_HP_UI : MonoBehaviour
 
     private int beforeHP;
 
+    [SerializeField]
+    private bool HPFrame;
+
     private void Start()
     {
         //HPæ“¾
@@ -39,7 +42,7 @@ public class Player_HP_UI : MonoBehaviour
     private void ShowHPIcon()
     {
         //Œ³‚ÌHP‚Æ“¯‚¶‚Æ‚«‚ÍƒXƒ‹[
-        if (beforeHP == GameManager.instance.GetHP())
+        if (beforeHP == GameManager.instance.GetHP()||HPFrame)
         {
             return;
         }

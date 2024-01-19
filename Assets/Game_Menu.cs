@@ -111,6 +111,9 @@ public class Game_Menu : MonoBehaviour
     public void StageSelect_SceneLoad()
     {
         GameTimeControl.instance.GameTime_Start();
+        GameManager.instance.checkpointNo = -1;
+        GameManager.instance.Is_Ster_camera_end = false;
+        GameManager.instance.Is_Player_Dea_Count = 0;
         GameManager.instance.ActiveSceneReset("StageSelect");
     }
 }
