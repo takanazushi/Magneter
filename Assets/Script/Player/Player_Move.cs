@@ -84,6 +84,11 @@ public class Player_Move : MonoBehaviour
             }
         }
 
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        spriteRenderer.flipX = true;
+
         audioSource = GetComponent<AudioSource>();
 
         if (audioSource == null)
@@ -93,7 +98,6 @@ public class Player_Move : MonoBehaviour
 
         rb = GetComponent<Rigidbody2D>();
 
-        spriteRenderer = GetComponent<SpriteRenderer>();
 
         playerHP = GetComponent<Player_HP>();
 
@@ -106,7 +110,8 @@ public class Player_Move : MonoBehaviour
 
         anim=GetComponent<Animator>();
 
-        spriteRenderer.flipX = true;
+
+
     }
 
     // 物理演算をしたい場合はFixedUpdateを使うのが一般的
@@ -121,8 +126,6 @@ public class Player_Move : MonoBehaviour
             GoalWalk();
             return;
         }
-
-
 
         //重力を追加で掛ける
         //Rigidbody2D->GravityScaleからいじるか迷い中・・・
@@ -183,10 +186,7 @@ public class Player_Move : MonoBehaviour
             {
                 jumpMoveX = 7.0f;
             }
-        }
-
-        
-        
+        }       
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -394,11 +394,16 @@ public class Player_Move : MonoBehaviour
         return new RaycastHit2D[] { hitLeft, hitRight };
     }
 
+    /// <summary>
+    /// 子オブジェクトの位置回転を編集
+    /// </summary>
+    /// <param name="isLeft"></param>
     void SetChildObjectRotation(bool isLeft)
     {
         // プレイヤーの子オブジェクトを取得
         SpriteRenderer[] childSpriteRenderers = GetComponentsInChildren<SpriteRenderer>();
 
+        //※GetComponentsInChildrenは本人を含みます
         // 各子オブジェクトの向きを設定
         foreach (SpriteRenderer childRenderer in childSpriteRenderers)
         {
