@@ -1,0 +1,11 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Prefab/Player/Player.prefab.meta
+guid: 6947a68e07149ca4594154912b736c0b
+========
+guid: b9cf16c80e41e9a4fb079d82e0715a81
+>>>>>>>> Enemy_Magnetism_merge:Assets/Prefab/Enemy/Enemy_fall_magnet.prefab.meta
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
