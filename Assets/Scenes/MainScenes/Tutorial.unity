@@ -4094,9 +4094,9 @@ MonoBehaviour:
   MagnetN: {fileID: -499791876, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 4671243098700919653}
-  LenMagnrt: 10
+  LenMagnrt: 5
   Type: 1
-  Power: 50
+  Power: 10
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -4117,9 +4117,9 @@ MonoBehaviour:
   MagnetN: {fileID: -499791876, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 4671243098700919653}
-  LenMagnrt: 5
+  LenMagnrt: 2
   Type: 2
-  Power: 50
+  Power: 10
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -5059,9 +5059,9 @@ MonoBehaviour:
   MagnetN: {fileID: -1648723336, guid: 6e781ec4fdf6a7347a676933ae317149, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 4671243098700919653}
-  LenMagnrt: 10
+  LenMagnrt: 5
   Type: 0
-  Power: 100
+  Power: 10
   MaxPower: 1
   Type_Fixed: 1
   Magnet_Updetaflg: 0
@@ -5185,9 +5185,9 @@ MonoBehaviour:
   MagnetN: {fileID: -499791876, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 4671243098700919653}
-  LenMagnrt: 5
+  LenMagnrt: 2
   Type: 2
-  Power: 50
+  Power: 10
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -5435,9 +5435,9 @@ MonoBehaviour:
   MagnetN: {fileID: -1691875018, guid: df20b26840f0c9348b57949680542581, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 4671243098700919653}
-  LenMagnrt: 10
+  LenMagnrt: 5
   Type: 0
-  Power: 100
+  Power: 10
   MaxPower: 1
   Type_Fixed: 1
   Magnet_Updetaflg: 0
@@ -55891,9 +55891,9 @@ MonoBehaviour:
   MagnetN: {fileID: 67998557, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: -1671296472, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 4671243098700919653}
-  LenMagnrt: 10
+  LenMagnrt: 2
   Type: 2
-  Power: 100
+  Power: 10
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -56054,8 +56054,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 8.348351, y: -0.045300007, z: 0}
-    m_Extent: {x: 75.00645, y: 9.4816, z: 0}
+    m_Center: {x: 8.344448, y: -0.053249836, z: 0}
+    m_Extent: {x: 75.010345, y: 9.47975, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -58223,9 +58223,9 @@ MonoBehaviour:
   MagnetN: {fileID: -499791876, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 4671243098700919653}
-  LenMagnrt: 10
+  LenMagnrt: 5
   Type: 2
-  Power: 50
+  Power: 10
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -60355,9 +60355,9 @@ MonoBehaviour:
   MagnetN: {fileID: -1691875018, guid: df20b26840f0c9348b57949680542581, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 4671243098700919653}
-  LenMagnrt: 10
+  LenMagnrt: 2
   Type: 1
-  Power: 100
+  Power: 10
   MaxPower: 1
   Type_Fixed: 1
   Magnet_Updetaflg: 0
