@@ -80,7 +80,7 @@ public class Turret_FollowerBullet : MonoBehaviour
     {
         //Á‚·
         Debug.Log("ƒJƒƒ‰”ÍˆÍŠO");
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 
     // Update is called once per frame
@@ -88,7 +88,7 @@ public class Turret_FollowerBullet : MonoBehaviour
     {
         if (!GameManager.instance.Is_Ster_camera_end)
         {
-            Destroy(rb.gameObject);
+            gameObject.SetActive(false);
             return;
         }
         //‰æ–Ê“à‚ÅÀs
@@ -101,12 +101,12 @@ public class Turret_FollowerBullet : MonoBehaviour
             rb.velocity = bulletDirection * moveSpeed;
 
             //10•bŒã‚É–C’e‚ğ”j‰ó‚·‚é
-            Destroy(gameObject, 5.0f);
+            gameObject.SetActive(false);
         }   
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Destroy (gameObject);
+        gameObject.SetActive(false);
     }
 }

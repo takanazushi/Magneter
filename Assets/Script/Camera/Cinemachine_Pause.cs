@@ -1,10 +1,5 @@
 using Cinemachine;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor.Rendering;
 using UnityEngine;
-using UnityEngine.Timeline;
 
 /// <summary>
 /// カメラにアタッチすると遷移した時遷移効果が終了するまでゲーム時間が停止します

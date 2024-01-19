@@ -128,7 +128,7 @@ public class Enemy_WalkFall : MonoBehaviour
         if (transform.position.y < -10)
         {
             //todo:—vC³
-            Destroy(this.gameObject);
+            gameObject.SetActive(false);
         }
     }
 

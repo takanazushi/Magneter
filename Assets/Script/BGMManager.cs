@@ -32,7 +32,6 @@ public class BGMManager : MonoBehaviour
         else
         {
             this.gameObject.SetActive(false);
-            Destroy(this.gameObject);
         }
     }
 }

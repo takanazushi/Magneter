@@ -30,7 +30,7 @@ public class Self_Destruction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Goal_mng.instance.Is_Goal && !GameManager.instance.Is_Ster_camera_end)
+        if(Goal_mng.instance.Is_Goal || !GameManager.instance.Is_Ster_camera_end)
         {
             return;
         }
