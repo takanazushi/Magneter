@@ -2638,6 +2638,10 @@ PrefabInstance:
       value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 4570924851832999259, guid: 79dd650c72d40c94b881d442a7d7f2e5, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -3512,6 +3516,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1691875018, guid: df20b26840f0c9348b57949680542581, type: 3}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 5
@@ -5612,6 +5620,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 5
@@ -55585,6 +55597,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -1648723336, guid: 6e781ec4fdf6a7347a676933ae317149, type: 3}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 7
       objectReference: {fileID: 0}
@@ -55734,8 +55750,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 8.3382, y: -0.055650234, z: 0}
-    m_Extent: {x: 75.011505, y: 9.476749, z: 0}
+    m_Center: {x: 8.345299, y: -0.04734993, z: 0}
+    m_Extent: {x: 75.0021, y: 9.47885, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -55834,6 +55850,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -1648723336, guid: 6e781ec4fdf6a7347a676933ae317149, type: 3}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 7
@@ -55964,6 +55984,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 7
@@ -57344,6 +57368,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 5
       objectReference: {fileID: 0}
@@ -57453,6 +57481,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: -499791876, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
+    - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
+      propertyPath: m_Mass
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 7851611410695224805, guid: 38ce486682e2d0340ac3aca18cb6aaaa, type: 3}
       propertyPath: m_Constraints
       value: 5
