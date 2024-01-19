@@ -4,12 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Floor
+  - Enemy
+  - Checkpoint
+  - MoveFloor
+  - kabe
+  - RedBullet
+  - BlueBullet
+  - Goal
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Enemy
   - Water
   - UI
   - 
@@ -41,4 +47,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: cut_in
+    uniqueID: 1245168979
     locked: 0
