@@ -42,6 +42,8 @@ public class ResultUI : MonoBehaviour
     {
         int hp = GameManager.instance.HP;
 
+        int CountDie = GameManager.instance.Is_Player_Dea_Count;
+
         int second = (int)ClearTime.instance.second + (ClearTime.instance.minute * 60);
 
         float s = 10 * (hp + second);
