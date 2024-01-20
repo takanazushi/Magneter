@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 216749371278659919}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.74, y: -4.09, z: -0.057554085}
+  m_LocalPosition: {x: -7.38, y: 0.1, z: -0.057554085}
   m_LocalScale: {x: 3.314221, y: 3.314221, z: 3.314221}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -149,7 +149,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5cdf756824095704ab375006f9a1edd7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  aimLine: {fileID: 328615820226417519}
   raylen: 15
   mask:
     serializedVersion: 2
@@ -157,6 +156,8 @@ MonoBehaviour:
   Muzzle: {fileID: 2891040152380348404}
   LasetT_R: {fileID: 1630183575770222685}
   LasetT_B: {fileID: 652229757694167189}
+  ShotSE: {fileID: 0}
+  HitSE: {fileID: 0}
 --- !u!1 &928845009609950278
 GameObject:
   m_ObjectHideFlags: 0
@@ -358,7 +359,8 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 4
-  rayLength: 1.2
+  rayLength: 1.11
+  JumpSE: {fileID: 0}
   windMoveSpeed: 0
 --- !u!114 &4212629653188278867
 MonoBehaviour:
@@ -450,7 +452,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c7c6ff1730f69ef41ada017e6f073ee1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6599c023c8b1e245a4a1e5751d01561, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -678,6 +680,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
+  Show_TimeS: 0
 --- !u!61 &3576499486744088780
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -748,7 +751,7 @@ Transform:
   m_GameObject: {fileID: 2891040152380348404}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1558151, y: -2.6519728, z: -0.057554085}
+  m_LocalPosition: {x: -3.01, y: 0.1, z: -0.057554085}
   m_LocalScale: {x: 3.3142211, y: 3.3142211, z: 3.3142211}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -853,6 +856,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.25
+  Show_TimeS: 0
 --- !u!61 &3575656732260815690
 BoxCollider2D:
   m_ObjectHideFlags: 0

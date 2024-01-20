@@ -31,14 +31,6 @@ public class Player_HP : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        //HP回復コンポーネントを取得
-        HP_Heal heal = collision.gameObject.GetComponent<HP_Heal>();
-        if (heal)
-        {
-            HitHeal(heal.hit_Heal);
-        }
-
-
         //接触ダメージ判定
         //無敵時間中は無視
         if (inviflg) { return; }
@@ -55,6 +47,14 @@ public class Player_HP : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D collision)
     {
+        //HP回復コンポーネントを取得
+        HP_Heal heal = collision.gameObject.GetComponent<HP_Heal>();
+        if (heal)
+        {
+            Debug.Log("回復");
+            HitHeal(heal.hit_Heal);
+        }
+
         //接触ダメージ判定
         //無敵時間中は無視
         if (inviflg) { return; }
@@ -71,11 +71,11 @@ public class Player_HP : MonoBehaviour
     /// <summary>
     /// 回復を反映
     /// </summary>
-    /// <param name="damage">受ける回復</param>
-    public void HitHeal(int damage)
+    /// <param name="heal">受ける回復</param>
+    public void HitHeal(int heal)
     {
         //todo:最大HPを設定
-        GameManager.instance.HP += damage;
+        GameManager.instance.HP += heal;
         GameManager.instance.HP=Mathf.Clamp(GameManager.instance.HP, 0,3);
 
         //デバック確認用

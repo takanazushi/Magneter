@@ -3038,7 +3038,7 @@ MonoBehaviour:
   groundLayers:
     serializedVersion: 2
     m_Bits: 4
-  rayLength: 1.2
+  rayLength: 0.79
   JumpSE: {fileID: 8300000, guid: a40af4876e7902e479c97b0d37d561b3, type: 3}
   windMoveSpeed: 0
 --- !u!50 &649355700301964207
@@ -13741,8 +13741,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 29.69335, y: 22.1596, z: 0}
-    m_Extent: {x: 36.33575, y: 29.9292, z: 0}
+    m_Center: {x: 29.689949, y: 22.15615, z: 0}
+    m_Extent: {x: 36.343147, y: 29.932251, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -21957,7 +21957,7 @@ Transform:
   m_GameObject: {fileID: 3518623635287906732}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.610481, y: 16.687542, z: -8.541748}
+  m_LocalPosition: {x: -21.617989, y: 16.687542, z: -8.541748}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -22275,14 +22275,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_ShowDebugText: 0
   m_Loop: 0
-  m_ChildCameras:
-  - {fileID: 3893209861686810527}
-  - {fileID: 924558214083786808}
-  - {fileID: 5550560573162664431}
-  - {fileID: 965542465323962855}
-  - {fileID: 199093191154480353}
-  - {fileID: 698300629481751224}
-  - {fileID: 1770075046901260147}
+  m_ChildCameras: []
   m_Instructions:
   - m_VirtualCamera: {fileID: 3893209861686810527}
     m_Hold: 1
@@ -23274,7 +23267,7 @@ Transform:
   m_GameObject: {fileID: 3902647152412117906}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.1558151, y: -2.6519728, z: -0.057554085}
+  m_LocalPosition: {x: -2.86, y: 0.1, z: -0.057554085}
   m_LocalScale: {x: 3.3142211, y: 3.3142211, z: 3.3142211}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -25871,7 +25864,7 @@ Transform:
   m_GameObject: {fileID: 8710916859896489644}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.74, y: -4.09, z: -0.057554085}
+  m_LocalPosition: {x: -7.32, y: 0.1, z: -0.057554085}
   m_LocalScale: {x: 3.314221, y: 3.314221, z: 3.314221}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -26793,8 +26786,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.40375042, y: -2.171, z: 0}
-    m_Extent: {x: 25.733849, y: 5.4489, z: 0}
+    m_Center: {x: -0.40094948, y: -2.17315, z: 0}
+    m_Extent: {x: 25.74345, y: 5.44665, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -109789,7 +109782,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c7c6ff1730f69ef41ada017e6f073ee1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b6599c023c8b1e245a4a1e5751d01561, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -167,6 +167,7 @@ public class MagLaserVar_Shot : MonoBehaviour
 
     void LaserTexture_Shot(Laser_Texture laser_Texture)
     {
+
         //ノズル位置に置き換え
         laser_Texture.Show(Muzzle.transform.position, angle);
     }
@@ -190,6 +191,17 @@ public class MagLaserVar_Shot : MonoBehaviour
     //    Coline_erase = null;
     //}
 
+    private void OnDrawGizmos()
+    {
+        Gizmos.color= Color.yellow;
+        //ノズルの位置からノズル2に向かう方向ベクトル計算
+        aimDirection = (this.transform.position - Muzzle.transform.position).normalized;
+
+        //ベクトルから角度を取得(ラジアン角)
+        angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+
+        Gizmos.DrawLine(transform.position, Muzzle.transform.position);
+    }
 
     private void Reset()
     {

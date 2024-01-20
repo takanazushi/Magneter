@@ -22,7 +22,7 @@ public class Maglaser_Aim : MonoBehaviour
         //銃口の角度を算出
         Vector3 nozuru = (tgetopoint.position - transform.position).normalized;
         mazin = Mathf.Atan2(nozuru.y, nozuru.x) * Mathf.Rad2Deg;
-        
+        Debug.Log(mazin);
         tgetopointSprite=GetComponent<SpriteRenderer>();
         tgetopointSprite.flipX = true;  
     }
@@ -45,7 +45,7 @@ public class Maglaser_Aim : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         //自分の位置からマウスの位置に向かうベクトル計算
-        Vector3 aimDirection = (mousePosition - transform.parent.position).normalized;
+        Vector3 aimDirection = (mousePosition - transform.position).normalized;
 
         //右方向基準でなす角度
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
@@ -56,6 +56,16 @@ public class Maglaser_Aim : MonoBehaviour
         kakolu = tgetopointSprite.flipX ? kakolu + 180 : kakolu - mazin * 2;
 
         transform.rotation = Quaternion.Euler(0, 0, kakolu);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+
+        //マウスの位置を取得
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        Gizmos.DrawLine(mousePosition, transform.position);
     }
 
     /// <summary>
