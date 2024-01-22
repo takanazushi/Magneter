@@ -105,6 +105,14 @@ public class GameManager : MonoBehaviour
             return;
         }
 
+        if (SceneManager.GetActiveScene().name == "Title" ||
+            SceneManager.GetActiveScene().name == "StageSelect" ||
+            SceneManager.GetActiveScene().name == "Option")
+        {
+            Player_Dea_Count = 0;
+            return;
+        }
+
 
         if (StartCamera == null)
         {

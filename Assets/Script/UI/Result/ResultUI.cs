@@ -14,6 +14,9 @@ public class ResultUI : MonoBehaviour
     TextMeshProUGUI textTime;
 
     [SerializeField]
+    TextMeshProUGUI textDieCount;
+
+    [SerializeField]
     TextMeshProUGUI textScore;
 
     private int score;
@@ -46,8 +49,13 @@ public class ResultUI : MonoBehaviour
 
         int second = (int)ClearTime.instance.second + (ClearTime.instance.minute * 60);
 
-        float s = 10 * (hp + second);
+        float s = hp * 1000 + (3600 - second) - CountDie * 1000;
         s = (float)Math.Floor(s);
+
+        if (s < 0)
+        {
+            s = 0;
+        }
 
         score = (int)s;
     }
@@ -55,9 +63,18 @@ public class ResultUI : MonoBehaviour
     private void ResultText()
     {
         textHP.text = GameManager.instance.HP.ToString();
+        textDieCount.text=GameManager.instance.Is_Player_Dea_Count.ToString();
         int minute = (int)ClearTime.instance.minute;
         int second = (int)ClearTime.instance.second;
-        textTime.text = minute + ":" + second;
+
+        if (second < 10)
+        {
+            textTime.text = minute + ":0" + second;
+        }
+        else
+        {
+            textTime.text = minute + ":" + second;
+        }
 
         textScore.text = score.ToString();
     }
