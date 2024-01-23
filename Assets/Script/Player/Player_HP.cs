@@ -16,6 +16,9 @@ public class Player_HP : MonoBehaviour
     [SerializeField, Header("無敵時間"), Tooltip("単位：秒")]
     public float invi_Time;
 
+    [SerializeField, Header("死亡エフェクト")]
+    private GameObject DieEffect;
+
     public bool Inviflg
     {
         get { return inviflg; }
@@ -23,10 +26,16 @@ public class Player_HP : MonoBehaviour
 
     private Animator anim = null;
 
+    [SerializeField]
+    private AudioClip DieSE;
+
+    private AudioSource audioSource;
+
     private void Start()
     {
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
+        audioSource = GetComponent<AudioSource>();
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -102,11 +111,17 @@ public class Player_HP : MonoBehaviour
         //HPがなくなった場合
         if (GameManager.instance.HP <= 0)
         {
+            audioSource.PlayOneShot(DieSE);
+
             //フラグセット
             GameManager.instance.Is_Player_Death = true;
 
             //判定タイプを変更
             rb.bodyType = RigidbodyType2D.Static;
+
+            
+
+            Instantiate(DieEffect, transform.position, Quaternion.identity);
 
             //仮置き：自身を消す
             //Destroy(this.gameObject);
