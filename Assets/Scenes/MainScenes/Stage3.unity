@@ -374,7 +374,14 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_ShowDebugText: 0
   m_Loop: 0
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 877665310}
+  - {fileID: 984671879}
+  - {fileID: 2115622001}
+  - {fileID: 927934645}
+  - {fileID: 549526033}
+  - {fileID: 1000777919}
+  - {fileID: 2062272185}
   m_Instructions:
   - m_VirtualCamera: {fileID: 877665310}
     m_Hold: 1
@@ -5101,9 +5108,9 @@ MonoBehaviour:
   MagnetN: {fileID: 67998557, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: -1671296472, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 5
+  LenMagnrt: 1
   Type: 0
-  Power: 100
+  Power: 1
   MaxPower: 1
   Type_Fixed: 1
   Magnet_Updetaflg: 0
@@ -8164,7 +8171,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3508307943079907065}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0135127185, w: 0.99990875}
   m_LocalPosition: {x: 0.764, y: -1.8566, z: 9.913145}
   m_LocalScale: {x: 0.6469307, y: 0.5309713, z: 0.5177178}
   m_ConstrainProportionsScale: 0
@@ -12141,9 +12148,9 @@ MonoBehaviour:
   MagnetN: {fileID: 1678396032, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 1399172594, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 6
   Type: 2
-  Power: 100
+  Power: 80
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -12157,7 +12164,7 @@ Transform:
   m_GameObject: {fileID: 8544816226445725264}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.15387, y: -22.899023, z: -8.541834}
+  m_LocalPosition: {x: -28.147842, y: -22.899023, z: -8.541834}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12800,7 +12807,7 @@ MonoBehaviour:
   MagnetN: {fileID: 552476703, guid: 7498e78161b606a4ea22979c02f0062d, type: 3}
   MagnetNone: {fileID: 122408543, guid: 31c431171dc80764f9773b815bd2f49e, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 1
   Type: 2
   Power: 1
   MaxPower: 0
@@ -13821,7 +13828,7 @@ MonoBehaviour:
   MagnetN: {fileID: -1648723336, guid: 6e781ec4fdf6a7347a676933ae317149, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 2
   Type: 0
   Power: 100
   MaxPower: 1
@@ -14017,8 +14024,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.4031, y: -2.16925, z: 0}
-    m_Extent: {x: 25.747398, y: 5.46245, z: 0}
+    m_Center: {x: -0.40149975, y: -2.1793, z: 0}
+    m_Extent: {x: 25.737, y: 5.4560003, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -14066,9 +14073,9 @@ MonoBehaviour:
   MagnetN: {fileID: 67998557, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: -1671296472, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 7
   Type: 2
-  Power: 100
+  Power: 80
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -14812,9 +14819,9 @@ MonoBehaviour:
   MagnetN: {fileID: -1691875018, guid: df20b26840f0c9348b57949680542581, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 1
   Type: 1
-  Power: 100
+  Power: 5
   MaxPower: 1
   Type_Fixed: 1
   Magnet_Updetaflg: 0
@@ -14878,9 +14885,9 @@ MonoBehaviour:
   MagnetN: {fileID: 1678396032, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 1399172594, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 5
+  LenMagnrt: 3
   Type: 0
-  Power: 0.625
+  Power: 1.6
   MaxPower: 1
   Type_Fixed: 1
   Magnet_Updetaflg: 0
@@ -14986,7 +14993,7 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 360
+  m_PointLightInnerAngle: 357.96
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.4821623
   m_PointLightOuterRadius: 2.0928686
@@ -16584,9 +16591,9 @@ MonoBehaviour:
   MagnetN: {fileID: -499791876, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 2.5
   Type: 2
-  Power: 100
+  Power: 5
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -16803,9 +16810,9 @@ MonoBehaviour:
   MagnetN: {fileID: 1636855953, guid: df20b26840f0c9348b57949680542581, type: 3}
   MagnetNone: {fileID: -1671296472, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 7
   Type: 1
-  Power: 100
+  Power: 83
   MaxPower: 1
   Type_Fixed: 1
   Magnet_Updetaflg: 0
@@ -16904,9 +16911,9 @@ MonoBehaviour:
   MagnetN: {fileID: 67998557, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: -1671296472, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 5
+  LenMagnrt: 2.5
   Type: 0
-  Power: 100
+  Power: 5
   MaxPower: 1
   Type_Fixed: 1
   Magnet_Updetaflg: 0
@@ -25093,9 +25100,9 @@ MonoBehaviour:
   MagnetN: {fileID: 1678396032, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 1399172594, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 6
   Type: 2
-  Power: 100
+  Power: 80
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -99273,7 +99280,7 @@ MonoBehaviour:
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0.4821623
-  m_PointLightOuterRadius: 2.0928686
+  m_PointLightOuterRadius: 2.095547
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -99520,9 +99527,9 @@ MonoBehaviour:
   MagnetN: {fileID: 1678396032, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 1399172594, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 3
   Type: 0
-  Power: 100
+  Power: 10
   MaxPower: 1
   Type_Fixed: 0
   Magnet_Updetaflg: 0
@@ -100514,7 +100521,7 @@ MonoBehaviour:
   MagnetN: {fileID: -499791876, guid: e83e79aadde8ac74fa510e6bf42364f8, type: 3}
   MagnetNone: {fileID: 658232364, guid: 92665e9656f133e40acbf1935e4d0a89, type: 3}
   magnetManager: {fileID: 5440668869668318897}
-  LenMagnrt: 10
+  LenMagnrt: 3.5
   Type: 2
   Power: 100
   MaxPower: 1
