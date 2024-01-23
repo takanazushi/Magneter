@@ -457,6 +457,7 @@ MonoBehaviour:
   LasetT_B: {fileID: 989656342}
   ShotSE: {fileID: 8300000, guid: b39bba8957b5ca44bb5b01f703eb4c5b, type: 3}
   HitSE: {fileID: 8300000, guid: e40750073b9ade547a508550879533c8, type: 3}
+  hitEffect: {fileID: 6703016418111165915, guid: 6be40139c8adf2141aaf3fe61f2903f1, type: 3}
 --- !u!120 &119171027
 LineRenderer:
   serializedVersion: 2
@@ -1731,6 +1732,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invi_Time: 0.5
+  DieEffect: {fileID: 3640616352619109547, guid: 3ca3cfa059becf441a7eb9fca424beba, type: 3}
+  DieSE: {fileID: 8300000, guid: 954ec8055670d6e4bb6eaeafc5c43bc7, type: 3}
 --- !u!114 &355810902
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12490,7 +12493,7 @@ Transform:
   m_GameObject: {fileID: 8544816226445725264}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.150753, y: -22.899023, z: -8.758614}
+  m_LocalPosition: {x: -28.149792, y: -22.899023, z: -8.758614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14337,8 +14340,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.40270042, y: -2.1733499, z: 0}
-    m_Extent: {x: 25.7453, y: 5.45365, z: 0}
+    m_Center: {x: -0.4065504, y: -2.17085, z: 0}
+    m_Extent: {x: 25.745949, y: 5.4598503, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

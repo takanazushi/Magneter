@@ -32,6 +32,11 @@ public class MagLaserVar_Shot : MonoBehaviour
     [SerializeField]
     private AudioClip HitSE;
 
+    [SerializeField]
+    private GameObject hitEffect;
+
+    private GameObject hitEffectInstance;
+
     /// <summary>
     /// プレイヤー位置→マウス位置方向ベクトル
     /// </summary>
@@ -82,10 +87,12 @@ public class MagLaserVar_Shot : MonoBehaviour
         {
             audioSource.PlayOneShot(ShotSE);
             LaserDrawRay();
+
             LaserTexture_Shot(LasetT_R);
             if (RayHitMag())
             {
                 audioSource.PlayOneShot(HitSE);
+                Destroy(hitEffectInstance, 0.2f);
                 hitmg.SetType_Magnat(Magnet.Type_Magnet.N);
             }
 
@@ -99,6 +106,7 @@ public class MagLaserVar_Shot : MonoBehaviour
             if (RayHitMag())
             {
                 audioSource.PlayOneShot(HitSE);
+                Destroy(hitEffectInstance,0.2f);
                 hitmg.SetType_Magnat(Magnet.Type_Magnet.S);
             }
 
@@ -120,6 +128,7 @@ public class MagLaserVar_Shot : MonoBehaviour
         {
             //マグネット取得
             Debug.Log(hit[0].point);
+
             if (hit[0].rigidbody == null)
             {
                 return false;
@@ -131,8 +140,16 @@ public class MagLaserVar_Shot : MonoBehaviour
             if (hitmg)
             {
                 Vector3 viewPos = Camera.main.WorldToViewportPoint(hit[0].point);
+
+                Vector2 viewDir = new Vector2(hit[0].point.x, hit[0].point.y);
+
+                 hitEffectInstance = Instantiate(hitEffect, viewDir, Quaternion.identity);
+
+                hitEffectInstance.SetActive(true);
+
                 //ヒットした場所がカメラ内か判定
                 return viewPos.x > 0 && viewPos.x < 1 && viewPos.y > 0 && viewPos.y < 1;
+
             }
 
         }

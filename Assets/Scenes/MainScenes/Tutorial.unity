@@ -2233,6 +2233,7 @@ MonoBehaviour:
   LasetT_B: {fileID: 1977011314}
   ShotSE: {fileID: 8300000, guid: b39bba8957b5ca44bb5b01f703eb4c5b, type: 3}
   HitSE: {fileID: 8300000, guid: e40750073b9ade547a508550879533c8, type: 3}
+  hitEffect: {fileID: 6703016418111165915, guid: 6be40139c8adf2141aaf3fe61f2903f1, type: 3}
 --- !u!120 &1598295592
 LineRenderer:
   serializedVersion: 2
@@ -50931,8 +50932,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 8.349602, y: -0.048099995, z: 0}
-    m_Extent: {x: 75.0046, y: 9.475901, z: 0}
+    m_Center: {x: 8.347599, y: -0.046200275, z: 0}
+    m_Extent: {x: 75.0052, y: 9.4778, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
