@@ -1453,11 +1453,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkMoveX: 7
   jumpMoveX: 4
-  jumpForce: 6
+  jumpForce: 6.5
   groundLayers:
     serializedVersion: 2
     m_Bits: 4
-  rayLength: 1.2
+  rayLength: 0.8
   JumpSE: {fileID: 8300000, guid: a40af4876e7902e479c97b0d37d561b3, type: 3}
   windMoveSpeed: 0
 --- !u!95 &1411199321
@@ -50931,8 +50931,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 8.3442, y: -0.052949905, z: 0}
-    m_Extent: {x: 75.0016, y: 9.48465, z: 0}
+    m_Center: {x: 8.337399, y: -0.04279995, z: 0}
+    m_Extent: {x: 75.007095, y: 9.4781, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -53161,7 +53161,7 @@ Transform:
   m_GameObject: {fileID: 8583902103082912889}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 66.89756, y: -0.71687734, z: -3.1344063}
+  m_LocalPosition: {x: 67.35704, y: -1.0294611, z: -3.1865304}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -53170,7 +53170,7 @@ Transform:
   - {fileID: 1392698336}
   - {fileID: 1614846350}
   - {fileID: 738447128}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 8380443929542305544}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4472784228816883306
 Transform:
@@ -59996,6 +59996,7 @@ Transform:
   - {fileID: 3458828211068499747}
   - {fileID: 2712773936002788289}
   - {fileID: 1023172715738007238}
+  - {fileID: 4469730257163591038}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!224 &8382378175691756201
@@ -60818,7 +60819,6 @@ SceneRoots:
   - {fileID: 1411199316}
   - {fileID: 735526695}
   - {fileID: 1977011317}
-  - {fileID: 4469730257163591038}
   - {fileID: 6198504735965340024}
   - {fileID: 718054590429300303}
   - {fileID: 4644000863597610225}

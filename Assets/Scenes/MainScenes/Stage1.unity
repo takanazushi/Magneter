@@ -13336,8 +13336,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 29.688747, y: 22.15365, z: 0}
-    m_Extent: {x: 36.33035, y: 29.928751, z: 0}
+    m_Center: {x: 29.69695, y: 22.158699, z: 0}
+    m_Extent: {x: 36.33635, y: 29.9295, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -21724,7 +21724,7 @@ Transform:
   m_GameObject: {fileID: 3518623635287906732}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -21.613861, y: 16.687538, z: -8.541748}
+  m_LocalPosition: {x: -21.62204, y: 16.687538, z: -8.541748}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -25086,11 +25086,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkMoveX: 7
   jumpMoveX: 4
-  jumpForce: 6
+  jumpForce: 6.5
   groundLayers:
     serializedVersion: 2
     m_Bits: 4
-  rayLength: 1.2
+  rayLength: 0.8
   JumpSE: {fileID: 8300000, guid: a40af4876e7902e479c97b0d37d561b3, type: 3}
   windMoveSpeed: 0
 --- !u!114 &7055288073658330345
@@ -26746,8 +26746,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.4024992, y: -2.1735, z: 0}
-    m_Extent: {x: 25.739399, y: 5.453, z: 0}
+    m_Center: {x: -0.3980999, y: -2.1766, z: 0}
+    m_Extent: {x: 25.736, y: 5.4597, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0

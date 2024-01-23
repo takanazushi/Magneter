@@ -704,7 +704,14 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_ShowDebugText: 0
   m_Loop: 0
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 877665310}
+  - {fileID: 984671879}
+  - {fileID: 2115622001}
+  - {fileID: 927934645}
+  - {fileID: 549526033}
+  - {fileID: 1000777919}
+  - {fileID: 2062272185}
   m_Instructions:
   - m_VirtualCamera: {fileID: 877665310}
     m_Hold: 1
@@ -1738,11 +1745,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   walkMoveX: 7
   jumpMoveX: 4
-  jumpForce: 6
+  jumpForce: 6.5
   groundLayers:
     serializedVersion: 2
     m_Bits: 4
-  rayLength: 1.2
+  rayLength: 0.8
   JumpSE: {fileID: 8300000, guid: a40af4876e7902e479c97b0d37d561b3, type: 3}
   windMoveSpeed: 0
 --- !u!95 &355810903
@@ -5815,7 +5822,7 @@ Transform:
   m_GameObject: {fileID: 1777056242}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -43.05643, y: 1.5291934, z: -3.5330963}
+  m_LocalPosition: {x: -43.206432, y: 1.5291934, z: -3.5330963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12483,7 +12490,7 @@ Transform:
   m_GameObject: {fileID: 8544816226445725264}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -28.14256, y: -22.899023, z: -8.758614}
+  m_LocalPosition: {x: -28.150753, y: -22.899023, z: -8.758614}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -12627,7 +12634,7 @@ Transform:
   m_GameObject: {fileID: 1115262400420110080}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -42.936428, y: 1.5291934, z: -3.5330963}
+  m_LocalPosition: {x: -43.206432, y: 1.5291934, z: -3.5330963}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -14330,8 +14337,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.4058504, y: -2.1749501, z: 0}
-    m_Extent: {x: 25.74685, y: 5.45605, z: 0}
+    m_Center: {x: -0.40270042, y: -2.1733499, z: 0}
+    m_Extent: {x: 25.7453, y: 5.45365, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
