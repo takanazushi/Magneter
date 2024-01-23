@@ -1439,6 +1439,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   invi_Time: 0.5
+  DieEffect: {fileID: 3640616352619109547, guid: 3ca3cfa059becf441a7eb9fca424beba, type: 3}
+  DieSE: {fileID: 8300000, guid: 954ec8055670d6e4bb6eaeafc5c43bc7, type: 3}
 --- !u!114 &1411199320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4391,9 +4393,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_ShowDebugText: 0
   m_Loop: 0
-  m_ChildCameras:
-  - {fileID: 4460805078026734215}
-  - {fileID: 4354064619414739426}
+  m_ChildCameras: []
   m_Instructions:
   - m_VirtualCamera: {fileID: 4460805078026734215}
     m_Hold: 1
@@ -50931,8 +50931,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 8.337399, y: -0.04279995, z: 0}
-    m_Extent: {x: 75.007095, y: 9.4781, z: 0}
+    m_Center: {x: 8.349602, y: -0.048099995, z: 0}
+    m_Extent: {x: 75.0046, y: 9.475901, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -52620,7 +52620,7 @@ Transform:
   m_GameObject: {fileID: 122362432007400488}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 28.34346, y: -23.055687, z: -8.758667}
+  m_LocalPosition: {x: 28.336235, y: -23.055687, z: -8.758667}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
