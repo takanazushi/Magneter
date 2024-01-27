@@ -25,12 +25,17 @@ public class Checkpoint : MonoBehaviour
     [SerializeField, Header("通過後スプライト")]
     private Sprite passdSprite;
 
+    [SerializeField, Header("通過後Effect")]
+    private GameObject passEffect;
+
     [SerializeField]
     private AudioClip passSE;
 
     private SpriteRenderer spriteRenderer;
 
     private Light2D myLight;
+
+    private GameObject effect;
 
     AudioSource audioSource;
 
@@ -63,10 +68,23 @@ public class Checkpoint : MonoBehaviour
 
             //デバック用
             //通ったら赤
+            effect=Instantiate(passEffect, transform.position, Quaternion.identity);
+            effect.SetActive(true);
             audioSource.PlayOneShot(passSE);
             spriteRenderer.sprite = passdSprite;
             myLight.enabled = true;
+            StartCoroutine(ShowTargetAfterDelay(0.4f));
+
         }
+    }
+
+    private IEnumerator ShowTargetAfterDelay(float delay)
+    {
+        // 指定した時間だけ待つ
+        yield return new WaitForSeconds(delay);
+
+        // GameObjectを表示する
+        effect.SetActive(false);
     }
 }
         //    no = gameObject.name.IndexOf(GameManager.instance.checkpointNo.ToString());

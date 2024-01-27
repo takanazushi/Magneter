@@ -143,7 +143,10 @@ public class MagLaserVar_Shot : MonoBehaviour
 
                 Vector2 viewDir = new Vector2(hit[0].point.x, hit[0].point.y);
 
-                 hitEffectInstance = Instantiate(hitEffect, viewDir, Quaternion.identity);
+                if(viewPos.x > 0 && viewPos.x < 1 && viewPos.y > 0 && viewPos.y < 1)
+                {
+                    hitEffectInstance = Instantiate(hitEffect, viewDir, Quaternion.identity);
+                }
 
                 hitEffectInstance.SetActive(true);
 

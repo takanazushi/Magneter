@@ -20,8 +20,16 @@ public class Goal_mng : MonoBehaviour
     [SerializeField, Header("通過後スプライト")]
     private Sprite passdSprite;
 
+    [SerializeField, Header("通過後Effect")]
+    private GameObject passEffect;
+
+    [SerializeField, Header("通過後SE")]
+    private AudioClip passSE;
+
     private SpriteRenderer spriteRenderer;
+    private GameObject effect;
     private Light2D myLight;
+    private AudioSource audioSource;
 
     /// <summary>
     /// ゴール済フラグ
@@ -84,7 +92,13 @@ public class Goal_mng : MonoBehaviour
             instance = this;
         }
 
-        wait=new WaitForSeconds(LoadWait);
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            Debug.LogError("checkPointにAudioSourceついてない");
+        }
+
+        wait =new WaitForSeconds(LoadWait);
 
         if (SceneManager.GetActiveScene().name == "Title" || SceneManager.GetActiveScene().name == "StageSelect" || SceneManager.GetActiveScene().name == "Option" || SceneManager.GetActiveScene().name == "Result")
         {
@@ -103,6 +117,9 @@ public class Goal_mng : MonoBehaviour
     public void ResultStart()
     {
         Goalflg = true;
+        effect = Instantiate(passEffect, transform.position, Quaternion.identity);
+        effect.SetActive(true);
+        audioSource.PlayOneShot(passSE);
         myLight.enabled = true;
 
         spriteRenderer.sprite = passdSprite;
@@ -124,7 +141,18 @@ public class Goal_mng : MonoBehaviour
             GameManager.instance.stageClearFlag[3] = true;
         }
 
+        StartCoroutine(ShowTargetAfterDelay(0.4f));
+
         StartCoroutine(ResultLoad());
+    }
+
+    private IEnumerator ShowTargetAfterDelay(float delay)
+    {
+        // 指定した時間だけ待つ
+        yield return new WaitForSeconds(delay);
+
+        // GameObjectを表示する
+        effect.SetActive(false);
     }
 
     IEnumerator ResultLoad()
