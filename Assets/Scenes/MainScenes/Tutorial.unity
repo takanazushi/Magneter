@@ -312,7 +312,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 84182976}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: b3536927e4fc61f479f0a4def95ddbb4, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: 03406d81021692c47916ac63f84447cd, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}
@@ -4394,7 +4394,9 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_ShowDebugText: 0
   m_Loop: 0
-  m_ChildCameras: []
+  m_ChildCameras:
+  - {fileID: 4460805078026734215}
+  - {fileID: 4354064619414739426}
   m_Instructions:
   - m_VirtualCamera: {fileID: 4460805078026734215}
     m_Hold: 1
@@ -50932,8 +50934,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 8.347599, y: -0.046200275, z: 0}
-    m_Extent: {x: 75.0052, y: 9.4778, z: 0}
+    m_Center: {x: 8.337051, y: -0.055949688, z: 0}
+    m_Extent: {x: 75.00715, y: 9.478149, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
