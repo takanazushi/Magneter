@@ -1167,6 +1167,7 @@ MonoBehaviour:
   checkNo: 2
   Stert_Camera: {fileID: 8777798219296852764}
   passdSprite: {fileID: 21300000, guid: a7f506a3541bbec47938e6b6126ff167, type: 3}
+  passEffect: {fileID: 6059247451601764069, guid: dd5bd28fca5fe4140a1b3964caa01b39, type: 3}
   passSE: {fileID: 8300000, guid: c4b15453fdb751d4bbcde235fadb314f, type: 3}
 --- !u!212 &55164024881901398
 SpriteRenderer:
@@ -7335,6 +7336,7 @@ MonoBehaviour:
   checkNo: 0
   Stert_Camera: {fileID: 6442372790318612441}
   passdSprite: {fileID: 21300000, guid: a7f506a3541bbec47938e6b6126ff167, type: 3}
+  passEffect: {fileID: 6059247451601764069, guid: dd5bd28fca5fe4140a1b3964caa01b39, type: 3}
   passSE: {fileID: 8300000, guid: c4b15453fdb751d4bbcde235fadb314f, type: 3}
 --- !u!212 &2166168539913797552
 SpriteRenderer:
@@ -13338,8 +13340,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 29.689049, y: 22.15575, z: 0}
-    m_Extent: {x: 36.33255, y: 29.933651, z: 0}
+    m_Center: {x: 29.692251, y: 22.164051, z: 0}
+    m_Extent: {x: 36.33535, y: 29.93235, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -22632,6 +22634,7 @@ GameObject:
   - component: {fileID: 7703544979206303410}
   - component: {fileID: 1412358216380156230}
   - component: {fileID: 6816468973737133549}
+  - component: {fileID: 7703544979206303411}
   m_Layer: 0
   m_Name: GoalObject
   m_TagString: Goal
@@ -23320,6 +23323,7 @@ MonoBehaviour:
   checkNo: 1
   Stert_Camera: {fileID: 2887330814463683757}
   passdSprite: {fileID: 21300000, guid: a7f506a3541bbec47938e6b6126ff167, type: 3}
+  passEffect: {fileID: 6059247451601764069, guid: dd5bd28fca5fe4140a1b3964caa01b39, type: 3}
   passSE: {fileID: 8300000, guid: c4b15453fdb751d4bbcde235fadb314f, type: 3}
 --- !u!212 &6519162557581887832
 SpriteRenderer:
@@ -26715,6 +26719,104 @@ MonoBehaviour:
   LoadWait: 1
   Image: {fileID: 7184594343993338009}
   passdSprite: {fileID: 21300000, guid: b26bd87cbc475cd47af2c7f479dacbd8, type: 3}
+  passEffect: {fileID: 8510797955714887441, guid: 31c21d8494c8e6f45bbcf42d8d65243b, type: 3}
+  passSE: {fileID: 8300000, guid: 9592ed0a3b7184f4a8e5a28179421734, type: 3}
+--- !u!82 &7703544979206303411
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6234984344280062886}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 1122019465900410827, guid: 32704523a27a7e64bac98743f504ad24, type: 2}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &7707529298218946305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26749,8 +26851,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.40575027, y: -2.171, z: 0}
-    m_Extent: {x: 25.74145, y: 5.4492, z: 0}
+    m_Center: {x: -0.4026003, y: -2.17515, z: 0}
+    m_Extent: {x: 25.737099, y: 5.45285, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
