@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Script/Maglaser/Maglaser_Bullet.cs.meta
+guid: ebe80941e678c32408114907a176b269
+========
+guid: 47193309f23482f43b007b9e84ba7c5d
+>>>>>>>> MoveFloor:Assets/Script/LineRender.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

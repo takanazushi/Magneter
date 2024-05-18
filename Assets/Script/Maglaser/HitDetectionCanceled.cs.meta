@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Script/Maglaser/HitDetectionCanceled.cs.meta
 guid: b5d3bcd0937786a4b92532bb21df0e06
+========
+guid: d0680ad1b1f7f6749877d9d339712f92
+>>>>>>>> Enemy_Walk_Uturn:Assets/Script/Enemy_Walk_turn.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
